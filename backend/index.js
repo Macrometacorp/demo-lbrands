@@ -10,53 +10,15 @@ const corsHeaders = {
     'Access-Control-Max-Age': '86400',
 }
 
+const getCorsCompliantHeaders = headers => ({ ...corsHeaders, ...headers })
+
 /*
 This snippet ties our worker to the router we deifned above, all incoming requests
 are passed to the router where your routes are called and the response is sent.
 */
 addEventListener('fetch', event => {
-    const { request } = event
-    if (request.method === 'OPTIONS') {
-        event.respondWith(handleOptions(request))
-    } else {
-        event.respondWith(router.handle(request))
-    }
+    event.respondWith(router.handle(event.request))
 })
-
-function handleOptions(request) {
-    // Make sure the necessary headers are present
-    // for this to be a valid pre-flight request
-    let headers = request.headers
-    if (
-        headers.get('Origin') !== null &&
-        headers.get('Access-Control-Request-Method') !== null &&
-        headers.get('Access-Control-Request-Headers') !== null
-    ) {
-        // Handle CORS pre-flight request.
-        // If you want to check or reject the requested method + headers
-        // you can do that here.
-        let respHeaders = {
-            ...corsHeaders,
-            // Allow all future content Request headers to go back to browser
-            // such as Authorization (Bearer) or X-Client-Name-Version
-            'Access-Control-Allow-Headers': request.headers.get(
-                'Access-Control-Request-Headers'
-            ),
-        }
-
-        return new Response(null, {
-            headers: respHeaders,
-        })
-    } else {
-        // Handle standard OPTIONS request.
-        // If you want to allow other HTTP Methods, you can do that here.
-        return new Response(null, {
-            headers: {
-                Allow: 'GET, HEAD, POST, PUT, DELETE, OPTIONS',
-            },
-        })
-    }
-}
 
 // Create a new router
 const router = Router()
@@ -66,7 +28,10 @@ Our index route, a simple hello world.
 */
 router.get('/', () => {
     return new Response(
-        'Hello, world! This is the root page of your Worker template.'
+        'Hello, world! This is the root page of your Worker template.',
+        {
+            headers: getCorsCompliantHeaders(),
+        }
     )
 })
 
@@ -88,9 +53,9 @@ router.get('/example/:text', ({ params }) => {
 
     // Return the HTML with the string to the client
     return new Response(`<p>Base64 encoding: <code>${base64}</code></p>`, {
-        headers: {
+        headers: getCorsCompliantHeaders({
             'Content-Type': 'text/html',
-        },
+        }),
     })
 })
 
@@ -119,9 +84,9 @@ router.post('/post', async request => {
     const returnData = JSON.stringify(fields, null, 2)
 
     return new Response(returnData, {
-        headers: {
+        headers: getCorsCompliantHeaders({
             'Content-Type': 'application/json',
-        },
+        }),
     })
 })
 
@@ -131,4 +96,11 @@ above, therefore it's useful as a 404 (and avoids us hitting worker exceptions, 
 
 Visit any page that doesn't exist (e.g. /foobar) to see it in action.
 */
-router.all('*', () => new Response('404, not found!', { status: 404 }))
+router.all(
+    '*',
+    () =>
+        new Response('404, not found!', {
+            status: 404,
+            headers: getCorsCompliantHeaders(),
+        })
+)
