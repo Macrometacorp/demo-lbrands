@@ -2,6 +2,8 @@ import { apiRtt } from "./apiRtt";
 
 const CUSTOMER_ID = "customerId";
 
+const BACKEND = process.env.REACT_APP_BACKEND;
+
 const getCustomerId = () => sessionStorage.getItem(CUSTOMER_ID);
 
 const setCustomerId = (customerId: string) =>
@@ -13,7 +15,7 @@ const getOptions = (opts: any) => ({
 });
 
 const fetchWrapper = async (url: string, options: any) => {
-  const apiUrl = `./api${url}`;
+  const apiUrl = `${BACKEND}${url}`;
 
   const res = await fetch(apiUrl, options);
   if (res.ok) {
