@@ -174,7 +174,7 @@ router.post('/signin', async request => {
 router.get('/whoami', request => {
     const customerId = getCustomerId(request)
     let message = 'No current user'
-    let status = 500
+    let status = 404
     if (customerId !== 'null' && customerId) {
         message = customerId
         status = 200
