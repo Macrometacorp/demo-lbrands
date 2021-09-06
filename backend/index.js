@@ -15,6 +15,8 @@ const corsHeaders = {
     'Access-Control-Max-Age': '86400',
 }
 
+const CUSTOMER_ID_HEADER = 'x-customer-id'
+
 const getCorsCompliantHeaders = headers => ({ ...corsHeaders, ...headers })
 
 const client = new jsc8({
@@ -36,6 +38,8 @@ const executeQuery = async (c8qlKey, bindValue) => {
     }
     return result
 }
+
+const getCustomerId = request => request.headers.get(CUSTOMER_ID_HEADER)
 
 /*
 This snippet ties our worker to the router we deifned above, all incoming requests
@@ -88,20 +92,11 @@ function handleOptions(request) {
 // Create a new router
 const router = Router()
 
-router.get('/setup', async () => {
+router.post('/setup', async () => {
     await setup(client)
     return new Response('Setup successful!!', {
         headers: getCorsCompliantHeaders(),
     })
-})
-
-router.get('/', () => {
-    return new Response(
-        'Hello, world! This is the root page of your Worker template.',
-        {
-            headers: getCorsCompliantHeaders(),
-        }
-    )
 })
 
 router.get('/example/:text', ({ params }) => {
@@ -174,10 +169,24 @@ router.post('/signin', async request => {
     return new Response(body, { status, headers: getCorsCompliantHeaders() })
 })
 
+router.get('/whoami', request => {
+    const customerId = getCustomerId(request)
+    let message = 'No current user'
+    let status = 500
+    if (customerId !== 'null' && customerId) {
+        message = customerId
+        status = 200
+    }
+    return new Response(JSON.stringify({ message }), {
+        status,
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
 router.all(
     '*',
     () =>
-        new Response('404, not found!', {
+        new Response('404, route not found!', {
             status: 404,
             headers: getCorsCompliantHeaders(),
         })
