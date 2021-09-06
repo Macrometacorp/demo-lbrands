@@ -146,8 +146,32 @@ router.post('/signup', async request => {
     //     const res = await executeQuery("AddFriends", { username });
     //   }
 
-    const body = JSON.stringify(result);
-    return new Response(body, getCorsCompliantHeaders());
+    const body = JSON.stringify(result)
+    return new Response(body, { headers: getCorsCompliantHeaders() })
+})
+
+router.post('/signin', async request => {
+    const { username, password } = await request.json()
+    const encodedPassword = new TextEncoder().encode(password)
+    const digestedPassword = await crypto.subtle.digest(
+        {
+            name: 'SHA-256',
+        },
+        encodedPassword // The data you want to hash as an ArrayBuffer
+    )
+    const passwordHash = new TextDecoder('utf-8').decode(digestedPassword)
+    const result = await executeQuery('signin', {
+        username,
+        passwordHash,
+    })
+    let message = 'User not found'
+    let status = 404
+    if (result.length) {
+        message = result
+        status = 200
+    }
+    const body = JSON.stringify({ message })
+    return new Response(body, { status, headers: getCorsCompliantHeaders() })
 })
 
 router.all(

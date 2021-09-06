@@ -7,8 +7,14 @@ const queries = (queryName, bindValue) => {
                 bindVars: bindValue,
             }
             break
+        case 'signin':
+            queryObj = {
+                query: `FOR user in UsersTable FILTER user._key == @username AND user.password == @passwordHash RETURN user.customerId`,
+                bindVars: bindValue,
+            }
+            break
     }
-    return queryObj;
+    return queryObj
 }
 
-export default queries;
+export default queries
