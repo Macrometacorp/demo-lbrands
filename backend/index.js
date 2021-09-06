@@ -185,7 +185,7 @@ router.get('/whoami', request => {
     })
 })
 
-router.get('/fashionItem/:id', async request => {
+router.get('/fashionItems/:id', async request => {
     const { params } = request
     const fashionItemId = params.id
     const item = await executeQuery('GetFashionItem', { fashionItemId })
@@ -194,7 +194,7 @@ router.get('/fashionItem/:id', async request => {
     })
 })
 
-router.get('/fashionItem', async request => {
+router.get('/fashionItems', async request => {
     const parsed = queryString.parseUrl(request.url)
     const {
         query: { category },
