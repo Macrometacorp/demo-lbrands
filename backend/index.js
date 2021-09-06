@@ -2,6 +2,8 @@ import { Router } from 'itty-router'
 const { uuid } = require('@cfworker/uuid')
 
 const jsc8 = require('jsc8')
+const queryString = require('query-string')
+
 import setup from './setup'
 import queries from './c8qls'
 
@@ -179,6 +181,28 @@ router.get('/whoami', request => {
     }
     return new Response(JSON.stringify({ message }), {
         status,
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
+router.get('/fashionItem/:id', async request => {
+    const { params } = request
+    const fashionItemId = params.id
+    const item = await executeQuery('GetFashionItem', { fashionItemId })
+    return new Response(JSON.stringify(item), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
+router.get('/fashionItem', async request => {
+    const parsed = queryString.parseUrl(request.url)
+    const {
+        query: { category },
+    } = parsed
+
+    const items = await executeQuery('ListFashionItems', { category })
+
+    return new Response(JSON.stringify(items), {
         headers: getCorsCompliantHeaders(),
     })
 })

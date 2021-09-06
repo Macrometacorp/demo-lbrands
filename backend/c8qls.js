@@ -13,6 +13,20 @@ const queries = (queryName, bindValue) => {
                 bindVars: bindValue,
             }
             break
+        case 'ListFashionItems':
+            queryObj = {
+                query:
+                    'FOR item IN FashionItemsTable FILTER item.category == @category RETURN item',
+                bindVars: bindValue,
+            }
+            break
+        case 'GetFashionItem':
+            queryObj = {
+                query:
+                    'FOR item in FashionItemsTable FILTER item._key == @fashionItemId RETURN item',
+                bindVars: bindValue,
+            }
+            break
     }
     return queryObj
 }

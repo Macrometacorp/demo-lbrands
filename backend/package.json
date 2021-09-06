@@ -17,6 +17,7 @@
         "@cfworker/uuid": "^1.8.3",
         "itty-router": "^2.1.9",
         "jsc8": "^0.16.3",
+        "query-string": "^7.0.1",
         "serverless-cloudflare-workers": "^1.2.0"
     }
 }
