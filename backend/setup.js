@@ -340,10 +340,9 @@ const collectionHandler = async (client, collection, isEdge) => {
 
 const setup = async client => {
     console.log('INIT!!!')
-    for (collection of COLLECTIONS) {
-        console.log("--->>", collection.name)
+    for (const collection of COLLECTIONS) {
         await collectionHandler(client, collection, false)
     }
 }
 
-module.exports = setup
+export default setup

@@ -1,7 +1,9 @@
 import { Router } from 'itty-router'
+const { uuid } = require('@cfworker/uuid')
 
-const jsc8 = require("jsc8");
-const setup =  require("./setup");
+const jsc8 = require('jsc8')
+import setup from './setup'
+import queries from './c8qls'
 
 // We support the GET, POST, PUT, DELETE, HEAD, and OPTIONS methods from any origin,
 // and allow any header on requests. These headers must be present
@@ -19,18 +21,27 @@ const client = new jsc8({
     url: C8_URL,
     apiKey: C8_API_KEY,
     agentOptions: {
-      maxSockets: 50000,
+        maxSockets: 50000,
     },
     agent: fetch,
-  });
-  
+})
+
+const executeQuery = async (c8qlKey, bindValue) => {
+    const { query, bindVars } = queries(c8qlKey, bindValue)
+    let result
+    try {
+        result = await client.executeQuery(query, bindVars)
+    } catch (err) {
+        result = err
+    }
+    return result
+}
 
 /*
 This snippet ties our worker to the router we deifned above, all incoming requests
 are passed to the router where your routes are called and the response is sent.
 */
 addEventListener('fetch', event => {
-
     const { request } = event
     if (request.method === 'OPTIONS') {
         event.respondWith(handleOptions(request))
@@ -78,18 +89,12 @@ function handleOptions(request) {
 const router = Router()
 
 router.get('/setup', async () => {
-    await setup(client);
-    return new Response(
-        'Setup successful!!',
-        {
-            headers: getCorsCompliantHeaders(),
-        }
-    )
+    await setup(client)
+    return new Response('Setup successful!!', {
+        headers: getCorsCompliantHeaders(),
+    })
 })
 
-/*
-Our index route, a simple hello world.
-*/
 router.get('/', () => {
     return new Response(
         'Hello, world! This is the root page of your Worker template.',
@@ -99,12 +104,6 @@ router.get('/', () => {
     )
 })
 
-/*
-This route demonstrates path parameters, allowing you to extract fragments from the request
-URL.
-
-Try visit /example/hello and see the response.
-*/
 router.get('/example/:text', ({ params }) => {
     // Decode text like "Hello%20world" into "Hello world"
     let input = decodeURIComponent(params.text)
@@ -123,43 +122,34 @@ router.get('/example/:text', ({ params }) => {
     })
 })
 
-/*
-This shows a different HTTP method, a POST.
+router.post('/signup', async request => {
+    const { username, password } = await request.json()
 
-Try send a POST request using curl or another tool.
+    const encodedPassword = new TextEncoder().encode(password)
 
-Try the below curl command to send JSON:
-
-$ curl -X POST <worker> -H "Content-Type: application/json" -d '{"abc": "def"}'
-*/
-router.post('/post', async request => {
-    // Create a base object with some fields.
-    let fields = {
-        asn: request.cf.asn,
-        colo: request.cf.colo,
-    }
-
-    // If the POST data is JSON then attach it to our response.
-    if (request.headers.get('Content-Type') === 'application/json') {
-        fields['json'] = await request.json()
-    }
-
-    // Serialise the JSON to a string.
-    const returnData = JSON.stringify(fields, null, 2)
-
-    return new Response(returnData, {
-        headers: getCorsCompliantHeaders({
-            'Content-Type': 'application/json',
-        }),
+    const digestedPassword = await crypto.subtle.digest(
+        {
+            name: 'SHA-256',
+        },
+        encodedPassword // The data you want to hash as an ArrayBuffer
+    )
+    const passwordHash = new TextDecoder('utf-8').decode(digestedPassword)
+    const customerId = uuid()
+    const result = await executeQuery('signup', {
+        username,
+        passwordHash,
+        customerId,
     })
+
+    // TODO: if needed
+    // if (!result.error) {
+    //     const res = await executeQuery("AddFriends", { username });
+    //   }
+
+    const body = JSON.stringify(result);
+    return new Response(body, getCorsCompliantHeaders());
 })
 
-/*
-This is the last route we define, it will match anything that hasn't hit a route we've defined
-above, therefore it's useful as a 404 (and avoids us hitting worker exceptions, so make sure to include it!).
-
-Visit any page that doesn't exist (e.g. /foobar) to see it in action.
-*/
 router.all(
     '*',
     () =>
