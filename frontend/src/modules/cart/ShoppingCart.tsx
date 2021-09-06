@@ -93,7 +93,7 @@ export default class ShoppingCart extends Component<
             <CartProductRow
               order={order.order}
               book={order.book}
-              key={order.order.bookId}
+              key={order.order.fashionItemId}
               calculateTotal={() => this.getOrderTotal(true)}
             />
           ))}

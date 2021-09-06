@@ -7,7 +7,7 @@ import StarRating from "../../common/starRating/StarRating";
 import "../../common/styles/productRow.css";
 
 interface ProductRowProps {
-  bookId: string;
+  fashionItemId: string;
   book: Book;
 }
 
@@ -46,7 +46,7 @@ export class ProductRow extends React.Component<
   }
 
   getBook() {
-    return API.get("books", `/books/${this.props.bookId}`, null);
+    return API.get("books", `/books/${this.props.fashionItemId}`, null);
   }
 
   render() {
@@ -58,7 +58,7 @@ export class ProductRow extends React.Component<
           <div className="media-left media-middle no-padding">
             <img
               className="media-object product-thumb"
-              src={`./api/getImage?bookId=${this.state.book["_key"]}`}
+              src={`./api/getImage?fashionItemId=${this.state.book["_key"]}`}
               alt={`${this.state.book.name} cover`}
             />
           </div>
@@ -73,7 +73,7 @@ export class ProductRow extends React.Component<
               <small>{this.state.book.category}</small>
             </p>
             {/*ABHISHEK*/}
-            {/* <FriendRecommendations bookId={this.props.bookId} /> */}
+            {/* <FriendRecommendations fashionItemId={this.props.fashionItemId} /> */}
             <div>
               <span
                 style={{
@@ -84,7 +84,7 @@ export class ProductRow extends React.Component<
               </span>
               <span>
                 <AddToCart
-                  bookId={this.props.bookId}
+                  fashionItemId={this.props.fashionItemId}
                   price={this.state.book.price}
                 />
               </span>

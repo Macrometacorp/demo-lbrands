@@ -9,7 +9,7 @@ interface BestSellersProps {}
 
 interface BestSellersState {
   isLoading: boolean;
-  // books: { bookId: any }[];
+  // books: { fashionItemId: any }[];
   books: {
     _key: string;
     author: string;
@@ -40,8 +40,8 @@ export default class BestSellers extends React.Component<
 
       // Map the elasticache results to a book object
       for (var i = 0; i < bestSellers.length; i++) {
-        // const bookId = bestSellers[i];
-        // books.push({ bookId });
+        // const fashionItemId = bestSellers[i];
+        // books.push({ fashionItemId });
         const book = bestSellers[i];
         books.push(book);
       }
@@ -70,7 +70,7 @@ export default class BestSellers extends React.Component<
                 .slice(0, 20)
                 .map((book) => (
                   <BestSellerProductRow
-                    bookId={book["_key"]}
+                    fashionItemId={book["_key"]}
                     book={book}
                     key={book["_key"]}
                   />

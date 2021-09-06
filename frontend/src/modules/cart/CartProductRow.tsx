@@ -7,7 +7,7 @@ import { Glyphicon } from "react-bootstrap";
 import { Book } from "../bestSellers/BestSellerProductRow";
 
 export interface Order {
-  bookId: string;
+  fashionItemId: string;
   quantity: number;
   price: number;
 }
@@ -47,14 +47,14 @@ export class CartProductRow extends React.Component<
   }
 
   // getBook(order: any) {
-  //   return API.get("books", `/books/${order.bookId}`, null);
+  //   return API.get("books", `/books/${order.fashionItemId}`, null);
   // }
 
   onRemove = async () => {
     this.setState({ removeLoading: true });
     await API.del("cart", "/cart", {
       body: {
-        bookId: this.props.order.bookId,
+        fashionItemId: this.props.order.fashionItemId,
       },
     });
 
@@ -64,7 +64,7 @@ export class CartProductRow extends React.Component<
   onQuantityUpdated = async (event: any) => {
     await API.put("cart", "/cart", {
       body: {
-        bookId: this.props.order.bookId,
+        fashionItemId: this.props.order.fashionItemId,
         quantity: parseInt(event.target.value, 10),
       },
     });
@@ -79,7 +79,7 @@ export class CartProductRow extends React.Component<
           <div className="media-left media-middle">
             <img
               className="media-object product-thumb"
-              src={`./api/getImage?bookId=${this.state.book["_key"]}`}
+              src={`./api/getImage?fashionItemId=${this.state.book["_key"]}`}
               alt={`${this.state.book.name} cover`}
             />
           </div>
@@ -93,7 +93,7 @@ export class CartProductRow extends React.Component<
             <p>
               <small>{this.state.book.category}</small>
             </p>
-            {/* <FriendRecommendations bookId={this.props.order.bookId} /> */}
+            {/* <FriendRecommendations fashionItemId={this.props.order.fashionItemId} /> */}
             <div>
               Rating
               <div className="pull-right">

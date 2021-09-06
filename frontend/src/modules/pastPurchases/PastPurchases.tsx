@@ -87,7 +87,7 @@ export default class PastPurchases extends Component<
                     order.orderDate
                   )}`}</h4>
                   {order.books.map((book) => (
-                    <PurchasedProductRow order={book} key={book.bookId} />
+                    <PurchasedProductRow order={book} key={book.fashionItemId} />
                   ))}
                 </div>
               ))}

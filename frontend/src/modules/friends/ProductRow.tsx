@@ -8,7 +8,7 @@ import { Book } from "../bestSellers/BestSellerProductRow";
 
 interface ProductRowProps {
   book: Book;
-  bookId: string;
+  fashionItemId: string;
 }
 
 interface ProductRowState {
@@ -29,7 +29,7 @@ export class ProductRow extends React.Component<
 
   componentDidMount() {
     this.setState({ book: this.props.book });
-    // API.get("books", `/books/${this.props.bookId}`, null)
+    // API.get("books", `/books/${this.props.fashionItemId}`, null)
     //   .then((response) => this.setState({ book: response }))
     //   .catch((error) => console.error(error));
   }
@@ -43,7 +43,7 @@ export class ProductRow extends React.Component<
           <div className="media-left media-middle no-padding">
             <img
               className="product-thumb border"
-              src={`./api/getImage?bookId=${this.state.book["_key"]}`}
+              src={`./api/getImage?fashionItemId=${this.state.book["_key"]}`}
               alt={`${this.state.book.name} cover`}
             />
           </div>
@@ -55,12 +55,12 @@ export class ProductRow extends React.Component<
             <p className="no-margin">
               <small>{this.state.book.category}</small>
             </p>
-            <FriendRecommendations bookId={this.props.bookId} />
+            <FriendRecommendations fashionItemId={this.props.fashionItemId} />
             <div>
               <span style={{ display: "block" }}> Rating</span>
               <span>
                 <AddToCart
-                  bookId={this.state.book["_key"]}
+                  fashionItemId={this.state.book["_key"]}
                   price={this.state.book.price}
                 />
               </span>

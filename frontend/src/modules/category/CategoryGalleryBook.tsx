@@ -22,13 +22,13 @@ export class CategoryGalleryBook extends React.Component<
           </p>
           <img
             style={{ height: "200px", width: "150px" }}
-            src={`./api/getImage?bookId=${this.props.book["_key"]}`}
+            src={`./api/getImage?fashionItemId=${this.props.book["_key"]}`}
             alt={`${this.props.book.name} cover`}
           />
           <div className="caption">
             <h4 className="text-center wrap-text" >{this.props.book.name}</h4>
             <AddToCart
-              bookId={this.props.book["_key"]}
+              fashionItemId={this.props.book["_key"]}
               price={this.props.book.price}
               variant="center"
             />

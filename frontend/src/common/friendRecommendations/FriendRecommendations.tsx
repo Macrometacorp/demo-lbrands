@@ -3,7 +3,7 @@ import React from 'react';
 import { FriendThumb } from './FriendThumb';
 
 interface FriendRecommendationsProps {
-  bookId: string;
+  fashionItemId: string;
 }
 
 interface FriendRecommendationsState {
@@ -20,7 +20,7 @@ class FriendRecommendations extends React.Component<FriendRecommendationsProps, 
   }
 
   getFriends = () => {
-    return API.get("recommendations", `/recommendations/${this.props.bookId}`, null);
+    return API.get("recommendations", `/recommendations/${this.props.fashionItemId}`, null);
   }
 
   async componentDidMount() {
