@@ -28,7 +28,7 @@ export class CategoryGalleryTeaser extends React.Component<
 
   async componentDidMount() {
     try {
-      const fashionItems = await this.listBooks();
+      const fashionItems = await this.listFashionItems();
       this.setState({ fashionItems });
     } catch (e) {
       console.error(e);
@@ -37,7 +37,7 @@ export class CategoryGalleryTeaser extends React.Component<
     this.setState({ isLoading: false });
   }
 
-  listBooks() {
+  listFashionItems() {
     return API.get("fashionItems", "/fashionItems?category=Cookbooks", null);
   }
 

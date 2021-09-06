@@ -25,7 +25,7 @@ export class CategoryGallery extends React.Component<CategoryGalleryProps, Categ
 
   async componentDidMount() {
     try {
-      const fashionItems = await this.listBooks();
+      const fashionItems = await this.listFashionItems();
       this.setState({ fashionItems });
     } catch (e) {
       console.error(e);
@@ -34,7 +34,7 @@ export class CategoryGallery extends React.Component<CategoryGalleryProps, Categ
     this.setState({ isLoading: false });
   }
 
-  listBooks() {
+  listFashionItems() {
     return API.get("fashionItems", `/fashionItems?category=${this.props.match.params.id}`, null);
   }
 
