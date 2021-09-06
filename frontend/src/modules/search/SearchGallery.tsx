@@ -10,7 +10,7 @@ interface SearchGalleryProps {
 
 interface SearchGalleryState {
   isLoading: boolean;
-  books: Book[];
+  fashionItems: Book[];
 }
 
 export class SearchGallery extends React.Component<SearchGalleryProps, SearchGalleryState> {
@@ -19,7 +19,7 @@ export class SearchGallery extends React.Component<SearchGalleryProps, SearchGal
 
     this.state = {
       isLoading: true,
-      books: []
+      fashionItems: []
     };
   }
 
@@ -28,10 +28,10 @@ export class SearchGallery extends React.Component<SearchGalleryProps, SearchGal
       const searchResults = await this.searchBooks();
 
       // Map the search results to a book object
-      // const books = [];
+      // const fashionItems = [];
       // for (var i = 0; i < searchResults.hits.total; i++) {
       //   var hit = searchResults.hits.hits[i] && searchResults.hits.hits[i]._source;
-      //   hit && books.push({
+      //   hit && fashionItems.push({
       //     _key: hit.id.$,
       //     author: hit.author.S,
       //     category: hit.category.S,
@@ -43,7 +43,7 @@ export class SearchGallery extends React.Component<SearchGalleryProps, SearchGal
       // }
 
       this.setState({ 
-        books: searchResults
+        fashionItems: searchResults
       });
     } catch (e) {
       console.error(e);
@@ -64,7 +64,7 @@ export class SearchGallery extends React.Component<SearchGalleryProps, SearchGal
           <div className="container-category">
             <h3>Search results</h3>
             <div className="row">
-              {this.state.books.map(book => <CategoryGalleryBook book={book} key={book["_key"]} />)}
+              {this.state.fashionItems.map(book => <CategoryGalleryBook book={book} key={book["_key"]} />)}
             </div>
           </div>
         </div>

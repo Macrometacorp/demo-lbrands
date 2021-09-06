@@ -10,7 +10,7 @@ interface CategoryGalleryTeaserProps {}
 interface CategoryGalleryTeaserState {
   isLoading: boolean;
   // ABHISHEK: correct type
-  books: Book[] | any;
+  fashionItems: Book[] | any;
 }
 
 export class CategoryGalleryTeaser extends React.Component<
@@ -22,14 +22,14 @@ export class CategoryGalleryTeaser extends React.Component<
 
     this.state = {
       isLoading: true,
-      books: [],
+      fashionItems: [],
     };
   }
 
   async componentDidMount() {
     try {
-      const books = await this.listBooks();
-      this.setState({ books });
+      const fashionItems = await this.listBooks();
+      this.setState({ fashionItems });
     } catch (e) {
       console.error(e);
     }
@@ -38,7 +38,7 @@ export class CategoryGalleryTeaser extends React.Component<
   }
 
   listBooks() {
-    return API.get("books", "/books?category=Cookbooks", null);
+    return API.get("fashionItems", "/fashionItems?category=Cookbooks", null);
   }
 
   render() {
@@ -57,7 +57,7 @@ export class CategoryGalleryTeaser extends React.Component<
               </small>
             </h3>
             <div className="row">
-              {this.state.books.slice(0, 4).map((book: any) => (
+              {this.state.fashionItems.slice(0, 4).map((book: any) => (
                 <CategoryGalleryBook book={book} key={book["_key"]} />
               ))}
             </div>

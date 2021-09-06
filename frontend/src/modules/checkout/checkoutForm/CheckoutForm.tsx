@@ -76,7 +76,7 @@ export class CheckoutForm extends React.Component<CheckoutFormProps, CheckoutFor
     const orders = this.state.orders;
     API.post("orders", "/orders", {
       body: {
-        books: orders
+        fashionItems: orders
       }
     }).then(() => this.setState({
       toConfirm: true

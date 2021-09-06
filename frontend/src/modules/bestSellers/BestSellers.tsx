@@ -9,8 +9,8 @@ interface BestSellersProps {}
 
 interface BestSellersState {
   isLoading: boolean;
-  // books: { fashionItemId: any }[];
-  books: {
+  // fashionItems: { fashionItemId: any }[];
+  fashionItems: {
     _key: string;
     author: string;
     name: string;
@@ -29,24 +29,24 @@ export default class BestSellers extends React.Component<
 
     this.state = {
       isLoading: true,
-      books: [],
+      fashionItems: [],
     };
   }
 
   async componentDidMount() {
     try {
-      const books = [];
+      const fashionItems = [];
       const bestSellers = await API.get("bestsellers", "/bestsellers", null);
 
       // Map the elasticache results to a book object
       for (var i = 0; i < bestSellers.length; i++) {
         // const fashionItemId = bestSellers[i];
-        // books.push({ fashionItemId });
+        // fashionItems.push({ fashionItemId });
         const book = bestSellers[i];
-        books.push(book);
+        fashionItems.push(book);
       }
       this.setState({
-        books: books,
+        fashionItems: fashionItems,
         isLoading: false,
       });
     } catch (error) {
@@ -66,7 +66,7 @@ export default class BestSellers extends React.Component<
             {this.state.isLoading ? (
               <div className="loader" />
             ) : (
-              this.state.books
+              this.state.fashionItems
                 .slice(0, 20)
                 .map((book) => (
                   <BestSellerProductRow

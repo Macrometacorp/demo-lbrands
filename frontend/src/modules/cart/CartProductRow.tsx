@@ -47,7 +47,7 @@ export class CartProductRow extends React.Component<
   }
 
   // getBook(order: any) {
-  //   return API.get("books", `/books/${order.fashionItemId}`, null);
+  //   return API.get("fashionItems", `/fashionItems/${order.fashionItemId}`, null);
   // }
 
   onRemove = async () => {

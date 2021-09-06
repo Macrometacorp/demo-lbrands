@@ -46,7 +46,7 @@ export class ProductRow extends React.Component<
   }
 
   getBook() {
-    return API.get("books", `/books/${this.props.fashionItemId}`, null);
+    return API.get("fashionItems", `/fashionItems/${this.props.fashionItemId}`, null);
   }
 
   render() {

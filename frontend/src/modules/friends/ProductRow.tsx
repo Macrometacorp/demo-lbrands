@@ -29,7 +29,7 @@ export class ProductRow extends React.Component<
 
   componentDidMount() {
     this.setState({ book: this.props.book });
-    // API.get("books", `/books/${this.props.fashionItemId}`, null)
+    // API.get("fashionItems", `/fashionItems/${this.props.fashionItemId}`, null)
     //   .then((response) => this.setState({ book: response }))
     //   .catch((error) => console.error(error));
   }

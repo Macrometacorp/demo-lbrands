@@ -13,7 +13,7 @@ interface PastPurchasesProps {}
 interface Purchases {
   orderDate: number;
   _key: string;
-  books: Order[];
+  fashionItems: Order[];
 }
 
 interface PastPurchasesState {
@@ -86,7 +86,7 @@ export default class PastPurchases extends Component<
                   <h4>{`Order date: ${this.getPrettyDate(
                     order.orderDate
                   )}`}</h4>
-                  {order.books.map((book) => (
+                  {order.fashionItems.map((book) => (
                     <PurchasedProductRow order={book} key={book.fashionItemId} />
                   ))}
                 </div>

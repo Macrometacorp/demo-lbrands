@@ -34,7 +34,7 @@ export class PurchasedProductRow extends React.Component<PurchasedProductRowProp
   }
 
   // getBook(order: Order) {
-  //   return API.get("books", `/books/${order.fashionItemId}`, null);
+  //   return API.get("fashionItems", `/fashionItems/${order.fashionItemId}`, null);
   // }
 
   render() {

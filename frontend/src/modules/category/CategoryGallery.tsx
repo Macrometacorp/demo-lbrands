@@ -10,7 +10,7 @@ interface CategoryGalleryProps {
 
 interface CategoryGalleryState {
   isLoading: boolean;
-  books: Book[];
+  fashionItems: Book[];
 }
 
 export class CategoryGallery extends React.Component<CategoryGalleryProps, CategoryGalleryState> {
@@ -19,14 +19,14 @@ export class CategoryGallery extends React.Component<CategoryGalleryProps, Categ
 
     this.state = {
       isLoading: true,
-      books: []
+      fashionItems: []
     };
   }
 
   async componentDidMount() {
     try {
-      const books = await this.listBooks();
-      this.setState({ books });
+      const fashionItems = await this.listBooks();
+      this.setState({ fashionItems });
     } catch (e) {
       console.error(e);
     }
@@ -35,7 +35,7 @@ export class CategoryGallery extends React.Component<CategoryGalleryProps, Categ
   }
 
   listBooks() {
-    return API.get("books", `/books?category=${this.props.match.params.id}`, null);
+    return API.get("fashionItems", `/fashionItems?category=${this.props.match.params.id}`, null);
   }
 
   render() {
@@ -46,7 +46,7 @@ export class CategoryGallery extends React.Component<CategoryGalleryProps, Categ
           <div className="container-category">
             <h3>{this.props.match.params.id}</h3>
             <div className="row">
-              {this.state.books.map(book => <CategoryGalleryBook book={book} key={book["_key"]} />)}
+              {this.state.fashionItems.map(book => <CategoryGalleryBook book={book} key={book["_key"]} />)}
             </div>
           </div>
         </div>
