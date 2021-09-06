@@ -1,5 +1,8 @@
 import { Router } from 'itty-router'
 
+const jsc8 = require("jsc8");
+const setup =  require("./setup");
+
 // We support the GET, POST, PUT, DELETE, HEAD, and OPTIONS methods from any origin,
 // and allow any header on requests. These headers must be present
 // on all responses to all CORS preflight requests. In practice, this means
@@ -11,6 +14,16 @@ const corsHeaders = {
 }
 
 const getCorsCompliantHeaders = headers => ({ ...corsHeaders, ...headers })
+
+const client = new jsc8({
+    url: C8_URL,
+    apiKey: C8_API_KEY,
+    agentOptions: {
+      maxSockets: 50000,
+    },
+    agent: fetch,
+  });
+  
 
 /*
 This snippet ties our worker to the router we deifned above, all incoming requests
@@ -63,6 +76,16 @@ function handleOptions(request) {
 
 // Create a new router
 const router = Router()
+
+router.get('/setup', async () => {
+    await setup(client);
+    return new Response(
+        'Setup successful!!',
+        {
+            headers: getCorsCompliantHeaders(),
+        }
+    )
+})
 
 /*
 Our index route, a simple hello world.
