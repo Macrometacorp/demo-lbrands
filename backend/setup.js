@@ -313,6 +313,23 @@ const COLLECTIONS = [
     },
 ]
 
+const VIEWS = [
+    {
+        name: 'findFashionItems',
+        properties: {
+            links: {
+                FashionItemsTable: {
+                    analyzers: ['text_en'],
+                    fields: {},
+                    includeAllFields: true,
+                    storeValues: 'none',
+                    trackListPositions: false,
+                },
+            },
+        },
+    },
+]
+
 const collectionHandler = async (client, collection, isEdge) => {
     const { name, data } = collection
     const coll = isEdge ? client.edgeCollection(name) : client.collection(name)
@@ -342,6 +359,22 @@ const setup = async client => {
     console.log('INIT!!!')
     for (const collection of COLLECTIONS) {
         await collectionHandler(client, collection, false)
+    }
+
+    const response = await client.getListOfViews()
+    const existingViews = response.result
+
+    for (const view of VIEWS) {
+        const { name, properties } = view
+        const exists = existingViews.find(
+            existingView => existingView.name === name
+        )
+        if (exists) {
+            console.log(`View ${name} exists. Skipping creation.`)
+        } else {
+            await client.createView(name, properties)
+            console.log(`View ${name} created.`)
+        }
     }
 }
 
