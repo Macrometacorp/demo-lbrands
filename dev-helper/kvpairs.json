@@ -1,0 +1,24 @@
+[
+  {
+    "_key": "image1",
+    "description": "Some desc",
+    "heading": "High-waist Firm Compression Short",
+    "rating": 3.4,
+    "price": 23.3,
+    "category": "Sleep",
+    "images": [
+      {
+        "image": "image1",
+        "name": "Lemon Print"
+      },
+      {
+        "image": "image2",
+        "name": "Nero"
+      },
+      {
+        "image": "image3",
+        "name": "Olive"
+      }
+    ]
+  }
+]
