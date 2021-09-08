@@ -1,22 +1,26 @@
 import React from "react";
 import { makeBackendUrl } from "../../apiCalls";
+import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 import "./details.css";
 
 interface ItemDetailsState {
   currentImage: string;
+  fashionItem: FashionItem;
 }
 
 export class ItemDetails extends React.Component<any, ItemDetailsState> {
   constructor(props: any) {
     super(props);
-
     const {
       params: { id },
     } = this.props.match;
 
+    const currentImageId = this.props.location.state._key;
+
     this.state = {
-      currentImage: makeBackendUrl(`/image/${id}`),
+      currentImage: currentImageId,
+      fashionItem: this.props.location.state,
     };
   }
 
@@ -26,28 +30,23 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
         <div className="row">
           <div className="col-md-6 mb-4 mb-md-0">
             <div id="mdb-lightbox-ui"></div>
-
             <div className="mdb-lightbox">
               <div className="row product-gallery mx-1">
                 <div className="col-12 mb-0">
                   <figure className="view overlay rounded z-depth-1 main-img">
-                    <a
-                      href="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/15a.jpg"
-                      data-size="710x823"
-                    >
-                      <img
-                        src={this.state.currentImage}
-                        className="img-fluid z-depth-1 detail-image"
-                      />
-                    </a>
+                    <img
+                      src={makeBackendUrl(`/image/${this.state.currentImage}`)}
+                      className="img-fluid z-depth-1 detail-image"
+                    />
                   </figure>
                 </div>
               </div>
             </div>
           </div>
+          className="mb-2 small"
           <div className="col-md-6">
-            <h5>Fantasy T-shirt</h5>
-            <p className="mb-2 text-muted text-uppercase small">Shirts</p>
+            <h5>VICTORIA'S SECRET</h5>
+            <h3>{this.state.fashionItem.heading}</h3>
             <ul className="rating">
               <li>
                 <i className="fas fa-star fa-sm text-primary"></i>

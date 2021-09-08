@@ -15,7 +15,12 @@ export class CategoryGalleryBook extends React.Component<CategoryGalleryBookProp
     if (!this.props.fashionItem) return;
     return (
       <div className="col-sm-3 col-md-3">
-        <LinkContainer to={`/details/${this.props.fashionItem._key}`}>
+        <LinkContainer
+          to={{
+            pathname: `/details/${this.props.fashionItem.heading}`,
+            state: this.props.fashionItem,
+          }}
+        >
           <div className="thumbnail no-border">
             <p className="rating-container">
               <StarRating stars={this.props.fashionItem.rating} />
