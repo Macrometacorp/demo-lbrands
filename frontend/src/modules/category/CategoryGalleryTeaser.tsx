@@ -3,14 +3,14 @@ import "../../common/styles/gallery.css";
 import { LinkContainer } from "react-router-bootstrap";
 import { API } from "../../apiCalls";
 import CategoryGalleryBook from "./CategoryGalleryBook";
-import { Book } from "../bestSellers/BestSellerProductRow";
+import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 interface CategoryGalleryTeaserProps {}
 
 interface CategoryGalleryTeaserState {
   isLoading: boolean;
   // ABHISHEK: correct type
-  fashionItems: Book[] | any;
+  fashionItems: FashionItem[] | any;
 }
 
 export class CategoryGalleryTeaser extends React.Component<
@@ -57,8 +57,8 @@ export class CategoryGalleryTeaser extends React.Component<
               </small>
             </h3>
             <div className="row">
-              {this.state.fashionItems.slice(0, 4).map((book: any) => (
-                <CategoryGalleryBook book={book} key={book["_key"]} />
+              {this.state.fashionItems.slice(0, 4).map((fashionItem: any) => (
+                <CategoryGalleryBook fashionItem={fashionItem} key={fashionItem["_key"]} />
               ))}
             </div>
           </div>

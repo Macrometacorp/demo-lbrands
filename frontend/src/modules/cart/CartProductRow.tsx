@@ -4,7 +4,7 @@ import { API, makeBackendUrl } from "../../apiCalls";
 import StarRating from "../../common/starRating/StarRating";
 import FriendRecommendations from "../../common/friendRecommendations/FriendRecommendations";
 import { Glyphicon } from "react-bootstrap";
-import { Book } from "../bestSellers/BestSellerProductRow";
+import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 export interface Order {
   fashionItemId: string;
@@ -14,12 +14,12 @@ export interface Order {
 
 interface CartProductRowProps {
   order: Order | any;
-  book: any;
+  fashionItem: any;
   calculateTotal: () => void;
 }
 
 interface CartProductRowState {
-  book: Book | undefined;
+  fashionItem: FashionItem | undefined;
   removeLoading: boolean;
 }
 
@@ -31,16 +31,16 @@ export class CartProductRow extends React.Component<
     super(props);
 
     this.state = {
-      book: undefined,
+      fashionItem: undefined,
       removeLoading: false,
     };
   }
 
   async componentDidMount() {
     try {
-      // const book = this.getBook(this.props.order);
-      const book = this.props.book;
-      this.setState({ book });
+      // const fashionItem = this.getBook(this.props.order);
+      const fashionItem = this.props.fashionItem;
+      this.setState({ fashionItem });
     } catch (e) {
       console.error(e);
     }
@@ -71,7 +71,7 @@ export class CartProductRow extends React.Component<
   };
 
   render() {
-    if (!this.state.book) return null;
+    if (!this.state.fashionItem) return null;
 
     return (
       <div className="white-box">
@@ -79,19 +79,19 @@ export class CartProductRow extends React.Component<
           <div className="media-left media-middle">
             <img
               className="media-object product-thumb"
-              src={makeBackendUrl(`/image/${this.state.book["_key"]}`)}
-              alt={`${this.state.book.name} cover`}
+              src={makeBackendUrl(`/image/${this.state.fashionItem["_key"]}`)}
+              alt={`${this.state.fashionItem.heading} cover`}
             />
           </div>
           <div className="media-body">
             <h3 className="media-heading">
-              {this.state.book.name}
+              {this.state.fashionItem.heading}
               <div className="pull-right margin-1">
-                <small>${this.state.book.price}</small>
+                <small>${this.state.fashionItem.price}</small>
               </div>
             </h3>
             <p>
-              <small>{this.state.book.category}</small>
+              <small>{this.state.fashionItem.category}</small>
             </p>
             {/* <FriendRecommendations fashionItemId={this.props.order.fashionItemId} /> */}
             <div>
@@ -123,7 +123,7 @@ export class CartProductRow extends React.Component<
               </div>
             </div>
             <p>
-              <StarRating stars={this.state.book.rating} />
+              <StarRating stars={this.state.fashionItem.rating} />
             </p>
           </div>
         </div>

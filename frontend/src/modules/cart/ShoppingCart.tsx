@@ -92,7 +92,7 @@ export default class ShoppingCart extends Component<
           {this.state.orders.map((order) => (
             <CartProductRow
               order={order.order}
-              book={order.book}
+              fashionItem={order.fashionItem}
               key={order.order.fashionItemId}
               calculateTotal={() => this.getOrderTotal(true)}
             />

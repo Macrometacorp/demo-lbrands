@@ -30,7 +30,7 @@ class AddToCart extends React.Component<AddToCartProps, AddToCartState> {
     this.setState({ loading: true });
     // let bookInCart = await API.get("cart", `/cart/${this.props.fashionItemId}`, null);
     // bookInCart = bookInCart[0];
-    // if the book already exists in the cart, increase the quantity
+    // if the fashionItem already exists in the cart, increase the quantity
     // if (bookInCart) {
     //   API.put("cart", "/cart", {
     //     body: {
@@ -45,7 +45,7 @@ class AddToCart extends React.Component<AddToCartProps, AddToCartState> {
     //   });
     // }
 
-    // if the book does not exist in the cart, add it
+    // if the fashionItem does not exist in the cart, add it
     // else {
     API.post("cart", "/cart", {
       body: {

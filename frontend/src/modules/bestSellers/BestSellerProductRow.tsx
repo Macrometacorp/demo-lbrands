@@ -8,20 +8,21 @@ import "../../common/styles/productRow.css";
 
 interface ProductRowProps {
   fashionItemId: string;
-  book: Book;
+  fashionItem: FashionItem;
 }
 
-export interface Book {
+export interface FashionItem {
   _key: string;
   price: number;
   category: string;
-  name: string;
+  heading: string;
   rating: number;
-  author: string;
+  images: Array<{image: string, name: string}>;
+  description: string;
 }
 
 interface ProductRowState {
-  book: Book | undefined;
+  fashionItem: FashionItem | undefined;
 }
 
 export class ProductRow extends React.Component<
@@ -32,14 +33,14 @@ export class ProductRow extends React.Component<
     super(props);
 
     this.state = {
-      book: undefined,
+      fashionItem: undefined,
     };
   }
 
   async componentDidMount() {
     try {
-      // const book = await this.getBook();
-      this.setState({ book: this.props.book });
+      // const fashionItem = await this.getBook();
+      this.setState({ fashionItem: this.props.fashionItem });
     } catch (e) {
       console.error(e);
     }
@@ -50,7 +51,7 @@ export class ProductRow extends React.Component<
   }
 
   render() {
-    if (!this.state.book) return null;
+    if (!this.state.fashionItem) return null;
 
     return (
       <div className="white-box">
@@ -58,19 +59,19 @@ export class ProductRow extends React.Component<
           <div className="media-left media-middle no-padding">
             <img
               className="media-object product-thumb"
-              src={makeBackendUrl(`/image/${this.state.book['_key']}`)}
-              alt={`${this.state.book.name} cover`}
+              src={makeBackendUrl(`/image/${this.state.fashionItem['_key']}`)}
+              alt={`${this.state.fashionItem.heading} cover`}
             />
           </div>
           <div className="media-body  padding-20">
             <h3 className="media-heading">
-              {this.state.book.name}
+              {this.state.fashionItem.heading}
               <small className="pull-right margin-1">
-                <h4>${this.state.book.price}</h4>
+                <h4>${this.state.fashionItem.price}</h4>
               </small>
             </h3>
             <p>
-              <small>{this.state.book.category}</small>
+              <small>{this.state.fashionItem.category}</small>
             </p>
             {/*ABHISHEK*/}
             {/* <FriendRecommendations fashionItemId={this.props.fashionItemId} /> */}
@@ -85,11 +86,11 @@ export class ProductRow extends React.Component<
               <span>
                 <AddToCart
                   fashionItemId={this.props.fashionItemId}
-                  price={this.state.book.price}
+                  price={this.state.fashionItem.price}
                 />
               </span>
             </div>
-            <StarRating stars={this.state.book.rating} />
+            <StarRating stars={this.state.fashionItem.rating} />
           </div>
         </div>
       </div>

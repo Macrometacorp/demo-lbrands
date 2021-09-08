@@ -2,7 +2,7 @@ import React from "react";
 import "../../common/styles/gallery.css";
 import { API } from "../../apiCalls";
 import CategoryGalleryBook from "../category/CategoryGalleryBook";
-import { Book } from "../bestSellers/BestSellerProductRow";
+import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 interface SearchGalleryProps {
   match: any;
@@ -10,7 +10,7 @@ interface SearchGalleryProps {
 
 interface SearchGalleryState {
   isLoading: boolean;
-  fashionItems: Book[];
+  fashionItems: FashionItem[];
 }
 
 export class SearchGallery extends React.Component<SearchGalleryProps, SearchGalleryState> {
@@ -27,7 +27,7 @@ export class SearchGallery extends React.Component<SearchGalleryProps, SearchGal
     try {
       const searchResults = await this.searchBooks();
 
-      // Map the search results to a book object
+      // Map the search results to a fashionItem object
       // const fashionItems = [];
       // for (var i = 0; i < searchResults.hits.total; i++) {
       //   var hit = searchResults.hits.hits[i] && searchResults.hits.hits[i]._source;
@@ -64,7 +64,7 @@ export class SearchGallery extends React.Component<SearchGalleryProps, SearchGal
           <div className="container-category">
             <h3>Search results</h3>
             <div className="row">
-              {this.state.fashionItems.map(book => <CategoryGalleryBook book={book} key={book["_key"]} />)}
+              {this.state.fashionItems.map(fashionItem => <CategoryGalleryBook fashionItem={fashionItem} key={fashionItem["_key"]} />)}
             </div>
           </div>
         </div>

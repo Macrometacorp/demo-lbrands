@@ -13,10 +13,12 @@ interface BestSellersState {
   fashionItems: {
     _key: string;
     author: string;
-    name: string;
+    heading: string;
     price: number;
     rating: number;
     category: string;
+    images: Array<{image: string; name: string}>;
+    description: string;
   }[];
 }
 
@@ -38,12 +40,12 @@ export default class BestSellers extends React.Component<
       const fashionItems = [];
       const bestSellers = await API.get("bestsellers", "/bestsellers", null);
 
-      // Map the elasticache results to a book object
+      // Map the elasticache results to a fashionItem object
       for (var i = 0; i < bestSellers.length; i++) {
         // const fashionItemId = bestSellers[i];
         // fashionItems.push({ fashionItemId });
-        const book = bestSellers[i];
-        fashionItems.push(book);
+        const fashionItem = bestSellers[i];
+        fashionItems.push(fashionItem);
       }
       this.setState({
         fashionItems: fashionItems,
@@ -68,11 +70,11 @@ export default class BestSellers extends React.Component<
             ) : (
               this.state.fashionItems
                 .slice(0, 20)
-                .map((book) => (
+                .map((fashionItem) => (
                   <BestSellerProductRow
-                    fashionItemId={book["_key"]}
-                    book={book}
-                    key={book["_key"]}
+                    fashionItemId={fashionItem["_key"]}
+                    fashionItem={fashionItem}
+                    key={fashionItem["_key"]}
                   />
                 ))
             )}

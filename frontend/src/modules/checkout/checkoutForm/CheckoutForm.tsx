@@ -52,8 +52,8 @@ export class CheckoutForm extends React.Component<CheckoutFormProps, CheckoutFor
   }
 
   getOrderTotal = () => {
-    return this.state.orders.reduce((total, book) => {
-      return total + book.price * book.quantity
+    return this.state.orders.reduce((total, fashionItem) => {
+      return total + fashionItem.price * fashionItem.quantity
     }, 0).toFixed(2);
   }
 

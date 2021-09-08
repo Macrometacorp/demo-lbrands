@@ -2,35 +2,35 @@ import React from "react";
 import "../../common/styles/gallery.css";
 import StarRating from "../../common/starRating/StarRating";
 import AddToCart from "../../common/AddToCart";
-import { Book } from "../bestSellers/BestSellerProductRow";
+import { FashionItem } from "../bestSellers/BestSellerProductRow";
 import { makeBackendUrl } from "../../apiCalls";
 
 interface CategoryGalleryBookProps {
-  book: Book;
+  fashionItem: FashionItem;
 }
 
 export class CategoryGalleryBook extends React.Component<
   CategoryGalleryBookProps
 > {
   render() {
-    if (!this.props.book) return;
+    if (!this.props.fashionItem) return;
     return (
       <div className="col-sm-3 col-md-3">
         <div className="thumbnail no-border">
           <p className="rating-container">
-            <StarRating stars={this.props.book.rating} />
-            <span className="pull-right">{`$${this.props.book.price}`}</span>
+            <StarRating stars={this.props.fashionItem.rating} />
+            <span className="pull-right">{`$${this.props.fashionItem.price}`}</span>
           </p>
           <img
             style={{ height: "200px", width: "150px" }}
-            src={makeBackendUrl(`/image/${this.props.book["_key"]}`)}
-            alt={`${this.props.book.name} cover`}
+            src={makeBackendUrl(`/image/${this.props.fashionItem["_key"]}`)}
+            alt={`${this.props.fashionItem.heading} cover`}
           />
           <div className="caption">
-            <h4 className="text-center wrap-text" >{this.props.book.name}</h4>
+            <h4 className="text-center wrap-text" >{this.props.fashionItem.heading}</h4>
             <AddToCart
-              fashionItemId={this.props.book["_key"]}
-              price={this.props.book.price}
+              fashionItemId={this.props.fashionItem["_key"]}
+              price={this.props.fashionItem.price}
               variant="center"
             />
           </div>

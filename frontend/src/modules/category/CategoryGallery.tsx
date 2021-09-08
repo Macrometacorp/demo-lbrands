@@ -2,7 +2,7 @@ import React from "react";
 import "../../common/styles/gallery.css";
 import { API } from "../../apiCalls";
 import CategoryGalleryBook from "./CategoryGalleryBook";
-import { Book } from "../bestSellers/BestSellerProductRow";
+import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 interface CategoryGalleryProps {
   match: any;
@@ -10,7 +10,7 @@ interface CategoryGalleryProps {
 
 interface CategoryGalleryState {
   isLoading: boolean;
-  fashionItems: Book[];
+  fashionItems: FashionItem[];
 }
 
 export class CategoryGallery extends React.Component<CategoryGalleryProps, CategoryGalleryState> {
@@ -46,7 +46,7 @@ export class CategoryGallery extends React.Component<CategoryGalleryProps, Categ
           <div className="container-category">
             <h3>{this.props.match.params.id}</h3>
             <div className="row">
-              {this.state.fashionItems.map(book => <CategoryGalleryBook book={book} key={book["_key"]} />)}
+              {this.state.fashionItems.map(fashionItem => <CategoryGalleryBook fashionItem={fashionItem} key={fashionItem["_key"]} />)}
             </div>
           </div>
         </div>

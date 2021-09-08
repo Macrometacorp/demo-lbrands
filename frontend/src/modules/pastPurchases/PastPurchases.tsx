@@ -86,8 +86,8 @@ export default class PastPurchases extends Component<
                   <h4>{`Order date: ${this.getPrettyDate(
                     order.orderDate
                   )}`}</h4>
-                  {order.fashionItems.map((book) => (
-                    <PurchasedProductRow order={book} key={book.fashionItemId} />
+                  {order.fashionItems.map((fashionItem) => (
+                    <PurchasedProductRow order={fashionItem} key={fashionItem.fashionItemId} />
                   ))}
                 </div>
               ))}
