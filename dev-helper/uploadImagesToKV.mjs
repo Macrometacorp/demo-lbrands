@@ -4,13 +4,14 @@ const NAMESPACE_ID = "723596d64b1b43dc876a0c0abbf82e38";
 
 const CREATE = "create";
 const DELETE = "delete";
+const NA = "n/a"
 
 const value = "images/sample.jpg";
 const pathPrefix = "images/";
 
 const BULK_KV_FILE = "kv_bulk.json";
 
-const operationType = (argv?._[1] || CREATE).toLowerCase();
+const operationType = (argv?._[1] || NA).toLowerCase();
 console.log(chalk.cyan(`Received operation as "${operationType}"`));
 
 const file = await fs.readFile("./kvpairs.json");
