@@ -4,9 +4,15 @@ import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 import "./details.css";
 
+const COLORS = ["1ee8b7", "d270b7", "bf7c4c"];
+
+const SIZES = ["XS", "S", "M", "L", "XL", "XXL"];
+
 interface ItemDetailsState {
   currentImage: string;
+  currentSize: string;
   fashionItem: FashionItem;
+  quantity: number;
 }
 
 export class ItemDetails extends React.Component<any, ItemDetailsState> {
@@ -20,7 +26,9 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
 
     this.state = {
       currentImage: currentImageId,
+      currentSize: "M",
       fashionItem: this.props.location.state,
+      quantity: 1,
     };
   }
 
@@ -46,137 +54,87 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
           <div className="col-md-6">
             <h5>VICTORIA'S SECRET</h5>
             <h3>{this.state.fashionItem.heading}</h3>
-            <ul className="rating">
-              <li>
-                <i className="fas fa-star fa-sm text-primary"></i>
-              </li>
-              <li>
-                <i className="fas fa-star fa-sm text-primary"></i>
-              </li>
-              <li>
-                <i className="fas fa-star fa-sm text-primary"></i>
-              </li>
-              <li>
-                <i className="fas fa-star fa-sm text-primary"></i>
-              </li>
-              <li>
-                <i className="far fa-star fa-sm text-primary"></i>
-              </li>
-            </ul>
             <p>
               <span className="mr-1">
-                <strong>$12.99</strong>
+                <strong>${this.state.fashionItem.price}</strong>
               </span>
             </p>
-            <p className="pt-1">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam,
-              sapiente illo. Sit error voluptas repellat rerum quidem, soluta
-              enim perferendis voluptates laboriosam. Distinctio, officia quis
-              dolore quos sapiente tempore alias.
+            <p>
+              {
+                this.state.fashionItem.images.find(
+                  (imageDetail) => imageDetail.image === this.state.currentImage
+                )?.name
+              }
             </p>
-            <div className="table-responsive">
-              <table className="table table-sm table-borderless mb-0">
-                <tbody>
-                  <tr>
-                    <th className="pl-0 w-25" scope="row">
-                      <strong>Model</strong>
-                    </th>
-                    <td>Shirt 5407X</td>
-                  </tr>
-                  <tr>
-                    <th className="pl-0 w-25" scope="row">
-                      <strong>Color</strong>
-                    </th>
-                    <td>Black</td>
-                  </tr>
-                  <tr>
-                    <th className="pl-0 w-25" scope="row">
-                      <strong>Delivery</strong>
-                    </th>
-                    <td>USA, Europe</td>
-                  </tr>
-                </tbody>
-              </table>
+            {this.state.fashionItem.images.map((imageDetail, index) => {
+              const { image } = imageDetail;
+              const color = COLORS[index];
+              const isSelected = this.state.currentImage === image;
+              return (
+                <div
+                  onClick={() => {
+                    this.setState({ currentImage: image });
+                  }}
+                  key={image}
+                  style={{
+                    backgroundColor: `#${color}`,
+                    border: isSelected ? "1px solid black" : "none",
+                  }}
+                  className="detail-color"
+                ></div>
+              );
+            })}
+            <div className="detail-size-container">
+              {SIZES.map((size) => {
+                const isSelected = this.state.currentSize === size;
+                return (
+                  <div
+                    onClick={() => {
+                      this.setState({ currentSize: size });
+                    }}
+                    key={size}
+                    style={{
+                      border: isSelected ? "1px solid black" : "none",
+                    }}
+                  >
+                    {size}
+                  </div>
+                );
+              })}
             </div>
-            <hr />
-            <div className="table-responsive mb-2">
-              <table className="table table-sm table-borderless">
-                <tbody>
-                  <tr>
-                    <td className="pl-0 pb-0 w-25">Quantity</td>
-                    <td className="pb-0">Select size</td>
-                  </tr>
-                  <tr>
-                    <td className="pl-0">
-                      <div className="def-number-input number-input safari_only mb-0">
-                        <button onClick={() => {}} className="minus"></button>
-                        <input
-                          className="quantity"
-                          min="0"
-                          name="quantity"
-                          value="1"
-                          type="number"
-                        />
-                        <button onClick={() => {}} className="plus"></button>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="mt-1">
-                        <div className="form-check form-check-inline pl-0">
-                          <input
-                            type="radio"
-                            className="form-check-input"
-                            id="small"
-                            name="materialExampleRadios"
-                            checked
-                          />
-                          <label
-                            className="form-check-label small text-uppercase card-link-secondary"
-                            htmlFor="small"
-                          >
-                            Small
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline pl-0">
-                          <input
-                            type="radio"
-                            className="form-check-input"
-                            id="medium"
-                            name="materialExampleRadios"
-                          />
-                          <label
-                            className="form-check-label small text-uppercase card-link-secondary"
-                            htmlFor="medium"
-                          >
-                            Medium
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline pl-0">
-                          <input
-                            type="radio"
-                            className="form-check-input"
-                            id="large"
-                            name="materialExampleRadios"
-                          />
-                          <label
-                            className="form-check-label small text-uppercase card-link-secondary"
-                            htmlFor="large"
-                          >
-                            Large
-                          </label>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="detail-quantity">
+              <button
+                onClick={() => {
+                  if (this.state.quantity > 1) {
+                    this.setState((state) => ({
+                      quantity: state.quantity - 1,
+                    }));
+                  }
+                }}
+              >
+                -
+              </button>
+              <div>{this.state.quantity}</div>
+              <button
+                onClick={() => {
+                  this.setState((state) => ({
+                    quantity: state.quantity + 1,
+                  }));
+                }}
+              >
+                +
+              </button>
             </div>
-            <button type="button" className="btn btn-primary btn-md mr-1 mb-2">
-              Buy now
+            <button
+              type="button"
+              className="detail-cart btn btn-light btn-md mr-1 mb-2"
+            >
+              <i className="fas fa-shopping-cart pr-2"></i>ADD TO BAG
             </button>
-            <button type="button" className="btn btn-light btn-md mr-1 mb-2">
-              <i className="fas fa-shopping-cart pr-2"></i>Add to cart
-            </button>
+            <h4>Description</h4>
+            <p className="detail-description pt-1">
+              {this.state.fashionItem.description}
+            </p>
           </div>
         </div>
       </section>
