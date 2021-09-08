@@ -4,9 +4,8 @@ const NAMESPACE_ID = "723596d64b1b43dc876a0c0abbf82e38";
 
 const CREATE = "create";
 const DELETE = "delete";
-const NA = "n/a"
+const NA = "n/a";
 
-const value = "images/sample.jpg";
 const pathPrefix = "images/";
 
 const BULK_KV_FILE = "kv_bulk.json";
@@ -25,15 +24,17 @@ if (operationType === CREATE) {
   data.forEach((itemObj) => {
     const { images } = itemObj;
     images.forEach((imageObj) => {
-      const { image, name } = imageObj;
+      const { image } = imageObj;
       //   TODO: change "value" to reflect the file name
       promises.push(
-        $`wrangler kv:key put --namespace-id=${NAMESPACE_ID} "${image}" "${value}" --path`
+        $`wrangler kv:key put --namespace-id=${NAMESPACE_ID} "${image}" "${pathPrefix}${image}" --path`
       );
     });
   });
 
-  await Promise.all(promises);
+  await Promise.all(promises).catch((err) => {
+    console.log(chalk.red(err));
+  });
   console.log(chalk.green("Upload completed!"));
 } else if (operationType === DELETE) {
   console.log(chalk.blue("Starting to delete KV..."));

@@ -7,5 +7,5 @@ route = ""
 zone_id = ""
 vars = { DC_LIST="gdn-us-west", C8_URL="https://gdn.paas.macrometa.io", C8_API_KEY="xxxx" }
 kv-namespaces = [
-    { binding = "BOOK_IMAGES", id = "1fcd1c0a7aae4c958bde0606dd090d95", preview_id = "1fcd1c0a7aae4c958bde0606dd090d95" }
+    { binding = "LBRANDS_IMAGES", id = "723596d64b1b43dc876a0c0abbf82e38", preview_id = "723596d64b1b43dc876a0c0abbf82e38" }
 ]

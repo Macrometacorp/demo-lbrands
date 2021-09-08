@@ -1,22 +1,176 @@
 [
   {
-    "_key": "image1",
-    "description": "Some desc",
-    "heading": "High-waist Firm Compression Short",
-    "rating": 3.4,
-    "price": 23.3,
-    "category": "Sleep",
+    "_key": "DrapedBackVintageRose.jpeg",
+    "description": "Big night in. You’ll love relaxing in this luxe jacquard cami set with an allover sheen and a gorgeous draped back.",
+    "heading": "Draped Back Jacquard Cami Set",
+    "rating": 4.6,
+    "price": 49.5,
+    "category": "LINGERIE",
     "images": [
       {
-        "image": "image1",
+        "image": "DrapedBackVintageRose.jpeg",
+        "name": "Vintage Rose"
+      },
+      {
+        "image": "DrapedBackPersianTeal.jpeg",
+        "name": "Persian Teal"
+      },
+      {
+        "image": "DrapedBackDarkViolet.jpeg",
+        "name": "Dark Violet"
+      }
+    ]
+  },
+  {
+    "_key": "LacePlungeHotPink.jpeg",
+    "description": "A sexy-sweet essential in lustrous satin with delicate sheer lace and eyelash trim.",
+    "heading": "Lace Plunge Slip",
+    "rating": 4.6,
+    "price": 69.5,
+    "category": "LINGERIE",
+    "images": [
+      {
+        "image": "LacePlungeHotPink.jpeg",
+        "name": "Hot Pink"
+      },
+      {
+        "image": "LacePlungeGreen.jpeg",
+        "name": "Green"
+      },
+      {
+        "image": "LacePlungeCoconutWhite.jpeg",
+        "name": "Coconut White"
+      }
+    ]
+  },
+  {
+    "_key": "WickedOpenLipstick.jpeg",
+    "description": "Featuring our Wicked bra with the push-up cup technology you love, this sheer mesh and floral lace apron is finished with luxe satin ties. A matching panty completes the look. Ideal for wearing on your wedding night and beyond.",
+    "heading": "Wicked Open Back Babydoll",
+    "rating": 4.4,
+    "price": 89.5,
+    "category": "LINGERIE",
+    "images": [
+      {
+        "image": "WickedOpenLipstick.jpeg",
+        "name": "Lipstick"
+      },
+      {
+        "image": "WickedOpenCoconutWhite.jpeg",
+        "name": "Coconut White"
+      },
+      {
+        "image": "WickedOpenBlack.jpeg",
+        "name": "Black"
+      }
+    ]
+  },
+  {
+    "_key": "CottonJoggerLinenDahlia.jpeg",
+    "description": "Crisp cotton is made to keep you cool and comfortable with a classic tee and jogger design you'll want to lounge in all day.",
+    "heading": "Cotton Jogger Tee-jama",
+    "rating": 4.3,
+    "price": 49.5,
+    "category": "SLEEP",
+    "images": [
+      {
+        "image": "CottonJoggerLinenDahlia.jpeg",
+        "name": "Linen Dahlia"
+      },
+      {
+        "image": "CottonJoggerPinkHeartDot.jpeg",
+        "name": "Pink Heart Dot"
+      },
+      {
+        "image": "CottonJoggerNoirNavyStripe.jpeg",
+        "name": "Noir Navy Stripe"
+      }
+    ]
+  },
+  {
+    "_key": "SatinShortPinkFizz.jpeg",
+    "description": "For a full eight hours (or more). A sleep-ready PJ set in luxe satin, with a button front, notch collar and decorative piping.",
+    "heading": "Satin Short PJ Set",
+    "rating": 4.2,
+    "price": 74.5,
+    "category": "SLEEP",
+    "images": [
+      {
+        "image": "SatinShortPinkFizz.jpeg",
+        "name": "Pink Fizz"
+      },
+      {
+        "image": "SatinShortSweetDreamsScript.jpeg",
+        "name": "Sweet Dreams Script"
+      },
+      {
+        "image": "SatinShortPinkPopHeart.jpeg",
+        "name": "Pink Pop Heart"
+      }
+    ]
+  },
+  {
+    "_key": "HavanaPushUpPreciousJade.jpeg",
+    "description": "We have lift off! A classic banded halter with flattering push-up padding. Mix and match this style to find your perfect swim look.",
+    "heading": "Havana Push-Up Halter Swim Top",
+    "rating": 4,
+    "price": 29.5,
+    "category": "SWIM",
+    "images": [
+      {
+        "image": "HavanaPushUpPreciousJade.jpeg",
+        "name": "Precious Jade"
+      },
+      {
+        "image": "HavanaPushUpBlackWhiteDot.jpeg",
+        "name": "Black & White Dot"
+      },
+      {
+        "image": "HavanaPushUpRipeApricot.jpeg",
+        "name": "Ripe Apricot"
+      }
+    ]
+  },
+  {
+    "_key": "MalibuFabSapphire.jpeg",
+    "description": "A full-cup push-up that's fit to flirt. Get dramatic lift and customizable support. Mix and match this style to find your perfect swim look.",
+    "heading": "Malibu Fabulous Push-Up Swim Top",
+    "rating": 4.4,
+    "price": 44.5,
+    "category": "SWIM",
+    "images": [
+      {
+        "image": "MalibuFabSapphire.jpeg",
+        "name": "Sapphire"
+      },
+      {
+        "image": "MalibuFabMintFrost.jpeg",
+        "name": "Mint Frost"
+      },
+      {
+        "image": "MalibuFabCheekyRed.jpeg",
+        "name": "Cheeky Red"
+      }
+    ]
+  },
+  {
+    "_key": "TahitiScoopOlive.jpeg",
+    "description": "A little scoop that's perfect for a swim, this bikini top is a perfect addition to your vacation wardrobe.",
+    "heading": "Tahiti Scoop Swim Top",
+    "rating": 4.3,
+    "price": 29.5,
+    "category": "SWIM",
+    "images": [
+      {
+        "image": "TahitiScoopLemonPrint.jpeg",
         "name": "Lemon Print"
       },
       {
-        "image": "image2",
+        "image": "TahitiScoopNero.jpeg",
         "name": "Nero"
       },
       {
-        "image": "image3",
+        "image": "TahitiScoopOlive.jpeg",
         "name": "Olive"
       }
     ]
