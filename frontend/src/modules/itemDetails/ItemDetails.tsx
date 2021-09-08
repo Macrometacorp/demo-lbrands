@@ -37,7 +37,7 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                     >
                       <img
                         src={this.state.currentImage}
-                        className="img-fluid z-depth-1"
+                        className="img-fluid z-depth-1 detail-image"
                       />
                     </a>
                   </figure>
