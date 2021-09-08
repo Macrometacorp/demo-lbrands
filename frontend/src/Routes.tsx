@@ -12,6 +12,7 @@ import PastPurchases from "./modules/pastPurchases/PastPurchases";
 import BestSellers from "./modules/bestSellers/BestSellers";
 import SearchView from "./modules/search/SearchView";
 import PropsRoute from "./common/PropsRoute";
+import { ItemDetails } from "./modules/itemDetails/ItemDetails";
 
 interface RouteProps {
   isAuthenticated: boolean;
@@ -36,6 +37,7 @@ export const Routes: React.SFC<RouteProps> = (childProps) => (
     <Route path="/checkout" exact component={Checkout} />
     <Route path="/checkout-confirm" exact component={CheckoutConfirm} />
     <Route path="/search/:id" exact component={SearchView} />
+    <Route path="/details/:id" exact component={ItemDetails}/>
     <Route component={NotFound} />
   </Switch>
 );
