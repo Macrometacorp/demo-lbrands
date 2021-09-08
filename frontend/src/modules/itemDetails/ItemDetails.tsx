@@ -43,7 +43,6 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
               </div>
             </div>
           </div>
-          className="mb-2 small"
           <div className="col-md-6">
             <h5>VICTORIA'S SECRET</h5>
             <h3>{this.state.fashionItem.heading}</h3>
