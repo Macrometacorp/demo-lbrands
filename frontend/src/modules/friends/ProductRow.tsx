@@ -1,7 +1,7 @@
 import React from "react";
 import "../../common/styles/productRow.css";
 import StarRating from "../../common/starRating/StarRating";
-import { API } from "../../apiCalls";
+import { API, makeBackendUrl } from "../../apiCalls";
 import AddToCart from "../../common/AddToCart";
 import FriendRecommendations from "../../common/friendRecommendations/FriendRecommendations";
 import { Book } from "../bestSellers/BestSellerProductRow";
@@ -43,7 +43,7 @@ export class ProductRow extends React.Component<
           <div className="media-left media-middle no-padding">
             <img
               className="product-thumb border"
-              src={`./api/getImage?fashionItemId=${this.state.book["_key"]}`}
+              src={makeBackendUrl(`/image/${this.state.book["_key"]}`)}
               alt={`${this.state.book.name} cover`}
             />
           </div>

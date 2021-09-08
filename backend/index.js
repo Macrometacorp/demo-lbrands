@@ -182,7 +182,7 @@ router.get('/fashionItems', async request => {
         query: { category },
     } = parsed
 
-    const items = await executeQuery('ListFashionItems', { category })
+    const items = await executeQuery('ListFashionItems', { category: category.toUpperCase() })
 
     return new Response(JSON.stringify(items), {
         headers: getCorsCompliantHeaders(),
@@ -192,7 +192,7 @@ router.get('/fashionItems', async request => {
 router.get('/image/:id', async request => {
     const { params } = request
     const imageId = params.id
-    const res = await BOOK_IMAGES.get(imageId, 'arrayBuffer')
+    const res = await LBRANDS_IMAGES.get(imageId, 'arrayBuffer')
     const response = new Response(res, {
         headers: getCorsCompliantHeaders({ 'Content-Type': 'image/jpeg' }),
     })

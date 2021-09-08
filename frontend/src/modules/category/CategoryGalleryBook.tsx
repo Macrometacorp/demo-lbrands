@@ -3,6 +3,7 @@ import "../../common/styles/gallery.css";
 import StarRating from "../../common/starRating/StarRating";
 import AddToCart from "../../common/AddToCart";
 import { Book } from "../bestSellers/BestSellerProductRow";
+import { makeBackendUrl } from "../../apiCalls";
 
 interface CategoryGalleryBookProps {
   book: Book;
@@ -22,7 +23,7 @@ export class CategoryGalleryBook extends React.Component<
           </p>
           <img
             style={{ height: "200px", width: "150px" }}
-            src={`./api/getImage?fashionItemId=${this.props.book["_key"]}`}
+            src={makeBackendUrl(`/image/${this.props.book["_key"]}`)}
             alt={`${this.props.book.name} cover`}
           />
           <div className="caption">

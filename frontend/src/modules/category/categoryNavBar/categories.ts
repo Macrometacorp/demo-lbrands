@@ -1,7 +1,7 @@
 export const categories = {
-  cooks: "Cookbooks",
-  database: "Database",
-  fairy: "Fairy Tales",
+  lingerie: "Lingerie",
+  sleep: "Sleep",
+  swim: "Swim",
   scifi: "Science Fiction",
   home: "Home Improvement",
   cars: "Cars",

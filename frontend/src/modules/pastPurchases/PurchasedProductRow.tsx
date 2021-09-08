@@ -1,7 +1,7 @@
 import React from "react";
 import "../../common/styles/productRow.css";
 import StarRating from "../../common/starRating/StarRating";
-import { API } from "../../apiCalls";
+import { API, makeBackendUrl } from "../../apiCalls";
 import AddToCart from "../../common/AddToCart";
 import FriendRecommendations from "../../common/friendRecommendations/FriendRecommendations";
 import { Book } from "../bestSellers/BestSellerProductRow";
@@ -54,7 +54,9 @@ export class PurchasedProductRow extends React.Component<PurchasedProductRowProp
       <div className="white-box">
         <div className="media">
           <div className="media-left media-middle">
-            <img className="media-object product-thumb" src={`./api/getImage?fashionItemId=${this.state.book.fashionItemId}`} alt={`${this.state.book.name} covers`} />
+            <img className="media-object product-thumb" 
+            src={makeBackendUrl(`/image/${this.state.book.fashionItemId}`)}
+            alt={`${this.state.book.name} covers`} />
           </div>
           <div className="media-body">
             <h3 className="media-heading">{this.state.book.name}

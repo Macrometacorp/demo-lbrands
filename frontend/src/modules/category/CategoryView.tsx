@@ -4,10 +4,10 @@ import { SearchBar } from "../search/searchBar/SearchBar";
 import { BestSellersBar } from "../bestSellers/bestSellersBar/BestSellersBar";
 import { CategoryGallery } from "./CategoryGallery";
 
-import database from "../../images/hero/hero-database.png";
+import sleep from "../../images/hero/hero-sleep.jpg";
 import cars from "../../images/hero/hero-cars.png";
-import cooks from "../../images/hero/hero-cookbooks.png";
-import fairy from "../../images/hero/hero-fairytales.png";
+import lingerie from "../../images/hero/hero-lingerie.jpg";
+import swim from "../../images/hero/hero-swim.jpg";
 import home from "../../images/hero/hero-home.png";
 import scifi from "../../images/hero/hero-science.png";
 import woodwork from "../../images/hero/hero-woodwork.png";
@@ -34,12 +34,12 @@ const CategoryView = (props: CategoryViewProps) => {
 
   const getImage = () => {
     switch (props.match.params.id) {
-      case categories.cooks:
-        return cooks;
-      case categories.database:
-        return database;
-      case categories.fairy:
-        return fairy;
+      case categories.lingerie:
+        return lingerie;
+      case categories.sleep:
+        return sleep;
+      case categories.swim:
+        return swim;
       case categories.scifi:
         return scifi;
       case categories.home:
@@ -49,7 +49,7 @@ const CategoryView = (props: CategoryViewProps) => {
       case categories.woodwork:
         return woodwork;
       default:
-        return cooks;
+        return lingerie;
     }
   };
   return (

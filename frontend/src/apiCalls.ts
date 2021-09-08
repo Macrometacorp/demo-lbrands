@@ -14,8 +14,10 @@ const getOptions = (opts: any) => ({
   headers: { "X-Customer-Id": getCustomerId() },
 });
 
+export const makeBackendUrl = (url: string) => `${BACKEND}${url}`
+
 const fetchWrapper = async (url: string, options: any) => {
-  const apiUrl = `${BACKEND}${url}`;
+  const apiUrl = makeBackendUrl(url);
 
   const res = await fetch(apiUrl, options);
   if (res.ok) {

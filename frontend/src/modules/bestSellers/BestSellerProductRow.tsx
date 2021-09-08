@@ -1,5 +1,5 @@
 import React from "react";
-import { API } from "../../apiCalls";
+import { API, makeBackendUrl } from "../../apiCalls";
 
 import AddToCart from "../../common/AddToCart";
 import FriendRecommendations from "../../common/friendRecommendations/FriendRecommendations";
@@ -58,7 +58,7 @@ export class ProductRow extends React.Component<
           <div className="media-left media-middle no-padding">
             <img
               className="media-object product-thumb"
-              src={`./api/getImage?fashionItemId=${this.state.book["_key"]}`}
+              src={makeBackendUrl(`/image/${this.state.book['_key']}`)}
               alt={`${this.state.book.name} cover`}
             />
           </div>

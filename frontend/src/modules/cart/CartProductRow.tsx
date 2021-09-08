@@ -1,6 +1,6 @@
 import React from "react";
 import "../../common/styles/productRow.css";
-import { API } from "../../apiCalls";
+import { API, makeBackendUrl } from "../../apiCalls";
 import StarRating from "../../common/starRating/StarRating";
 import FriendRecommendations from "../../common/friendRecommendations/FriendRecommendations";
 import { Glyphicon } from "react-bootstrap";
@@ -79,7 +79,7 @@ export class CartProductRow extends React.Component<
           <div className="media-left media-middle">
             <img
               className="media-object product-thumb"
-              src={`./api/getImage?fashionItemId=${this.state.book["_key"]}`}
+              src={makeBackendUrl(`/image/${this.state.book["_key"]}`)}
               alt={`${this.state.book.name} cover`}
             />
           </div>
