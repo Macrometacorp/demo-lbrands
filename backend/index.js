@@ -182,7 +182,9 @@ router.get('/fashionItems', async request => {
         query: { category },
     } = parsed
 
-    const items = await executeQuery('ListFashionItems', { category: category.toUpperCase() })
+    const items = await executeQuery('ListFashionItems', {
+        category: category.toUpperCase(),
+    })
 
     return new Response(JSON.stringify(items), {
         headers: getCorsCompliantHeaders(),
@@ -198,6 +200,27 @@ router.get('/image/:id', async request => {
     })
     return response
 })
+
+router.get('/cart/:id', async request => {})
+router.get('/cart', async request => {})
+router.post('/cart', async request => {
+    const customerId = getCustomerId(request)
+    const { fashionItemId, quantity, price, color, size } = await request.json()
+    const res = await executeQuery('AddToCart', {
+        customerId,
+        fashionItemId,
+        quantity,
+        price,
+        color,
+        size,
+    })
+
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+router.put('/cart', async request => {})
+router.delete('/cart', async request => {})
 
 router.all(
     '*',

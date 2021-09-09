@@ -1,5 +1,5 @@
 import React from "react";
-import { makeBackendUrl } from "../../apiCalls";
+import { API, makeBackendUrl } from "../../apiCalls";
 import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 import "./details.css";
@@ -128,6 +128,21 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
             <button
               type="button"
               className="detail-cart btn btn-light btn-md mr-1 mb-2"
+              onClick={() => {
+                const { price, _key } = this.state.fashionItem;
+                API.post("cart", "/cart", {
+                  body: {
+                    fashionItemId: _key,
+                    quantity: this.state.quantity,
+                    price,
+                    color: this.state.fashionItem.images.find(
+                      (imageDetail) =>
+                        imageDetail.image === this.state.currentImage
+                    )?.name,
+                    size: this.state.currentSize,
+                  },
+                });
+              }}
             >
               <i className="fas fa-shopping-cart pr-2"></i>ADD TO BAG
             </button>

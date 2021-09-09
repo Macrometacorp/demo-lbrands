@@ -36,6 +36,14 @@ const queries = (queryName, bindValue) => {
                 bindVars: bindValue,
             }
             break
+        case 'AddToCart':
+            queryObj = {
+                query: `UPSERT { _key: CONCAT_SEPARATOR(":", @customerId, @fashionItemId) } 
+                INSERT { _key: CONCAT_SEPARATOR(":", @customerId, @fashionItemId),customerId: @customerId, fashionItemId: @fashionItemId, quantity: @quantity, price: @price, color: @color, size: @size } 
+                UPDATE { quantity: OLD.quantity + @quantity } IN CartTable`,
+                bindVars: bindValue,
+            }
+            break
     }
     return queryObj
 }
