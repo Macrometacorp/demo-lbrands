@@ -30,7 +30,7 @@ const queries = (queryName, bindValue) => {
         case 'Search':
             queryObj = {
                 query: `FOR doc IN findFashionItems
-                SEARCH PHRASE(doc.name, @search, "text_en") OR PHRASE(doc.category, @search, "text_en")
+                SEARCH PHRASE(doc.heading, @search, "text_en") OR PHRASE(doc.category, @search, "text_en")
                 SORT BM25(doc) desc
                 RETURN doc`,
                 bindVars: bindValue,
@@ -41,6 +41,15 @@ const queries = (queryName, bindValue) => {
                 query: `UPSERT { _key: CONCAT_SEPARATOR(":", @customerId, @fashionItemId, @color, @size) } 
                 INSERT { _key: CONCAT_SEPARATOR(":", @customerId, @fashionItemId, @color, @size),customerId: @customerId, fashionItemId: @fashionItemId, quantity: @quantity, price: @price, color: @color, size: @size } 
                 UPDATE { quantity: @quantity } IN CartTable`,
+                bindVars: bindValue,
+            }
+            break
+        case 'ListItemsInCart':
+            queryObj = {
+                query:
+                    `FOR item IN CartTable FILTER item.customerId == @customerId
+                    FOR fashion in FashionItemsTable FILTER fashion._key == item.fashionItemId
+                    RETURN {order: item, fashionItem: fashion}`,
                 bindVars: bindValue,
             }
             break

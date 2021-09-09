@@ -94,6 +94,7 @@ function handleOptions(request) {
 // Create a new router
 const router = Router()
 
+// TODO: Manually add category and heading fields in findFashionItems view
 router.post('/setup', async () => {
     await setup(client)
     return new Response('Setup successful!!', {
@@ -202,7 +203,20 @@ router.get('/image/:id', async request => {
 })
 
 router.get('/cart/:id', async request => {})
-router.get('/cart', async request => {})
+
+router.get('/cart', async request => {
+    const customerId = getCustomerId(request);
+    let body = { error: true, code: 400, message: "Customer Id not provided" };
+    let bindValue = { customerId };
+    const res = await executeQuery('ListItemsInCart', {
+    customerId
+    })
+
+    return new Response(JSON.stringify(res), {
+    headers: getCorsCompliantHeaders(),
+    })
+})
+
 router.post('/cart', async request => {
     const customerId = getCustomerId(request)
     const { fashionItemId, quantity, price, color, size } = await request.json()
@@ -219,8 +233,18 @@ router.post('/cart', async request => {
         headers: getCorsCompliantHeaders(),
     })
 })
+
 router.put('/cart', async request => {})
 router.delete('/cart', async request => {})
+
+router.get('/search', async request => {
+    const search = request.query.q
+    const items = await executeQuery('Search', { search: search.toUpperCase() })
+    
+    return new Response(JSON.stringify(items), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
 
 router.all(
     '*',
