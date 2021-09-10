@@ -17,7 +17,7 @@ export interface FashionItem {
   category: string;
   heading: string;
   rating: number;
-  images: Array<{image: string, name: string}>;
+  images: Array<{ image: string; name: string; availableIn?: Array<string> }>;
   description: string;
 }
 
@@ -47,7 +47,11 @@ export class ProductRow extends React.Component<
   }
 
   getBook() {
-    return API.get("fashionItems", `/fashionItems/${this.props.fashionItemId}`, null);
+    return API.get(
+      "fashionItems",
+      `/fashionItems/${this.props.fashionItemId}`,
+      null
+    );
   }
 
   render() {
@@ -59,7 +63,7 @@ export class ProductRow extends React.Component<
           <div className="media-left media-middle no-padding">
             <img
               className="media-object product-thumb"
-              src={makeBackendUrl(`/image/${this.state.fashionItem['_key']}`)}
+              src={makeBackendUrl(`/image/${this.state.fashionItem["_key"]}`)}
               alt={`${this.state.fashionItem.heading} cover`}
             />
           </div>

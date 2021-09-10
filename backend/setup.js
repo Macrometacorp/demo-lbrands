@@ -14,14 +14,17 @@ const COLLECTIONS = [
                     {
                         image: 'DrapedBackVintageRose.jpeg',
                         name: 'Vintage Rose',
+                        availableIn: ['06102', '19903', '20002'],
                     },
                     {
                         image: 'DrapedBackPersianTeal.jpeg',
                         name: 'Persian Teal',
+                        availableIn: ['06102', '19903', '20002'],
                     },
                     {
                         image: 'DrapedBackDarkViolet.jpeg',
                         name: 'Dark Violet',
+                        availableIn: ['06102', '19903', '20002'],
                     },
                 ],
             },
@@ -259,9 +262,27 @@ const COLLECTIONS = [
                     {
                         zipcode: '06101',
                         storeName: 'The Shoppes at Buckland Hills',
+                        contact: '(416) 205-1222',
+                        closeTime: '8:00 PM',
+                        additionalDetails:
+                            'Buy online, pick up in store not available at this location.',
                     },
-                    { zipcode: '06102', storeName: 'Westfarms VS' },
-                    { zipcode: '06103', storeName: 'Westfarms PINK' },
+                    {
+                        zipcode: '06102',
+                        storeName: 'Westfarms VS',
+                        contact: '(416) 205-1222',
+                        closeTime: '8:00 PM',
+                        additionalDetails:
+                            'Buy online, pick up in store not available at this location.',
+                    },
+                    {
+                        zipcode: '06103',
+                        storeName: 'Westfarms PINK',
+                        contact: '(416) 205-1222',
+                        closeTime: '8:00 PM',
+                        additionalDetails:
+                            'Buy online, pick up in store not available at this location.',
+                    },
                 ],
             },
             {

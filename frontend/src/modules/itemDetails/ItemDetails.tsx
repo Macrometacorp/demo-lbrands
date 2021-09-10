@@ -4,6 +4,7 @@ import LocationOnIcon from "@material-ui/icons/LocationOn";
 import CloseIcon from "@material-ui/icons/Close";
 import SearchIcon from "@material-ui/icons/Search";
 import CachedIcon from "@material-ui/icons/Cached";
+import CancelIcon from "@material-ui/icons/Cancel";
 import {
   Divider,
   Grid,
@@ -11,6 +12,7 @@ import {
   List,
   ListItem,
   ListItemText,
+  Button,
 } from "@material-ui/core";
 
 import { debounce } from "lodash";
@@ -32,6 +34,7 @@ interface ItemDetailsState {
   isModalOpen: boolean;
   zipcode: string;
   zipcodeSuggestion: any;
+  selectedStore: any;
 }
 
 export class ItemDetails extends React.Component<any, ItemDetailsState> {
@@ -52,6 +55,7 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
       isModalOpen: false,
       zipcode: "",
       zipcodeSuggestion: null,
+      selectedStore: null,
     };
 
     this.debouncedSuggestions = debounce(async () => {
@@ -64,6 +68,19 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
       }
     }, 100);
     this.debouncedSuggestions = this.debouncedSuggestions.bind(this);
+  }
+
+  getCurrentImageObj() {
+    const imageObj = this.state.fashionItem.images.find(
+      (imageDetail) => imageDetail.image === this.state.currentImage
+    );
+    return imageObj;
+  }
+
+  isOutOfStock(zipcodeObj: any) {
+    return !this.getCurrentImageObj()?.availableIn?.find(
+      (zipcode: string) => zipcode === zipcodeObj.zipcode
+    );
   }
 
   render() {
@@ -93,13 +110,7 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                 <strong>${this.state.fashionItem.price}</strong>
               </span>
             </p>
-            <p>
-              {
-                this.state.fashionItem.images.find(
-                  (imageDetail) => imageDetail.image === this.state.currentImage
-                )?.name
-              }
-            </p>
+            <p>{this.getCurrentImageObj()?.name}</p>
             {this.state.fashionItem.images.map((imageDetail, index) => {
               const { image } = imageDetail;
               const color = COLORS[index];
@@ -169,10 +180,7 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                     fashionItemId: _key,
                     quantity: this.state.quantity,
                     price,
-                    color: this.state.fashionItem.images.find(
-                      (imageDetail) =>
-                        imageDetail.image === this.state.currentImage
-                    )?.name,
+                    color: this.getCurrentImageObj()?.name,
                     size: this.state.currentSize,
                   },
                 });
@@ -191,8 +199,37 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                 this.setState({ isModalOpen: true });
               }}
             >
-              <LocationOnIcon style={{ fontSize: "18px" }} />
-              <strong>Find it near you</strong>
+              {this.state.selectedStore ? (
+                <div
+                  style={{
+                    display: "flex",
+                    flex: 1,
+                    flexDirection: "row",
+                    fontSize: "10px",
+                    alignItems: "flex-start",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <div>{this.state.selectedStore.zipcode}</div>
+                    <div>{this.state.selectedStore.storeName}</div>
+                    <div>{this.state.selectedStore.contact}</div>
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <span style={{ textDecoration: "underline" }}>
+                      Select Another Store
+                    </span>
+                    {this.isOutOfStock(this.state.selectedStore) && (
+                      <span>Out Of Stock</span>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <LocationOnIcon style={{ fontSize: "18px" }} />
+                  <strong>Find it near you</strong>
+                </>
+              )}
             </button>
             <Modal
               isOpen={this.state.isModalOpen}
@@ -237,13 +274,79 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
               </Grid>
               <List>
                 {this.state.zipcodeSuggestion?.zipcodes.map(
-                  (zipcodeObj: any) => (
-                    <ListItem button key={zipcodeObj.zipcode}>
-                      <ListItemText
-                        primary={`${zipcodeObj.zipcode}, ${zipcodeObj.storeName}, ${this.state.zipcodeSuggestion.county}`}
-                      />
-                    </ListItem>
-                  )
+                  (zipcodeObj: any) => {
+                    const isStoreSelected =
+                      this.state?.selectedStore?.zipcode ===
+                      zipcodeObj?.zipcode;
+                    return (
+                      <ListItem key={zipcodeObj.zipcode}>
+                        <ListItemText
+                          primary={
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                              <span>
+                                {zipcodeObj.zipcode}, {zipcodeObj.storeName},{" "}
+                                {this.state.zipcodeSuggestion.county}
+                              </span>
+                              {this.isOutOfStock(zipcodeObj) && (
+                                <div style={{ display: "flex" }}>
+                                  <span
+                                    style={{
+                                      paddingRight: "5px",
+                                      color: "rgba(0, 0, 0, 0.54)",
+                                    }}
+                                  >
+                                    Out of stock
+                                  </span>
+                                  <CancelIcon color="disabled" />
+                                </div>
+                              )}
+                            </div>
+                          }
+                          secondary={
+                            <React.Fragment>
+                              <div>{zipcodeObj.contact}</div>
+                              <div>Closes {zipcodeObj.closeTime}</div>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  flexDirection: "row",
+                                  justifyContent: "space-between",
+                                  alignItems: "center",
+                                }}
+                              >
+                                <div style={{ color: "black" }}>
+                                  {zipcodeObj.additionalDetails}
+                                </div>
+                                <Button
+                                  onClick={() => {
+                                    this.setState({
+                                      selectedStore: zipcodeObj,
+                                      isModalOpen: false,
+                                    });
+                                  }}
+                                  variant={
+                                    isStoreSelected ? "contained" : "outlined"
+                                  }
+                                  color="primary"
+                                >
+                                  {isStoreSelected
+                                    ? "Selected"
+                                    : "Select Store"}
+                                </Button>
+                              </div>
+                            </React.Fragment>
+                          }
+                        />
+                      </ListItem>
+                    );
+                  }
                 )}
               </List>
             </Modal>
