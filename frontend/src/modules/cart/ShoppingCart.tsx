@@ -60,8 +60,7 @@ export default class ShoppingCart extends Component<
     }
 
     let total = ordersInCart
-      .reduce((total: number, orderObj: { order: Order }) => {
-        const { order } = orderObj;
+      .reduce((total: number, order: Order) => {
         return total + order.price * order.quantity;
       }, 0)
       .toFixed(2);
@@ -91,9 +90,8 @@ export default class ShoppingCart extends Component<
           </div>
           {this.state.orders.map((order) => (
             <CartProductRow
-              order={order.order}
-              fashionItem={order.fashionItem}
-              key={order.order.fashionItemId}
+              order={order}
+              key={order._key}
               calculateTotal={() => this.getOrderTotal(true)}
             />
           ))}

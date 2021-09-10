@@ -30,7 +30,7 @@ const queries = (queryName, bindValue) => {
         case 'Search':
             queryObj = {
                 query: `FOR doc IN findFashionItems
-                SEARCH PHRASE(doc.name, @search, "text_en") OR PHRASE(doc.category, @search, "text_en")
+                SEARCH PHRASE(doc.heading, @search, "text_en") OR PHRASE(doc.category, @search, "text_en")
                 SORT BM25(doc) desc
                 RETURN doc`,
                 bindVars: bindValue,
@@ -46,8 +46,14 @@ const queries = (queryName, bindValue) => {
             break
         case 'GetLocationSuggestion':
             queryObj = {
-                query:`FOR doc IN ZipcodesTable FILTER doc._key == @key RETURN doc`,
-                bindVars: bindValue
+                query: `FOR doc IN ZipcodesTable FILTER doc._key == @key RETURN doc`,
+                bindVars: bindValue,
+            }
+            break
+        case 'ListItemsInCart':
+            queryObj = {
+                query: `FOR item IN CartTable FILTER item.customerId == @customerId RETURN item`,
+                bindVars: bindValue,
             }
             break
     }

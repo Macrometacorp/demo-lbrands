@@ -7,14 +7,16 @@ import { Glyphicon } from "react-bootstrap";
 import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 export interface Order {
+  color: string;
+  customerId: string;
   fashionItemId: string;
-  quantity: number;
   price: number;
+  quantity: number;
+  size: string;
 }
 
 interface CartProductRowProps {
   order: Order | any;
-  fashionItem: any;
   calculateTotal: () => void;
 }
 
@@ -38,17 +40,20 @@ export class CartProductRow extends React.Component<
 
   async componentDidMount() {
     try {
-      // const fashionItem = this.getBook(this.props.order);
-      const fashionItem = this.props.fashionItem;
-      this.setState({ fashionItem });
+      const fashionItem = await this.fashionItem(this.props.order);
+      this.setState({ fashionItem: fashionItem[0] });
     } catch (e) {
       console.error(e);
     }
   }
 
-  // getBook(order: any) {
-  //   return API.get("fashionItems", `/fashionItems/${order.fashionItemId}`, null);
-  // }
+  fashionItem(order: any) {
+    return API.get(
+      "fashionItems",
+      `/fashionItems/${order.fashionItemId}`,
+      null
+    );
+  }
 
   onRemove = async () => {
     this.setState({ removeLoading: true });
@@ -70,6 +75,14 @@ export class CartProductRow extends React.Component<
     });
   };
 
+  getImageDetails() {
+    const { color } = this.props.order;
+    const image = this.state.fashionItem?.images.find(
+      (imageObj) => imageObj.name === color
+    );
+    return image;
+  }
+
   render() {
     if (!this.state.fashionItem) return null;
 
@@ -79,7 +92,7 @@ export class CartProductRow extends React.Component<
           <div className="media-left media-middle">
             <img
               className="media-object product-thumb"
-              src={makeBackendUrl(`/image/${this.state.fashionItem["_key"]}`)}
+              src={makeBackendUrl(`/image/${this.getImageDetails()?.image}`)}
               alt={`${this.state.fashionItem.heading} cover`}
             />
           </div>
@@ -93,6 +106,8 @@ export class CartProductRow extends React.Component<
             <p>
               <small>{this.state.fashionItem.category}</small>
             </p>
+            <div>{this.props.order.color}</div>
+            <div>Size: {this.props.order.size}</div>
             {/* <FriendRecommendations fashionItemId={this.props.order.fashionItemId} /> */}
             <div>
               Rating

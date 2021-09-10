@@ -347,6 +347,7 @@ const COLLECTIONS = [
 
 const VIEWS = [
     {
+        // TODO: Manually add category and heading fields in findFashionItems view
         name: 'findFashionItems',
         properties: {
             links: {

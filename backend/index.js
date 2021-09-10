@@ -202,7 +202,16 @@ router.get('/image/:id', async request => {
 })
 
 router.get('/cart/:id', async request => {})
-router.get('/cart', async request => {})
+router.get('/cart', async request => {
+    const customerId = getCustomerId(request)
+    // let body = { error: true, code: 400, message: 'Customer Id not provided' }
+    const res = await executeQuery('ListItemsInCart', {
+        customerId,
+    })
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
 router.post('/cart', async request => {
     const customerId = getCustomerId(request)
     const { fashionItemId, quantity, price, color, size } = await request.json()
@@ -227,6 +236,15 @@ router.get('/suggestion/:zipcode', async request => {
     const zipcode = params.zipcode
     const res = await executeQuery('GetLocationSuggestion', { key: zipcode })
     return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
+router.get('/search', async request => {
+    const search = request.query.q
+    const items = await executeQuery('Search', { search: search.toUpperCase() })
+
+    return new Response(JSON.stringify(items), {
         headers: getCorsCompliantHeaders(),
     })
 })
