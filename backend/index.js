@@ -222,6 +222,15 @@ router.post('/cart', async request => {
 router.put('/cart', async request => {})
 router.delete('/cart', async request => {})
 
+router.get('/suggestion/:zipcode', async request => {
+    const { params } = request
+    const zipcode = params.zipcode
+    const res = await executeQuery('GetLocationSuggestion', { key: zipcode })
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
 router.all(
     '*',
     () =>

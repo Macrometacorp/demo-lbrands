@@ -1,4 +1,20 @@
 import React from "react";
+import Modal from "react-modal";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
+import CloseIcon from "@material-ui/icons/Close";
+import SearchIcon from "@material-ui/icons/Search";
+import CachedIcon from "@material-ui/icons/Cached";
+import {
+  Divider,
+  Grid,
+  TextField,
+  List,
+  ListItem,
+  ListItemText,
+} from "@material-ui/core";
+
+import { debounce } from "lodash";
+
 import { API, makeBackendUrl } from "../../apiCalls";
 import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
@@ -13,9 +29,13 @@ interface ItemDetailsState {
   currentSize: string;
   fashionItem: FashionItem;
   quantity: number;
+  isModalOpen: boolean;
+  zipcode: string;
+  zipcodeSuggestion: any;
 }
 
 export class ItemDetails extends React.Component<any, ItemDetailsState> {
+  [debouncedSuggestions: string]: any;
   constructor(props: any) {
     super(props);
     const {
@@ -29,7 +49,21 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
       currentSize: "M",
       fashionItem: this.props.location.state,
       quantity: 1,
+      isModalOpen: false,
+      zipcode: "",
+      zipcodeSuggestion: null,
     };
+
+    this.debouncedSuggestions = debounce(async () => {
+      if (this.state.zipcode) {
+        const key = parseInt(this.state.zipcode[0], 10);
+        if (key === key) {
+          const res = await API.get("suggestion", `/suggestion/${key}`, null);
+          this.setState({ zipcodeSuggestion: res[0] });
+        }
+      }
+    }, 100);
+    this.debouncedSuggestions = this.debouncedSuggestions.bind(this);
   }
 
   render() {
@@ -144,8 +178,75 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                 });
               }}
             >
-              <i className="fas fa-shopping-cart pr-2"></i>ADD TO BAG
+              ADD TO BAG
             </button>
+            <p className="detail-returns">
+              <CachedIcon />
+              <span>Free returns on all U.S. orders.</span>
+            </p>
+            <button
+              type="button"
+              className="detail-location btn btn-light btn-md"
+              onClick={() => {
+                this.setState({ isModalOpen: true });
+              }}
+            >
+              <LocationOnIcon style={{ fontSize: "18px" }} />
+              <strong>Find it near you</strong>
+            </button>
+            <Modal
+              isOpen={this.state.isModalOpen}
+              style={{
+                content: {
+                  top: "50%",
+                  left: "50%",
+                  right: "auto",
+                  bottom: "auto",
+                  marginRight: "-50%",
+                  transform: "translate(-50%, -50%)",
+                },
+              }}
+              contentLabel="Store Availability"
+            >
+              <div className="detail-modal-heading">
+                <h2>Store Availability</h2>
+                <span
+                  onClick={() => {
+                    this.setState({ isModalOpen: false });
+                  }}
+                >
+                  <CloseIcon style={{ fontSize: "24px" }} />
+                </span>
+              </div>
+              <Divider />
+              <Grid container spacing={1} alignItems="flex-end">
+                <Grid item>
+                  <SearchIcon />
+                </Grid>
+                <Grid item>
+                  <TextField
+                    id="input-with-icon-grid"
+                    label="Zip Code"
+                    style={{ width: "350px" }}
+                    onChange={(event) => {
+                      const zipcode = event.target.value;
+                      this.setState({ zipcode }, this.debouncedSuggestions);
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <List>
+                {this.state.zipcodeSuggestion?.zipcodes.map(
+                  (zipcodeObj: any) => (
+                    <ListItem button key={zipcodeObj.zipcode}>
+                      <ListItemText
+                        primary={`${zipcodeObj.zipcode}, ${zipcodeObj.storeName}, ${this.state.zipcodeSuggestion.county}`}
+                      />
+                    </ListItem>
+                  )
+                )}
+              </List>
+            </Modal>
             <h4>Description</h4>
             <p className="detail-description pt-1">
               {this.state.fashionItem.description}

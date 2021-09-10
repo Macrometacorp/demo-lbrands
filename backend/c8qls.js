@@ -44,6 +44,12 @@ const queries = (queryName, bindValue) => {
                 bindVars: bindValue,
             }
             break
+        case 'GetLocationSuggestion':
+            queryObj = {
+                query:`FOR doc IN ZipcodesTable FILTER doc._key == @key RETURN doc`,
+                bindVars: bindValue
+            }
+            break
     }
     return queryObj
 }

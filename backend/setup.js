@@ -246,6 +246,82 @@ const COLLECTIONS = [
             { _key: 'b17', quantity: 1 },
         ],
     },
+    {
+        name: 'ZipcodesTable',
+        data: [
+            {
+                // Connecticut (CT)	Hartford
+                _key: 0,
+                city: 'Hartford, CT',
+                county: 'Hartford County',
+                coordinates: '41.77, -72.67',
+                zipcodes: [
+                    {
+                        zipcode: '06101',
+                        storeName: 'The Shoppes at Buckland Hills',
+                    },
+                    { zipcode: '06102', storeName: 'Westfarms VS' },
+                    { zipcode: '06103', storeName: 'Westfarms PINK' },
+                ],
+            },
+            {
+                // Deleware (DE)	Dover
+                _key: 1,
+                city: 'Dover, DE',
+                county: 'Kent County',
+                coordinates: '39.2, -75.5',
+                zipcodes: [
+                    { zipcode: '19901', storeName: 'Dover' },
+                    { zipcode: '19902', storeName: 'vvv' },
+                    { zipcode: '19903', storeName: 'vvv' },
+                ],
+            },
+            {
+                // District of Columbia (DC)	Washington
+                _key: 2,
+                city: 'Washington, DC',
+                county: 'District of Columbia',
+                coordinates: '38.91, -77.02',
+                zipcodes: [
+                    { zipcode: '20001', storeName: 'Southland VS' },
+                    { zipcode: '20002', storeName: 'Southland PINK' },
+                    { zipcode: '20003', storeName: 'Fairlane Town Center' },
+                ],
+            },
+            {
+                // Georgia (GA)	Atlanta
+                _key: 3,
+                zipcodes: ['30301', '30302', '30303'],
+            },
+            {
+                // Indiana (IN)	Indianapolis
+                _key: 4,
+                zipcodes: ['46201', '46202', '46203'],
+            },
+            {
+                // Iowa (IA)	Davenport Des Moines
+                _key: 5,
+                zipcodes: ['52801', '52802', '52803'],
+            },
+            {
+                // Kansas (KS)	Wichita
+                _key: 6,
+                zipcodes: ['67201', '67202', '67203'],
+            },
+            {
+                _key: 7,
+                zipcodes: ['74101', '74102', '74103'],
+            },
+            {
+                _key: 8,
+                zipcodes: ['84321', '84322', '84323'],
+            },
+            {
+                _key: 9,
+                zipcodes: ['98004', '98005', '98006'],
+            },
+        ],
+    },
 ]
 
 const VIEWS = [
