@@ -10,6 +10,8 @@ const COLLECTIONS = [
                 rating: 4.6,
                 price: 49.5,
                 category: 'LINGERIE',
+                isPromoted: true,
+                additionalDetails: '',
                 images: [
                     {
                         image: 'DrapedBackVintageRose.jpeg',
@@ -254,7 +256,7 @@ const COLLECTIONS = [
         data: [
             {
                 // Connecticut (CT)	Hartford
-                _key: 0,
+                _key: '0',
                 city: 'Hartford, CT',
                 county: 'Hartford County',
                 coordinates: '41.77, -72.67',
@@ -287,7 +289,7 @@ const COLLECTIONS = [
             },
             {
                 // Deleware (DE)	Dover
-                _key: 1,
+                _key: '1',
                 city: 'Dover, DE',
                 county: 'Kent County',
                 coordinates: '39.2, -75.5',
@@ -299,7 +301,7 @@ const COLLECTIONS = [
             },
             {
                 // District of Columbia (DC)	Washington
-                _key: 2,
+                _key: '2',
                 city: 'Washington, DC',
                 county: 'District of Columbia',
                 coordinates: '38.91, -77.02',
@@ -311,34 +313,34 @@ const COLLECTIONS = [
             },
             {
                 // Georgia (GA)	Atlanta
-                _key: 3,
+                _key: '3',
                 zipcodes: ['30301', '30302', '30303'],
             },
             {
                 // Indiana (IN)	Indianapolis
-                _key: 4,
+                _key: '4',
                 zipcodes: ['46201', '46202', '46203'],
             },
             {
                 // Iowa (IA)	Davenport Des Moines
-                _key: 5,
+                _key: '5',
                 zipcodes: ['52801', '52802', '52803'],
             },
             {
                 // Kansas (KS)	Wichita
-                _key: 6,
+                _key: '6',
                 zipcodes: ['67201', '67202', '67203'],
             },
             {
-                _key: 7,
+                _key: '7',
                 zipcodes: ['74101', '74102', '74103'],
             },
             {
-                _key: 8,
+                _key: '8',
                 zipcodes: ['84321', '84322', '84323'],
             },
             {
-                _key: 9,
+                _key: '9',
                 zipcodes: ['98004', '98005', '98006'],
             },
         ],
