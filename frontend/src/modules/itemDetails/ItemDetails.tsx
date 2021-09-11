@@ -5,6 +5,7 @@ import CloseIcon from "@material-ui/icons/Close";
 import SearchIcon from "@material-ui/icons/Search";
 import CachedIcon from "@material-ui/icons/Cached";
 import CancelIcon from "@material-ui/icons/Cancel";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import {
   Divider,
   Grid,
@@ -294,19 +295,24 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                                 {zipcodeObj.zipcode}, {zipcodeObj.storeName},{" "}
                                 {this.state.zipcodeSuggestion.county}
                               </span>
-                              {this.isOutOfStock(zipcodeObj) && (
-                                <div style={{ display: "flex" }}>
-                                  <span
-                                    style={{
-                                      paddingRight: "5px",
-                                      color: "rgba(0, 0, 0, 0.54)",
-                                    }}
-                                  >
-                                    Out of stock
-                                  </span>
+
+                              <div style={{ display: "flex" }}>
+                                <span
+                                  style={{
+                                    paddingRight: "5px",
+                                    color: "rgba(0, 0, 0, 0.54)",
+                                  }}
+                                >
+                                  {this.isOutOfStock(zipcodeObj)
+                                    ? "Out of stock"
+                                    : "Available"}
+                                </span>
+                                {this.isOutOfStock(zipcodeObj) ? (
                                   <CancelIcon color="disabled" />
-                                </div>
-                              )}
+                                ) : (
+                                  <CheckCircleIcon color="disabled" />
+                                )}
+                              </div>
                             </div>
                           }
                           secondary={
