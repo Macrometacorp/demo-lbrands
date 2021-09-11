@@ -64,12 +64,12 @@ export class ProductRow extends React.Component<
   render() {
     if (!this.state.fashionItemDetails) return null;
 
-    const { type, message } = this.props.fashionItem;
+    const { type, message, link } = this.props.fashionItem;
     let promotionDetails;
     if (type === "price") {
       promotionDetails = (
         <>
-          <h4 style={{ textDecoration: "line-through" }}>
+          <h4 style={{ textDecoration: "line-through", textAlign: "end" }}>
             ${this.state.fashionItemDetails.price}
           </h4>
           <h5 style={{ color: "#af5071", fontWeight: "bolder" }}>{message}</h5>
@@ -77,9 +77,28 @@ export class ProductRow extends React.Component<
       );
     } else if (type === "link") {
       promotionDetails = (
-        <h4 style={{ textDecoration: "line-through" }}>
-          ${this.state.fashionItemDetails.price}
-        </h4>
+        <>
+          <h4 style={{ textAlign: "end" }}>
+            ${this.state.fashionItemDetails.price}
+          </h4>
+          <div style={{ display: "flex" }}>
+            <h5
+              style={{
+                color: "#af5071",
+                fontWeight: "bolder",
+                alignSelf: "end",
+                marginBottom: 0,
+              }}
+            >
+              {message}
+            </h5>
+            <img
+              style={{ height: "108px", marginRight: 0 }}
+              className="media-object product-thumb"
+              src={makeBackendUrl(`/image/${link}`)}
+            />
+          </div>
+        </>
       );
     }
 

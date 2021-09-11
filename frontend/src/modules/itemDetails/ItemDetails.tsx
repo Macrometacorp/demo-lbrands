@@ -98,7 +98,7 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
     let promotions;
 
     if (this.promotion) {
-      const { type, message } = this.promotion;
+      const { type, message, link } = this.promotion;
       if (type === "price") {
         promotions = (
           <>
@@ -119,6 +119,27 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
           </>
         );
       } else if (type === "link") {
+        promotions = (
+          <>
+            <div>
+              <span className="mr-1">
+                <strong>${this.fashionItem.price}</strong>
+              </span>
+            </div>
+            <div>
+              <strong
+                style={{ color: "#af5071", fontWeight: "bolder", opacity: 0.8 }}
+              >
+                {message}
+              </strong>
+            </div>
+            <img
+              src={makeBackendUrl(`/image/${link}`)}
+              style={{ height: "300px", marginBottom: "20px" }}
+              className="img-fluid z-depth-1"
+            />
+          </>
+        );
       }
     } else {
       promotions = (
