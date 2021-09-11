@@ -23,7 +23,7 @@ export interface FashionItem {
 }
 
 interface ProductRowState {
-  fashionItem: FashionItem | undefined;
+  fashionItemDetails: FashionItem | undefined;
 }
 
 export class ProductRow extends React.Component<
@@ -34,20 +34,20 @@ export class ProductRow extends React.Component<
     super(props);
 
     this.state = {
-      fashionItem: undefined,
+      fashionItemDetails: undefined,
     };
   }
 
   async componentDidMount() {
     try {
-      // const fashionItem = await this.getBook();
-      this.setState({ fashionItem: this.props.fashionItem });
+      const fashionItemDetails = await this.getFashionItem();
+      this.setState({ fashionItemDetails: fashionItemDetails[0] });
     } catch (e) {
       console.error(e);
     }
   }
 
-  getBook() {
+  getFashionItem() {
     return API.get(
       "fashionItems",
       `/fashionItems/${this.props.fashionItemId}`,
@@ -56,13 +56,13 @@ export class ProductRow extends React.Component<
   }
 
   render() {
-    if (!this.state.fashionItem) return null;
+    if (!this.state.fashionItemDetails) return null;
 
     return (
       <LinkContainer
         to={{
-          pathname: `/details/${this.state.fashionItem.heading}`,
-          state: this.props.fashionItem,
+          pathname: `/details/${this.state.fashionItemDetails.heading}`,
+          state: this.state.fashionItemDetails,
         }}
         style={{ cursor: "pointer" }}
       >
@@ -71,19 +71,21 @@ export class ProductRow extends React.Component<
             <div className="media-left media-middle no-padding">
               <img
                 className="media-object product-thumb"
-                src={makeBackendUrl(`/image/${this.state.fashionItem["_key"]}`)}
-                alt={`${this.state.fashionItem.heading} cover`}
+                src={makeBackendUrl(
+                  `/image/${this.state.fashionItemDetails["_key"]}`
+                )}
+                alt={`${this.state.fashionItemDetails.heading} cover`}
               />
             </div>
             <div className="media-body  padding-20">
               <h3 className="media-heading">
-                {this.state.fashionItem.heading}
+                {this.state.fashionItemDetails.heading}
                 <small className="pull-right margin-1">
-                  <h4>${this.state.fashionItem.price}</h4>
+                  <h4>${this.state.fashionItemDetails.price}</h4>
                 </small>
               </h3>
               <p>
-                <small>{this.state.fashionItem.category}</small>
+                <small>{this.state.fashionItemDetails.category}</small>
               </p>
               {/*ABHISHEK*/}
               {/* <FriendRecommendations fashionItemId={this.props.fashionItemId} /> */}
@@ -98,11 +100,11 @@ export class ProductRow extends React.Component<
                 <span>
                   <AddToCart
                     fashionItemId={this.props.fashionItemId}
-                    price={this.state.fashionItem.price}
+                    price={this.state.fashionItemDetails.price}
                   />
                 </span>
               </div>
-              <StarRating stars={this.state.fashionItem.rating} />
+              <StarRating stars={this.state.fashionItemDetails.rating} />
             </div>
           </div>
         </div>

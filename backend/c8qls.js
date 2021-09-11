@@ -58,7 +58,7 @@ const queries = (queryName, bindValue) => {
             break
         case 'GetHotDeals':
             queryObj = {
-                query: `FOR item IN FashionItemsTable FILTER item.isPromoted == true RETURN item`,
+                query: `FOR item IN PromotionsTable RETURN item`,
             }
             break
     }
