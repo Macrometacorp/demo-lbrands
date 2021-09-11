@@ -38,6 +38,11 @@ interface ItemDetailsState {
   selectedStore: any;
 }
 
+interface ImageDetails {
+  image: string;
+  name: string;
+}
+
 export class ItemDetails extends React.Component<any, ItemDetailsState> {
   [debouncedSuggestions: string]: any;
   constructor(props: any) {
@@ -48,6 +53,9 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
 
     const { item, promotion } = this.props.location.state;
     const currentImageId = item._key;
+
+    this.fashionItem = item;
+    this.promotion = promotion;
 
     this.state = {
       currentImage: currentImageId,
@@ -73,8 +81,9 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
   }
 
   getCurrentImageObj() {
-    const imageObj = this.state.fashionItem.images.find(
-      (imageDetail) => imageDetail.image === this.state.currentImage
+    const imageObj = this.fashionItem.images.find(
+      (imageDetail: ImageDetails) =>
+        imageDetail.image === this.state.currentImage
     );
     return imageObj;
   }
@@ -86,6 +95,41 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
   }
 
   render() {
+    let promotions;
+
+    if (this.promotion) {
+      const { type, message } = this.promotion;
+      if (type === "price") {
+        promotions = (
+          <>
+            <div>
+              <span className="mr-1">
+                <strong style={{ textDecoration: "line-through" }}>
+                  ${this.fashionItem.price}
+                </strong>
+              </span>
+            </div>
+            <div>
+              <strong
+                style={{ color: "#af5071", fontWeight: "bolder", opacity: 0.8 }}
+              >
+                {message}
+              </strong>
+            </div>
+          </>
+        );
+      } else if (type === "link") {
+      }
+    } else {
+      promotions = (
+        <p>
+          <span className="mr-1">
+            <strong>${this.fashionItem.price}</strong>
+          </span>
+        </p>
+      );
+    }
+
     return (
       <section className="mb-5">
         <div className="row">
@@ -106,31 +150,29 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
           </div>
           <div className="col-md-6">
             <h5>VICTORIA'S SECRET</h5>
-            <h3>{this.state.fashionItem.heading}</h3>
-            <p>
-              <span className="mr-1">
-                <strong>${this.state.fashionItem.price}</strong>
-              </span>
-            </p>
+            <h3>{this.fashionItem.heading}</h3>
+            {promotions}
             <p>{this.getCurrentImageObj()?.name}</p>
-            {this.state.fashionItem.images.map((imageDetail, index) => {
-              const { image } = imageDetail;
-              const color = COLORS[index];
-              const isSelected = this.state.currentImage === image;
-              return (
-                <div
-                  onClick={() => {
-                    this.setState({ currentImage: image });
-                  }}
-                  key={image}
-                  style={{
-                    backgroundColor: `#${color}`,
-                    border: isSelected ? "1px solid black" : "none",
-                  }}
-                  className="detail-color"
-                ></div>
-              );
-            })}
+            {this.fashionItem.images.map(
+              (imageDetail: ImageDetails, index: number) => {
+                const { image } = imageDetail;
+                const color = COLORS[index];
+                const isSelected = this.state.currentImage === image;
+                return (
+                  <div
+                    onClick={() => {
+                      this.setState({ currentImage: image });
+                    }}
+                    key={image}
+                    style={{
+                      backgroundColor: `#${color}`,
+                      border: isSelected ? "1px solid black" : "none",
+                    }}
+                    className="detail-color"
+                  ></div>
+                );
+              }
+            )}
             <div className="detail-size-container">
               {SIZES.map((size) => {
                 const isSelected = this.state.currentSize === size;
@@ -176,12 +218,12 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
               type="button"
               className="detail-cart btn btn-light btn-md mr-1 mb-2"
               onClick={() => {
-                const { price, _key } = this.state.fashionItem;
+                const { price, _key } = this.fashionItem;
                 API.post("cart", "/cart", {
                   body: {
                     fashionItemId: _key,
                     quantity: this.state.quantity,
-                    price,
+                    price: this?.promotion?.price || price,
                     color: this.getCurrentImageObj()?.name,
                     size: this.state.currentSize,
                   },
@@ -359,7 +401,7 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
             </Modal>
             <h4>Description</h4>
             <p className="detail-description pt-1">
-              {this.state.fashionItem.description}
+              {this.fashionItem.description}
             </p>
           </div>
         </div>
