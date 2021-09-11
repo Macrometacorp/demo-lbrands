@@ -10,13 +10,6 @@ const COLLECTIONS = [
                 rating: 4.6,
                 price: 49.5,
                 category: 'LINGERIE',
-                // isPromoted: true,
-                // promotionDetails: {
-                //     type: 'price/link',
-                //     message: 'Clearance $21.99/ Free gift',
-                //     linkedItem: 'LacePlungeHotPink.jpeg',
-                //     promotionPrice: 21.99,
-                // },
                 images: [
                     {
                         image: 'DrapedBackVintageRose.jpeg',
@@ -347,6 +340,23 @@ const COLLECTIONS = [
             {
                 _key: '9',
                 zipcodes: ['98004', '98005', '98006'],
+            },
+        ],
+    },
+    {
+        name: 'PromotionsTable',
+        data: [
+            {
+                _key: 'DrapedBackVintageRose.jpeg',
+                type: 'price',
+                message: 'Clearance $21.99',
+                price: 21.99,
+            },
+            {
+                _key: 'TahitiScoopOlive.jpeg',
+                type: 'link',
+                message: 'Get a free Cotton Jogger Tee-jama',
+                link: 'CottonJoggerLinenDahlia.jpeg',
             },
         ],
     },
