@@ -9,16 +9,12 @@ interface BestSellersProps {}
 
 interface BestSellersState {
   isLoading: boolean;
-  // fashionItems: { fashionItemId: any }[];
   fashionItems: {
     _key: string;
-    author: string;
-    heading: string;
-    price: number;
-    rating: number;
-    category: string;
-    images: Array<{image: string; name: string}>;
-    description: string;
+    message: string;
+    type: "price" | "link";
+    price?: number;
+    link?: string;
   }[];
 }
 

@@ -18,7 +18,7 @@ export class CategoryGalleryBook extends React.Component<CategoryGalleryBookProp
         <LinkContainer
           to={{
             pathname: `/details/${this.props.fashionItem.heading}`,
-            state: this.props.fashionItem,
+            state: { item: this.props.fashionItem },
           }}
         >
           <div className="thumbnail no-border">

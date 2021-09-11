@@ -9,7 +9,13 @@ import "../../common/styles/productRow.css";
 
 interface ProductRowProps {
   fashionItemId: string;
-  fashionItem: FashionItem;
+  fashionItem: {
+    _key: string;
+    message: string;
+    type: "price" | "link";
+    price?: number;
+    link?: string;
+  };
 }
 
 export interface FashionItem {
@@ -58,11 +64,33 @@ export class ProductRow extends React.Component<
   render() {
     if (!this.state.fashionItemDetails) return null;
 
+    const { type, message } = this.props.fashionItem;
+    let promotionDetails;
+    if (type === "price") {
+      promotionDetails = (
+        <>
+          <h4 style={{ textDecoration: "line-through" }}>
+            ${this.state.fashionItemDetails.price}
+          </h4>
+          <h5 style={{ color: "#af5071", fontWeight: "bolder" }}>{message}</h5>
+        </>
+      );
+    } else if (type === "link") {
+      promotionDetails = (
+        <h4 style={{ textDecoration: "line-through" }}>
+          ${this.state.fashionItemDetails.price}
+        </h4>
+      );
+    }
+
     return (
       <LinkContainer
         to={{
           pathname: `/details/${this.state.fashionItemDetails.heading}`,
-          state: this.state.fashionItemDetails,
+          state: {
+            item: this.state.fashionItemDetails,
+            promotion: this.props.fashionItem,
+          },
         }}
         style={{ cursor: "pointer" }}
       >
@@ -81,7 +109,7 @@ export class ProductRow extends React.Component<
               <h3 className="media-heading">
                 {this.state.fashionItemDetails.heading}
                 <small className="pull-right margin-1">
-                  <h4>${this.state.fashionItemDetails.price}</h4>
+                  {promotionDetails}
                 </small>
               </h3>
               <p>
@@ -97,12 +125,12 @@ export class ProductRow extends React.Component<
                 >
                   Rating
                 </span>
-                <span>
+                {/* <span>
                   <AddToCart
                     fashionItemId={this.props.fashionItemId}
                     price={this.state.fashionItemDetails.price}
                   />
-                </span>
+                </span> */}
               </div>
               <StarRating stars={this.state.fashionItemDetails.rating} />
             </div>

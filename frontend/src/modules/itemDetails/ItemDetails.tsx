@@ -46,12 +46,13 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
       params: { id },
     } = this.props.match;
 
-    const currentImageId = this.props.location.state._key;
+    const { item, promotion } = this.props.location.state;
+    const currentImageId = item._key;
 
     this.state = {
       currentImage: currentImageId,
       currentSize: "M",
-      fashionItem: this.props.location.state,
+      fashionItem: item,
       quantity: 1,
       isModalOpen: false,
       zipcode: "",
