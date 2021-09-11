@@ -213,7 +213,7 @@ export default class Home extends Component<HomeProps, HomeState> {
           <div className="col-md-4 ad-padding">
             <div className="container-category no-padding">
               <LinkContainer to="/best">
-                <img src={bestSellers} alt="Best sellers"></img>
+                <img src={bestSellers} alt="Hot Deals"></img>
               </LinkContainer>
             </div>
           </div>

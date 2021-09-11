@@ -136,7 +136,7 @@ class App extends Component<AppProps, AppState> {
             className="orange line-height-24 navbar-items-font-style"
             style={{ fontWeight: "initial" }}
           >
-            Bestsellers
+            Hot Deals
           </span>
         </NavItem>
       </LinkContainer>

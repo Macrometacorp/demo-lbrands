@@ -56,6 +56,11 @@ const queries = (queryName, bindValue) => {
                 bindVars: bindValue,
             }
             break
+        case 'GetHotDeals':
+            queryObj = {
+                query: `FOR item IN FashionItemsTable FILTER item.isPromoted == true RETURN item`,
+            }
+            break
     }
     return queryObj
 }

@@ -46,7 +46,7 @@ export default class Checkout extends Component<CheckoutProps, CheckoutState> {
             <button className="btn btn-black btn-black-center" type="button" onClick={this.onViewReceipt}>View Receipt</button>
           </div>
           <div className="no-margin-top no-padding">
-            <a href="/best"><img src={bestSellers} alt="Best sellers" className="checkout-img no-padding" /></a>
+            <a href="/best"><img src={bestSellers} alt="Hot Deals" className="checkout-img no-padding" /></a>
             <a href="/past"><img src={pastOrders} alt="Past orders" className="checkout-img no-padding" /></a>
           </div>
         </div>

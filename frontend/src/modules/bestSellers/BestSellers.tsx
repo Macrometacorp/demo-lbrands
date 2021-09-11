@@ -38,7 +38,7 @@ export default class BestSellers extends React.Component<
   async componentDidMount() {
     try {
       const fashionItems = [];
-      const bestSellers = await API.get("bestsellers", "/bestsellers", null);
+      const bestSellers = await API.get("hotdeals", "/hot", null);
 
       // Map the elasticache results to a fashionItem object
       for (var i = 0; i < bestSellers.length; i++) {
@@ -63,7 +63,7 @@ export default class BestSellers extends React.Component<
         <div>
           <div className="well-bs no-radius">
             <div className="container-category">
-              <h3>Top 20 best sellers</h3>
+              <h3>Hot Deals</h3>
             </div>
             {this.state.isLoading ? (
               <div className="loader" />

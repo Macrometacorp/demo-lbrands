@@ -10,8 +10,13 @@ const COLLECTIONS = [
                 rating: 4.6,
                 price: 49.5,
                 category: 'LINGERIE',
-                isPromoted: true,
-                additionalDetails: '',
+                // isPromoted: true,
+                // promotionDetails: {
+                //     type: 'price/link',
+                //     message: 'Clearance $21.99/ Free gift',
+                //     linkedItem: 'LacePlungeHotPink.jpeg',
+                //     promotionPrice: 21.99,
+                // },
                 images: [
                     {
                         image: 'DrapedBackVintageRose.jpeg',

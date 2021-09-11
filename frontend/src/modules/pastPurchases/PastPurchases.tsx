@@ -96,7 +96,7 @@ export default class PastPurchases extends Component<
             <a href="/best">
               <img
                 src={bestSellers}
-                alt="Best sellers"
+                alt="Hot Deals"
                 className="checkout-img no-padding"
               />
             </a>

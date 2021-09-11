@@ -249,6 +249,13 @@ router.get('/search', async request => {
     })
 })
 
+router.get('/hot', async request => {
+    const res = await executeQuery('GetHotDeals')
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
 router.all(
     '*',
     () =>
