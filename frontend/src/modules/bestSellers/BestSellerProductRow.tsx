@@ -1,4 +1,5 @@
 import React from "react";
+import { LinkContainer } from "react-router-bootstrap";
 import { API, makeBackendUrl } from "../../apiCalls";
 
 import AddToCart from "../../common/AddToCart";
@@ -58,46 +59,54 @@ export class ProductRow extends React.Component<
     if (!this.state.fashionItem) return null;
 
     return (
-      <div className="white-box">
-        <div className="media">
-          <div className="media-left media-middle no-padding">
-            <img
-              className="media-object product-thumb"
-              src={makeBackendUrl(`/image/${this.state.fashionItem["_key"]}`)}
-              alt={`${this.state.fashionItem.heading} cover`}
-            />
-          </div>
-          <div className="media-body  padding-20">
-            <h3 className="media-heading">
-              {this.state.fashionItem.heading}
-              <small className="pull-right margin-1">
-                <h4>${this.state.fashionItem.price}</h4>
-              </small>
-            </h3>
-            <p>
-              <small>{this.state.fashionItem.category}</small>
-            </p>
-            {/*ABHISHEK*/}
-            {/* <FriendRecommendations fashionItemId={this.props.fashionItemId} /> */}
-            <div>
-              <span
-                style={{
-                  display: "block",
-                }}
-              >
-                Rating
-              </span>
-              <span>
-                <AddToCart
-                  fashionItemId={this.props.fashionItemId}
-                  price={this.state.fashionItem.price}
-                />
-              </span>
+      <LinkContainer
+        to={{
+          pathname: `/details/${this.state.fashionItem.heading}`,
+          state: this.props.fashionItem,
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        <div className="white-box">
+          <div className="media">
+            <div className="media-left media-middle no-padding">
+              <img
+                className="media-object product-thumb"
+                src={makeBackendUrl(`/image/${this.state.fashionItem["_key"]}`)}
+                alt={`${this.state.fashionItem.heading} cover`}
+              />
             </div>
-            <StarRating stars={this.state.fashionItem.rating} />
+            <div className="media-body  padding-20">
+              <h3 className="media-heading">
+                {this.state.fashionItem.heading}
+                <small className="pull-right margin-1">
+                  <h4>${this.state.fashionItem.price}</h4>
+                </small>
+              </h3>
+              <p>
+                <small>{this.state.fashionItem.category}</small>
+              </p>
+              {/*ABHISHEK*/}
+              {/* <FriendRecommendations fashionItemId={this.props.fashionItemId} /> */}
+              <div>
+                <span
+                  style={{
+                    display: "block",
+                  }}
+                >
+                  Rating
+                </span>
+                <span>
+                  <AddToCart
+                    fashionItemId={this.props.fashionItemId}
+                    price={this.state.fashionItem.price}
+                  />
+                </span>
+              </div>
+              <StarRating stars={this.state.fashionItem.rating} />
+            </div>
           </div>
         </div>
-      </div>
+      </LinkContainer>
     );
   }
 }
