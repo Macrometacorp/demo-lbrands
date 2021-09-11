@@ -29,7 +29,7 @@ const COLORS = ["1ee8b7", "d270b7", "bf7c4c"];
 
 const SIZES = ["XS", "S", "M", "L", "XL", "XXL"];
 
-interface ItemDetailsState {
+interface LinkItemDetailsState {
   currentImage: string;
   currentSize: string;
   fashionItem: FashionItem;
@@ -45,7 +45,10 @@ interface ImageDetails {
   name: string;
 }
 
-export class ItemDetails extends React.Component<any, ItemDetailsState> {
+export class LinkItemDetails extends React.Component<
+  any,
+  LinkItemDetailsState
+> {
   [debouncedSuggestions: string]: any;
   constructor(props: any) {
     super(props);
@@ -53,10 +56,12 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
       params: { id },
     } = this.props.match;
 
-    const { item, promotion } = this.props.location.state;
-    const currentImageId = item._key;
+    const { item, promotion, isPromotionSelectionScreenKey } =
+      this.props.location.state;
+    const currentImageId = item?._key;
 
     this.promotion = promotion;
+    this.isPromotionSelectionScreenKey = isPromotionSelectionScreenKey;
 
     this.state = {
       currentImage: currentImageId,
@@ -79,6 +84,18 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
       }
     }, 100);
     this.debouncedSuggestions = this.debouncedSuggestions.bind(this);
+  }
+
+  async componentDidMount() {
+    if (!this.state.fashionItem) {
+      const res = await API.get(
+        "fashionItem",
+        `/fashionItems/${this.isPromotionSelectionScreenKey}`,
+        null
+      );
+      const item = res[0];
+      this.setState({ fashionItem: item, currentImage: item._key });
+    }
   }
 
   getCurrentImageObj(customImage?: string) {
@@ -212,30 +229,31 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                 );
               })}
             </div>
-
-            <div className="detail-quantity">
-              <button
-                onClick={() => {
-                  if (this.state.quantity > 1) {
+            {!this.isPromotionSelectionScreenKey && (
+              <div className="detail-quantity">
+                <button
+                  onClick={() => {
+                    if (this.state.quantity > 1) {
+                      this.setState((state) => ({
+                        quantity: state.quantity - 1,
+                      }));
+                    }
+                  }}
+                >
+                  -
+                </button>
+                <div>{this.state.quantity}</div>
+                <button
+                  onClick={() => {
                     this.setState((state) => ({
-                      quantity: state.quantity - 1,
+                      quantity: state.quantity + 1,
                     }));
-                  }
-                }}
-              >
-                -
-              </button>
-              <div>{this.state.quantity}</div>
-              <button
-                onClick={() => {
-                  this.setState((state) => ({
-                    quantity: state.quantity + 1,
-                  }));
-                }}
-              >
-                +
-              </button>
-            </div>
+                  }}
+                >
+                  +
+                </button>
+              </div>
+            )}
             {isLinkedPromotion ? (
               <Button
                 component={Link}
