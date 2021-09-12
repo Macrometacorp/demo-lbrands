@@ -558,6 +558,144 @@ const COLLECTIONS = [
                     },
                 ],
             },
+            {
+                _key: 'LaceBrazilianDahlia.jpeg',
+                description:
+                    'The classic, stretch-waist lace panty you love, now in a chic leopard print.',
+                heading: 'Lace Brazilian Panty',
+                rating: 4.7,
+                price: 14.5,
+                category: 'PANTIES',
+                images: [
+                    {
+                        image: 'LaceBrazilianDahlia.jpeg',
+                        name: 'Dahlia',
+                    },
+                    {
+                        image: 'LaceBrazilianSageDust.jpeg',
+                        name: 'Sage Dust',
+                    },
+                    {
+                        image: 'LaceBrazilianBlack.jpeg',
+                        name: 'Black',
+                    },
+                ],
+            },
+            {
+                _key: 'LaceCheekyBlackPearl.jpeg',
+                description:
+                    'In soft, stretchy and lightweight micro fabric, this streamlined cheeky is played up with a delicate floral lace inset at the front, plus lace trim at the sides.',
+                heading: 'Lace Cheeky Panty',
+                rating: 4.5,
+                price: 7.99,
+                category: 'PANTIES',
+                images: [
+                    {
+                        image: 'LaceCheekyBlackPearl.jpeg',
+                        name: 'Black Pearl',
+                    },
+                    {
+                        image: 'LaceCheekyMidnightSea.jpeg',
+                        name: 'Midnight Sea',
+                    },
+                    {
+                        image: 'LaceCheekyVelvetMaroon.jpeg',
+                        name: 'Velvet Maroon',
+                    },
+                ],
+            },
+            {
+                _key: 'LogoWaistKir.jpeg',
+                description:
+                    'Classically comfortable in breathable cotton, this shortie panty is your perfect everyday pick.',
+                heading: 'Logo Waist Boyshort Panty',
+                rating: 4.5,
+                price: 12.5,
+                category: 'PANTIES',
+                images: [
+                    {
+                        image: 'LogoWaistKir.jpeg',
+                        name: 'Kir',
+                    },
+                    {
+                        image: 'LogoWaistLipstick.jpeg',
+                        name: 'Lipstick',
+                    },
+                    {
+                        image: 'LogoWaistCameo.jpeg',
+                        name: 'Cameo',
+                    },
+                ],
+            },
+            {
+                _key: 'SeamlessGreen.jpeg',
+                description:
+                    'Smooth, seamless comfort and an ultra high waist make this super stretchy panty endlessly flattering.',
+                heading: 'Seamless High-waist Bikini Panty',
+                rating: 2.3,
+                price: 18.5,
+                category: 'PANTIES',
+                images: [
+                    {
+                        image: 'SeamlessGreen.jpeg',
+                        name: 'Green',
+                    },
+                    {
+                        image: 'SeamlessBrown.jpeg',
+                        name: 'Brown',
+                    },
+                    {
+                        image: 'SeamlessBeige.jpeg',
+                        name: 'Beige',
+                    },
+                ],
+            },
+            {
+                _key: 'StretchCottonCrownBlue.jpeg',
+                description:
+                    'Cotton. Sexy. Cool. Supersoft stretch cotton meets ultra-cool comfort in a high-leg brief panty perfect for wearing everywhere.',
+                heading: 'Stretch Cotton High-leg Brief Panty',
+                rating: 4.2,
+                price: 10.5,
+                category: 'PANTIES',
+                images: [
+                    {
+                        image: 'StretchCottonCrownBlue.jpeg',
+                        name: 'Crown Blue',
+                    },
+                    {
+                        image: 'StretchCottonFadedDenim.jpeg',
+                        name: 'Faded Denim',
+                    },
+                    {
+                        image: 'StretchCottonRed.jpeg',
+                        name: 'Red',
+                    },
+                ],
+            },
+            {
+                _key: 'StretchHiphuggerSoftCrimson.jpeg',
+                description:
+                    'Cotton. Sexy. Cool. Supersoft stretch cotton meets ultra-cool comfort in a hiphugger panty perfect for wearing everywhere.',
+                heading: 'Stretch Cotton Hiphugger Panty',
+                rating: 4.2,
+                price: 10.5,
+                category: 'PANTIES',
+                images: [
+                    {
+                        image: 'StretchHiphuggerSoftCrimson.jpeg',
+                        name: 'Soft Crimson',
+                    },
+                    {
+                        image: 'StretchHiphuggerLilac.jpeg',
+                        name: 'Lilac',
+                    },
+                    {
+                        image: 'StretchHiphuggerCameo.jpeg',
+                        name: 'Cameo',
+                    },
+                ],
+            },
         ],
     },
     {
