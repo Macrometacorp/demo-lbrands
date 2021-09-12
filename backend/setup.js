@@ -696,6 +696,144 @@ const COLLECTIONS = [
                     },
                 ],
             },
+            {
+                _key: 'CottonFleeceFrostedBlueberry.jpeg',
+                description:
+                    'A cool, crisp cotton blend and a classic cut never go out of style, featuring a bold, lace-up detail.',
+                heading: 'Cotton Fleece Lace Up Crewneck',
+                rating: 4.3,
+                price: 49.5,
+                category: 'SPORT & LOUNGE',
+                images: [
+                    {
+                        image: 'CottonFleeceFrostedBlueberry.jpeg',
+                        name: 'Frosted Blueberry',
+                    },
+                    {
+                        image: 'CottonFleeceHeatherSnow.jpeg',
+                        name: 'Heather Snow',
+                    },
+                    {
+                        image: 'CottonFleeceBlackLeopard.jpeg',
+                        name: 'Black Leopard',
+                    },
+                ],
+            },
+            {
+                _key: 'FlowOnPointBerryHeather.jpeg',
+                description:
+                    'The nylon performance legging you love is now supersoft, here with 4-way stretch and a waistband that stays in place for total comfort.',
+                heading: 'Flow On Point High Rise Pocket Legging',
+                rating: 4.4,
+                price: 30.0,
+                category: 'SPORT & LOUNGE',
+                images: [
+                    {
+                        image: 'FlowOnPointBerryHeather.jpeg',
+                        name: 'Berry Heather',
+                    },
+                    {
+                        image: 'FlowOnPointBeigeLeopard.jpeg',
+                        name: 'Beige Leopard',
+                    },
+                    {
+                        image: 'FlowOnPointRoseBegonia.jpeg',
+                        name: 'Rose Begonia',
+                    },
+                ],
+            },
+            {
+                _key: 'ScoopNeckPeony.jpeg',
+                description:
+                    'A classic closet staple made modern to embody a more contemporary silhouette, this bodysuit has a flattering thong brief that will remain undetectable beneath your clothes.',
+                heading: 'Scoop Neck Bodysuit',
+                rating: 4.4,
+                price: 89,
+                category: 'SPORT & LOUNGE',
+                images: [
+                    {
+                        image: 'ScoopNeckPeony.jpeg',
+                        name: 'Peony',
+                    },
+                    {
+                        image: 'ScoopNeckLatte.jpeg',
+                        name: 'Latte',
+                    },
+                    {
+                        image: 'ScoopNeckBlack.jpeg',
+                        name: 'Black',
+                    },
+                ],
+            },
+            {
+                _key: 'StretchFleeceBlue.jpeg',
+                description:
+                    'An extra-cozy track short in stretch fleece: you’ll want to wear it every day and always.',
+                heading: 'Stretch Fleece Track Short',
+                rating: 4.5,
+                price: 34.5,
+                category: 'SPORT & LOUNGE',
+                images: [
+                    {
+                        image: 'StretchFleeceBlue.jpeg',
+                        name: 'Blue',
+                    },
+                    {
+                        image: 'StretchFleeceDarkBrown.jpeg',
+                        name: 'Dark Brown',
+                    },
+                    {
+                        image: 'StretchFleeceDarkSeafoam.jpeg',
+                        name: 'Dark Seafoam',
+                    },
+                ],
+            },
+            {
+                _key: 'SweatOnEnvious.jpeg',
+                description:
+                    'Smooth, sleek and comfortable, this classic sport bra gives you support with stay-put cups and classic racerback straps, perfect for runs, hikes, workouts, anything meant to break a sweat.',
+                heading: 'Sweat On Point Racerback Sport Bra',
+                rating: 3.7,
+                price: 44.5,
+                category: 'SPORT & LOUNGE',
+                images: [
+                    {
+                        image: 'SweatOnEnvious.jpeg',
+                        name: 'Envious',
+                    },
+                    {
+                        image: 'SweatOnBerryBlush.jpeg',
+                        name: 'Berry Blush',
+                    },
+                    {
+                        image: 'SweatOnFrostedBlueberry.jpeg',
+                        name: 'Frosted Blueberry',
+                    },
+                ],
+            },
+            {
+                _key: 'VelourAfricanViolet.jpeg',
+                description:
+                    "Make your lounge style extra comfy cozy with this hoodie's ultra soft velour finish.",
+                heading: 'Velour Front-zip Hoodie',
+                rating: 4.3,
+                price: 49.5,
+                category: 'SPORT & LOUNGE',
+                images: [
+                    {
+                        image: 'VelourAfricanViolet.jpeg',
+                        name: 'African Violet',
+                    },
+                    {
+                        image: 'VelourNimbusCloud.jpeg',
+                        name: 'Nimbus Cloud',
+                    },
+                    {
+                        image: 'VelourNeonPeony.jpeg',
+                        name: 'Neon Peony',
+                    },
+                ],
+            },
         ],
     },
     {
