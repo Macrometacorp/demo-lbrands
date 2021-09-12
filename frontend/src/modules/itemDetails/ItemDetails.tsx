@@ -250,6 +250,11 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                   pathname: `/link/${this.promotion.heading}`,
                   state: {
                     isPromotionSelectionScreenKey: this.promotion.link,
+                    baseFashionItemId: this.state.fashionItem._key,
+                    baseFashionItemQuantity: this.state.quantity,
+                    baseFashionItemPrice: this.state.fashionItem.price,
+                    baseFashionItemColor: this.getCurrentImageObj()?.name,
+                    baseFashionItemCurrentSize: this.state.currentSize,
                   },
                 }}
               >
@@ -271,7 +276,10 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                       fashionItemId: _key,
                       quantity: this.state.quantity,
                       price: this?.promotion?.price || price,
-                      color: this.getCurrentImageObj()?.name,
+                      color: this.getCurrentImageObj()?.name.replace(
+                        /\s/g,
+                        "_"
+                      ),
                       size: this.state.currentSize,
                     },
                   });

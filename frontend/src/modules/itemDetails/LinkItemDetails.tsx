@@ -33,11 +33,23 @@ export class LinkItemDetails extends React.Component<
       params: { id },
     } = this.props.match;
 
-    const { item, promotion, isPromotionSelectionScreenKey } =
-      this.props.location.state;
+    const {
+      promotion,
+      isPromotionSelectionScreenKey,
+      baseFashionItemId,
+      baseFashionItemCurrentSize,
+      baseFashionItemQuantity,
+      baseFashionItemColor,
+      baseFashionItemPrice,
+    } = this.props.location.state;
 
     this.promotion = promotion;
     this.isPromotionSelectionScreenKey = isPromotionSelectionScreenKey;
+    this.baseFashionItemId = baseFashionItemId;
+    this.baseFashionItemQuantity = baseFashionItemQuantity;
+    this.baseFashionItemPrice = baseFashionItemPrice;
+    this.baseFashionItemCurrentSize = baseFashionItemCurrentSize;
+    this.baseFashionItemColor = baseFashionItemColor;
 
     this.state = {
       currentImage: "",
@@ -165,15 +177,28 @@ export class LinkItemDetails extends React.Component<
               variant="contained"
               onClick={() => {
                 const { price, _key } = this.state.fashionItem;
-                API.post("cart", "/cart", {
+
+                const baseItemPromise = API.post("cart", "/cart", {
+                  body: {
+                    fashionItemId: this.baseFashionItemId,
+                    quantity: this.baseFashionItemQuantity,
+                    price: this.baseFashionItemPrice,
+                    color: this.baseFashionItemColor.replace(/\s/g, "_"),
+                    size: this.baseFashionItemCurrentSize,
+                  },
+                });
+
+                const giftPromise = API.post("cart", "/cart", {
                   body: {
                     fashionItemId: _key,
-                    // quantity: this.state.quantity,
-                    price: this?.promotion?.price || price,
-                    color: this.getCurrentImageObj()?.name,
+                    quantity: 1,
+                    price: 0,
+                    color: this.getCurrentImageObj()?.name.replace(/\s/g, "_"),
                     size: this.state.currentSize,
                   },
                 });
+
+                Promise.all([baseItemPromise, giftPromise]);
               }}
             >
               ADD TO BAG

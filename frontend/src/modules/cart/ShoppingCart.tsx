@@ -34,8 +34,14 @@ export default class ShoppingCart extends Component<
   async componentDidMount() {
     try {
       const ordersInCart = await this.listOrdersInCart();
+
+      const updatedOrders = ordersInCart.map((order: any) => ({
+        ...order,
+        color: order.color.replace(/_/g, " "),
+      }));
+
       this.setState({
-        orders: ordersInCart,
+        orders: updatedOrders,
       });
     } catch (e) {
       console.error(e);
