@@ -75,6 +75,75 @@ const COLLECTIONS = [
                 ],
             },
             {
+                _key: 'ChantillyLaceEnvious.jpeg',
+                description:
+                    'A longer version of our classic wrap style, in luxe satin with a sheer Chantilly lace back.',
+                heading: 'Chantilly Lace Robe',
+                rating: 3.5,
+                price: 99.5,
+                category: 'LINGERIE',
+                images: [
+                    {
+                        image: 'ChantillyLaceEnvious.jpeg',
+                        name: 'Envious',
+                    },
+                    {
+                        image: 'ChantillyLaceLipstick.jpeg',
+                        name: 'Lipstick',
+                    },
+                    {
+                        image: 'ChantillyLaceBlack.jpeg',
+                        name: 'Black',
+                    },
+                ],
+            },
+            {
+                _key: 'ChantillyLaceEnvious.jpeg',
+                description:
+                    'A longer version of our classic wrap style, in luxe satin with a sheer Chantilly lace back.',
+                heading: 'Chantilly Lace Robe',
+                rating: 3.5,
+                price: 99.5,
+                category: 'LINGERIE',
+                images: [
+                    {
+                        image: 'ChantillyLaceEnvious.jpeg',
+                        name: 'Envious',
+                    },
+                    {
+                        image: 'ChantillyLaceLipstick.jpeg',
+                        name: 'Lipstick',
+                    },
+                    {
+                        image: 'ChantillyLaceBlack.jpeg',
+                        name: 'Black',
+                    },
+                ],
+            },
+            {
+                _key: 'BombshellVintageRose.jpeg',
+                description:
+                    'Intersecting straps are juxtaposed with delicate lace in this gorgeous teddy, showcasing flirty cutouts throughout. Featuring our Bombshell bra for the ultimate lift. Wear yours outside the bedroom with your favorite separates and more.',
+                heading: 'Bombshell Add-2-cups Lace Teddy',
+                rating: 4.3,
+                price: 89.5,
+                category: 'LINGERIE',
+                images: [
+                    {
+                        image: 'BombshellVintageRose.jpeg',
+                        name: 'Vintage Rose',
+                    },
+                    {
+                        image: 'BombshellLipstick.jpeg',
+                        name: 'Lipstick',
+                    },
+                    {
+                        image: 'BombshellBlack.jpeg',
+                        name: 'Black',
+                    },
+                ],
+            },
+            {
                 _key: 'CottonJoggerLinenDahlia.jpeg',
                 description:
                     "Crisp cotton is made to keep you cool and comfortable with a classic tee and jogger design you'll want to lounge in all day.",
@@ -117,6 +186,98 @@ const COLLECTIONS = [
                     {
                         image: 'SatinShortPinkPopHeart.jpeg',
                         name: 'Pink Pop Heart',
+                    },
+                ],
+            },
+            {
+                _key: 'LightweightPimaBrightPinkGraphic.jpeg',
+                description:
+                    'The best plans are cancelled plans: relax in this soft and durable cotton sleepshirt, featuring a V-neckline and rounded hem.',
+                heading: 'Lightweight Pima Cotton V-neck Sleepshirt',
+                rating: 4.3,
+                price: 29.5,
+                category: 'SLEEP',
+                images: [
+                    {
+                        image: 'LightweightPimaBrightPinkGraphic.jpeg',
+                        name: 'Bright Pink Graphic',
+                    },
+                    {
+                        image: 'LightweightPimaLavender.jpeg',
+                        name: 'Lavender',
+                    },
+                    {
+                        image: 'LightweightPimaAquaCrystal.jpeg',
+                        name: 'Aqua Crystal',
+                    },
+                ],
+            },
+            {
+                _key: 'SatinRobeCoconutWhite.jpeg',
+                description:
+                    'A modern take on the classic robe, featuring a luxe satin silhouette with a tie waist, delicate lace trim and gorgeous, relaxed sleeves.',
+                heading: 'Satin Robe',
+                rating: 3.6,
+                price: 49.99,
+                category: 'SLEEP',
+                images: [
+                    {
+                        image: 'SatinRobeCoconutWhite.jpeg',
+                        name: 'Coconut White',
+                    },
+                    {
+                        image: 'SatinRobeSageDust.jpeg',
+                        name: 'Sage Dust',
+                    },
+                    {
+                        image: 'SatinRobePinkStripe.jpeg',
+                        name: 'Pink Stripe',
+                    },
+                ],
+            },
+            {
+                _key: 'SatinLacePrint.jpeg',
+                description:
+                    'Lightweight style in satin and lace, this cami is perfect for wearing out or slipping into bed.',
+                heading: 'Satin Lace-back Cami Top',
+                rating: 4.5,
+                price: 34.5,
+                category: 'SLEEP',
+                images: [
+                    {
+                        image: 'SatinLacePrint.jpeg',
+                        name: 'Print',
+                    },
+                    {
+                        image: 'SatinLaceGreen.jpeg',
+                        name: 'Green',
+                    },
+                    {
+                        image: 'SatinLaceRainbowSky.jpeg',
+                        name: 'Rainbow Sky',
+                    },
+                ],
+            },
+            {
+                _key: 'LogoShortPinkStripe.jpeg',
+                description:
+                    'XOXO, Victoria’s Secret. A classic robe featuring our logo.',
+                heading: 'Cotton Jogger Tee-jama',
+                rating: 4.8,
+                price: 49.5,
+                category: 'SLEEP',
+                images: [
+                    {
+                        image: 'LogoShortPinkStripe.jpeg',
+                        name: 'Pink Stripe',
+                    },
+                    {
+                        image: 'LogoShortVSIvory.jpeg',
+                        name: 'VS Ivory',
+                    },
+                    {
+                        image: 'LogoShortBlueCharmTieDye.jpeg',
+                        name: 'Blue Charm Tie Dye',
                     },
                 ],
             },
@@ -186,6 +347,76 @@ const COLLECTIONS = [
                     {
                         image: 'TahitiScoopOlive.jpeg',
                         name: 'Olive',
+                    },
+                ],
+            },
+            {
+                _key: 'MonacoSapphire.jpeg',
+                description:
+                    'The sexy sophistication of Monaco in a bikini you can wear everywhere, with an elegant longline cut and gleaming golden V-hardware at the center bust.',
+                heading: 'Monaco V-Hardware Bralette Swim Top',
+                rating: 4.3,
+                price: 39.5,
+                category: 'SWIM',
+                images: [
+                    {
+                        image: 'MonacoSapphire.jpeg',
+                        name: 'Sapphire',
+                    },
+                    {
+                        image: 'MonacoNero.jpeg',
+                        name: 'Nero',
+                    },
+                    {
+                        image: 'MonacoCheekyRed.jpeg',
+                        name: 'Cheeky Red',
+                    },
+                ],
+            },
+            {
+                _key: 'ShineStrapCosmo.jpeg',
+                description:
+                    'The same add-2-cups lift of your favorite Bombshell bra made for the beaches of Bali, finished with dazzling shine straps that glitter in the sun.',
+                heading:
+                    'Shine Strap Bali Bombshell Add-2-cups Push-Up Swim Top',
+                rating: 4.4,
+                price: 69.5,
+                category: 'SWIM',
+                images: [
+                    {
+                        image: 'ShineStrapCosmo.jpeg',
+                        name: 'Cosmo',
+                    },
+                    {
+                        image: 'ShineStrapNero.jpeg',
+                        name: 'Nero',
+                    },
+                    {
+                        image: 'ShineStrapCheekyRed.jpeg',
+                        name: 'Cheeky Red',
+                    },
+                ],
+            },
+            {
+                _key: 'ShineMontanitaCosmo.jpeg',
+                description:
+                    'Bring the glamour with you when you splash in this one-piece, cut with a bold high leg and plunging neckline and finished with glittering shine straps.',
+                heading: 'Shine Strap Montanita Plunge One-piece',
+                rating: 3.3,
+                price: 99.5,
+                category: 'SWIM',
+                images: [
+                    {
+                        image: 'ShineMontanitaCosmo.jpeg',
+                        name: 'Cosmo',
+                    },
+                    {
+                        image: 'ShineMontanitaNero.jpeg',
+                        name: 'Nero',
+                    },
+                    {
+                        image: 'ShineMontanitaWhite.jpeg',
+                        name: 'White',
                     },
                 ],
             },
