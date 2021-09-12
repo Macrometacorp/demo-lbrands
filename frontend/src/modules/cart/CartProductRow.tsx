@@ -100,7 +100,7 @@ export class CartProductRow extends React.Component<
             <h3 className="media-heading">
               {this.state.fashionItem.heading}
               <div className="pull-right margin-1">
-                <small>${this.state.fashionItem.price}</small>
+                <small>${this.props.order.price}</small>
               </div>
             </h3>
             <p>
