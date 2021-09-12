@@ -5,12 +5,11 @@ import { BestSellersBar } from "../bestSellers/bestSellersBar/BestSellersBar";
 import { CategoryGallery } from "./CategoryGallery";
 
 import sleep from "../../images/hero/hero-sleep.jpg";
-import cars from "../../images/hero/hero-cars.png";
+import sport from "../../images/hero/hero-sport.jpg";
 import lingerie from "../../images/hero/hero-lingerie.jpg";
 import swim from "../../images/hero/hero-swim.jpg";
-import home from "../../images/hero/hero-home.png";
-import scifi from "../../images/hero/hero-science.png";
-import woodwork from "../../images/hero/hero-woodwork.png";
+import panty from "../../images/hero/hero-panty.jpg";
+import bra from "../../images/hero/hero-bra.jpg";
 
 import "../../common/hero/hero.css";
 import { categories } from "./categoryNavBar/categories";
@@ -40,14 +39,12 @@ const CategoryView = (props: CategoryViewProps) => {
         return sleep;
       case categories.swim:
         return swim;
-      case categories.scifi:
-        return scifi;
-      case categories.home:
-        return home;
-      case categories.cars:
-        return cars;
-      case categories.woodwork:
-        return woodwork;
+      case categories.bras:
+        return bra;
+      case categories.panties:
+        return panty;
+      case categories.sport:
+        return sport;
       default:
         return lingerie;
     }

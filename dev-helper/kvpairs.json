@@ -9,15 +9,18 @@
     "images": [
       {
         "image": "DrapedBackVintageRose.jpeg",
-        "name": "Vintage Rose"
+        "name": "Vintage Rose",
+        "availableIn": ["06102", "19903", "20002"]
       },
       {
         "image": "DrapedBackPersianTeal.jpeg",
-        "name": "Persian Teal"
+        "name": "Persian Teal",
+        "availableIn": ["06102", "19903", "20002"]
       },
       {
         "image": "DrapedBackDarkViolet.jpeg",
-        "name": "Dark Violet"
+        "name": "Dark Violet",
+        "availableIn": ["06102", "19903", "20002"]
       }
     ]
   },
@@ -29,18 +32,9 @@
     "price": 69.5,
     "category": "LINGERIE",
     "images": [
-      {
-        "image": "LacePlungeHotPink.jpeg",
-        "name": "Hot Pink"
-      },
-      {
-        "image": "LacePlungeGreen.jpeg",
-        "name": "Green"
-      },
-      {
-        "image": "LacePlungeCoconutWhite.jpeg",
-        "name": "Coconut White"
-      }
+      { "image": "LacePlungeHotPink.jpeg", "name": "Hot Pink" },
+      { "image": "LacePlungeGreen.jpeg", "name": "Green" },
+      { "image": "LacePlungeCoconutWhite.jpeg", "name": "Coconut White" }
     ]
   },
   {
@@ -51,18 +45,48 @@
     "price": 89.5,
     "category": "LINGERIE",
     "images": [
-      {
-        "image": "WickedOpenLipstick.jpeg",
-        "name": "Lipstick"
-      },
-      {
-        "image": "WickedOpenCoconutWhite.jpeg",
-        "name": "Coconut White"
-      },
-      {
-        "image": "WickedOpenBlack.jpeg",
-        "name": "Black"
-      }
+      { "image": "WickedOpenLipstick.jpeg", "name": "Lipstick" },
+      { "image": "WickedOpenCoconutWhite.jpeg", "name": "Coconut White" },
+      { "image": "WickedOpenBlack.jpeg", "name": "Black" }
+    ]
+  },
+  {
+    "_key": "ChantillyLaceEnvious.jpeg",
+    "description": "A longer version of our classic wrap style, in luxe satin with a sheer Chantilly lace back.",
+    "heading": "Chantilly Lace Robe",
+    "rating": 3.5,
+    "price": 99.5,
+    "category": "LINGERIE",
+    "images": [
+      { "image": "ChantillyLaceEnvious.jpeg", "name": "Envious" },
+      { "image": "ChantillyLaceLipstick.jpeg", "name": "Lipstick" },
+      { "image": "ChantillyLaceBlack.jpeg", "name": "Black" }
+    ]
+  },
+  {
+    "_key": "ChantillyLaceEnvious.jpeg",
+    "description": "A longer version of our classic wrap style, in luxe satin with a sheer Chantilly lace back.",
+    "heading": "Chantilly Lace Robe",
+    "rating": 3.5,
+    "price": 99.5,
+    "category": "LINGERIE",
+    "images": [
+      { "image": "ChantillyLaceEnvious.jpeg", "name": "Envious" },
+      { "image": "ChantillyLaceLipstick.jpeg", "name": "Lipstick" },
+      { "image": "ChantillyLaceBlack.jpeg", "name": "Black" }
+    ]
+  },
+  {
+    "_key": "BombshellVintageRose.jpeg",
+    "description": "Intersecting straps are juxtaposed with delicate lace in this gorgeous teddy, showcasing flirty cutouts throughout. Featuring our Bombshell bra for the ultimate lift. Wear yours outside the bedroom with your favorite separates and more.",
+    "heading": "Bombshell Add-2-cups Lace Teddy",
+    "rating": 4.3,
+    "price": 89.5,
+    "category": "LINGERIE",
+    "images": [
+      { "image": "BombshellVintageRose.jpeg", "name": "Vintage Rose" },
+      { "image": "BombshellLipstick.jpeg", "name": "Lipstick" },
+      { "image": "BombshellBlack.jpeg", "name": "Black" }
     ]
   },
   {
@@ -73,18 +97,9 @@
     "price": 49.5,
     "category": "SLEEP",
     "images": [
-      {
-        "image": "CottonJoggerLinenDahlia.jpeg",
-        "name": "Linen Dahlia"
-      },
-      {
-        "image": "CottonJoggerPinkHeartDot.jpeg",
-        "name": "Pink Heart Dot"
-      },
-      {
-        "image": "CottonJoggerNoirNavyStripe.jpeg",
-        "name": "Noir Navy Stripe"
-      }
+      { "image": "CottonJoggerLinenDahlia.jpeg", "name": "Linen Dahlia" },
+      { "image": "CottonJoggerPinkHeartDot.jpeg", "name": "Pink Heart Dot" },
+      { "image": "CottonJoggerNoirNavyStripe.jpeg", "name": "Noir Navy Stripe" }
     ]
   },
   {
@@ -95,18 +110,67 @@
     "price": 74.5,
     "category": "SLEEP",
     "images": [
-      {
-        "image": "SatinShortPinkFizz.jpeg",
-        "name": "Pink Fizz"
-      },
+      { "image": "SatinShortPinkFizz.jpeg", "name": "Pink Fizz" },
       {
         "image": "SatinShortSweetDreamsScript.jpeg",
         "name": "Sweet Dreams Script"
       },
+      { "image": "SatinShortPinkPopHeart.jpeg", "name": "Pink Pop Heart" }
+    ]
+  },
+  {
+    "_key": "LightweightPimaBrightPinkGraphic.jpeg",
+    "description": "The best plans are cancelled plans: relax in this soft and durable cotton sleepshirt, featuring a V-neckline and rounded hem.",
+    "heading": "Lightweight Pima Cotton V-neck Sleepshirt",
+    "rating": 4.3,
+    "price": 29.5,
+    "category": "SLEEP",
+    "images": [
       {
-        "image": "SatinShortPinkPopHeart.jpeg",
-        "name": "Pink Pop Heart"
-      }
+        "image": "LightweightPimaBrightPinkGraphic.jpeg",
+        "name": "Bright Pink Graphic"
+      },
+      { "image": "LightweightPimaLavender.jpeg", "name": "Lavender" },
+      { "image": "LightweightPimaAquaCrystal.jpeg", "name": "Aqua Crystal" }
+    ]
+  },
+  {
+    "_key": "SatinRobeCoconutWhite.jpeg",
+    "description": "A modern take on the classic robe, featuring a luxe satin silhouette with a tie waist, delicate lace trim and gorgeous, relaxed sleeves.",
+    "heading": "Satin Robe",
+    "rating": 3.6,
+    "price": 49.99,
+    "category": "SLEEP",
+    "images": [
+      { "image": "SatinRobeCoconutWhite.jpeg", "name": "Coconut White" },
+      { "image": "SatinRobeSageDust.jpeg", "name": "Sage Dust" },
+      { "image": "SatinRobePinkStripe.jpeg", "name": "Pink Stripe" }
+    ]
+  },
+  {
+    "_key": "SatinLacePrint.jpeg",
+    "description": "Lightweight style in satin and lace, this cami is perfect for wearing out or slipping into bed.",
+    "heading": "Satin Lace-back Cami Top",
+    "rating": 4.5,
+    "price": 34.5,
+    "category": "SLEEP",
+    "images": [
+      { "image": "SatinLacePrint.jpeg", "name": "Print" },
+      { "image": "SatinLaceGreen.jpeg", "name": "Green" },
+      { "image": "SatinLaceRainbowSky.jpeg", "name": "Rainbow Sky" }
+    ]
+  },
+  {
+    "_key": "LogoShortPinkStripe.jpeg",
+    "description": "XOXO, Victoria’s Secret. A classic robe featuring our logo.",
+    "heading": "Cotton Jogger Tee-jama",
+    "rating": 4.8,
+    "price": 49.5,
+    "category": "SLEEP",
+    "images": [
+      { "image": "LogoShortPinkStripe.jpeg", "name": "Pink Stripe" },
+      { "image": "LogoShortVSIvory.jpeg", "name": "VS Ivory" },
+      { "image": "LogoShortBlueCharmTieDye.jpeg", "name": "Blue Charm Tie Dye" }
     ]
   },
   {
@@ -117,18 +181,12 @@
     "price": 29.5,
     "category": "SWIM",
     "images": [
-      {
-        "image": "HavanaPushUpPreciousJade.jpeg",
-        "name": "Precious Jade"
-      },
+      { "image": "HavanaPushUpPreciousJade.jpeg", "name": "Precious Jade" },
       {
         "image": "HavanaPushUpBlackWhiteDot.jpeg",
         "name": "Black & White Dot"
       },
-      {
-        "image": "HavanaPushUpRipeApricot.jpeg",
-        "name": "Ripe Apricot"
-      }
+      { "image": "HavanaPushUpRipeApricot.jpeg", "name": "Ripe Apricot" }
     ]
   },
   {
@@ -139,18 +197,9 @@
     "price": 44.5,
     "category": "SWIM",
     "images": [
-      {
-        "image": "MalibuFabSapphire.jpeg",
-        "name": "Sapphire"
-      },
-      {
-        "image": "MalibuFabMintFrost.jpeg",
-        "name": "Mint Frost"
-      },
-      {
-        "image": "MalibuFabCheekyRed.jpeg",
-        "name": "Cheeky Red"
-      }
+      { "image": "MalibuFabSapphire.jpeg", "name": "Sapphire" },
+      { "image": "MalibuFabMintFrost.jpeg", "name": "Mint Frost" },
+      { "image": "MalibuFabCheekyRed.jpeg", "name": "Cheeky Red" }
     ]
   },
   {
@@ -161,18 +210,288 @@
     "price": 29.5,
     "category": "SWIM",
     "images": [
+      { "image": "TahitiScoopLemonPrint.jpeg", "name": "Lemon Print" },
+      { "image": "TahitiScoopNero.jpeg", "name": "Nero" },
+      { "image": "TahitiScoopOlive.jpeg", "name": "Olive" }
+    ]
+  },
+  {
+    "_key": "MonacoSapphire.jpeg",
+    "description": "The sexy sophistication of Monaco in a bikini you can wear everywhere, with an elegant longline cut and gleaming golden V-hardware at the center bust.",
+    "heading": "Monaco V-Hardware Bralette Swim Top",
+    "rating": 4.3,
+    "price": 39.5,
+    "category": "SWIM",
+    "images": [
+      { "image": "MonacoSapphire.jpeg", "name": "Sapphire" },
+      { "image": "MonacoNero.jpeg", "name": "Nero" },
+      { "image": "MonacoCheekyRed.jpeg", "name": "Cheeky Red" }
+    ]
+  },
+  {
+    "_key": "ShineStrapCosmo.jpeg",
+    "description": "The same add-2-cups lift of your favorite Bombshell bra made for the beaches of Bali, finished with dazzling shine straps that glitter in the sun.",
+    "heading": "Shine Strap Bali Bombshell Add-2-cups Push-Up Swim Top",
+    "rating": 4.4,
+    "price": 69.5,
+    "category": "SWIM",
+    "images": [
+      { "image": "ShineStrapCosmo.jpeg", "name": "Cosmo" },
+      { "image": "ShineStrapNero.jpeg", "name": "Nero" },
+      { "image": "ShineStrapCheekyRed.jpeg", "name": "Cheeky Red" }
+    ]
+  },
+  {
+    "_key": "ShineMontanitaCosmo.jpeg",
+    "description": "Bring the glamour with you when you splash in this one-piece, cut with a bold high leg and plunging neckline and finished with glittering shine straps.",
+    "heading": "Shine Strap Montanita Plunge One-piece",
+    "rating": 3.3,
+    "price": 99.5,
+    "category": "SWIM",
+    "images": [
+      { "image": "ShineMontanitaCosmo.jpeg", "name": "Cosmo" },
+      { "image": "ShineMontanitaNero.jpeg", "name": "Nero" },
+      { "image": "ShineMontanitaWhite.jpeg", "name": "White" }
+    ]
+  },
+  {
+    "_key": "FlowOnTealStar.jpeg",
+    "description": "The perfect laid-back pick, this lounge bra supports your shape in a smooth seamless finish.",
+    "heading": "Flow On Point Seamless Triangle Bra",
+    "rating": 3.5,
+    "price": 44.5,
+    "category": "BRAS",
+    "images": [
+      { "image": "FlowOnTealStar.jpeg", "name": "Teal Star" },
+      { "image": "FlowOnMauvelous.jpeg", "name": "Mauvelous" },
+      { "image": "FlowOnBlack.jpeg", "name": "Black" }
+    ]
+  },
+  {
+    "_key": "LightlyLinedAppleblossomPink.jpeg",
+    "description": "This dreamy demi is even more heavenly, with softer Memory Fit lining that conforms to your curves, a smoothing U-shaped back and stretchier lace sides for a flawless, ultra-comfy fit.",
+    "heading": "Lightly-Lined Demi Bra",
+    "rating": 4.2,
+    "price": 49.5,
+    "category": "BRAS",
+    "images": [
       {
-        "image": "TahitiScoopLemonPrint.jpeg",
-        "name": "Lemon Print"
+        "image": "LightlyLinedAppleblossomPink.jpeg",
+        "name": "Appleblossom Pink"
       },
+      { "image": "LightlyLinedBlackFloral.jpeg", "name": "Black Floral" },
+      { "image": "LightlyLinedClaretRed.jpeg", "name": "Claret Red" }
+    ]
+  },
+  {
+    "_key": "PushUpEnvious.jpeg",
+    "description": "Our #1 push-up is sexier than ever with plush, even softer padding for the lift and cleavage you love and a more natural feel, plus edges that disappear under clothes.",
+    "heading": "Push-Up Bra",
+    "rating": 4,
+    "price": 49.5,
+    "category": "BRAS",
+    "images": [
+      { "image": "PushUpEnvious.jpeg", "name": "Envious" },
+      { "image": "PushUpLipstick.jpeg", "name": "Lipstick" },
+      { "image": "PushUpSweetPraline.jpeg", "name": "Sweet Praline" }
+    ]
+  },
+  {
+    "_key": "PushupPerfectKir.jpeg",
+    "description": "Get the lift you crave in a supersoft bra you’ll love to wear, here with picot trim. Featuring Memory Fit padding for extra support as it conforms to your curves and a smoothing U-shaped back.",
+    "heading": "Push-Up Perfect Shape Lace Trim Bra",
+    "rating": 4.3,
+    "price": 49.5,
+    "category": "BRAS",
+    "images": [
+      { "image": "PushupPerfectKir.jpeg", "name": "Kir" },
+      { "image": "PushupPerfectBlack.jpeg", "name": "Black" },
+      { "image": "PushupPerfectPink.jpeg", "name": "Pink" }
+    ]
+  },
+  {
+    "_key": "UnlinedSoftFloralMedley.jpeg",
+    "description": "The easiest decision you’ll make all day: wearing this ultra-soft and comfortable wireless bra, featuring a dramatic plunge neckline and a sporty logo band.",
+    "heading": "Unlined Soft Wireless Lounge Bra",
+    "rating": 4.2,
+    "price": 29.5,
+    "category": "BRAS",
+    "images": [
+      { "image": "UnlinedSoftFloralMedley.jpeg", "name": "Floral Medley" },
+      { "image": "UnlinedSoftSoftPink.jpeg", "name": "Soft Pink" },
+      { "image": "UnlinedSoftLeopard.jpeg", "name": "Leopard" }
+    ]
+  },
+  {
+    "_key": "WirelessLaceBackSageDust.jpeg",
+    "description": "Feel good, look good, do good: meet our first fully-constructed T-shirt bra made from partially recycled textiles, a smooth and streamlined style that helps support the environment while giving you the boost you crave. In an allover smooth silhouette with a delicate pleated tulle detail at the front and a lace-embellished band.",
+    "heading": "Wireless Lace-back Bra",
+    "rating": 3.5,
+    "price": 44.5,
+    "category": "BRAS",
+    "images": [
+      { "image": "WirelessLaceBackSageDust.jpeg", "name": "Sage Dust" },
+      { "image": "WirelessLaceBackWitheredRose.jpeg", "name": "Withered Rose" },
+      { "image": "WirelessLaceBackWinterSky.jpeg", "name": "Winter Sky" }
+    ]
+  },
+  {
+    "_key": "LaceBrazilianDahlia.jpeg",
+    "description": "The classic, stretch-waist lace panty you love, now in a chic leopard print.",
+    "heading": "Lace Brazilian Panty",
+    "rating": 4.7,
+    "price": 14.5,
+    "category": "PANTIES",
+    "images": [
+      { "image": "LaceBrazilianDahlia.jpeg", "name": "Dahlia" },
+      { "image": "LaceBrazilianSageDust.jpeg", "name": "Sage Dust" },
+      { "image": "LaceBrazilianBlack.jpeg", "name": "Black" }
+    ]
+  },
+  {
+    "_key": "LaceCheekyBlackPearl.jpeg",
+    "description": "In soft, stretchy and lightweight micro fabric, this streamlined cheeky is played up with a delicate floral lace inset at the front, plus lace trim at the sides.",
+    "heading": "Lace Cheeky Panty",
+    "rating": 4.5,
+    "price": 7.99,
+    "category": "PANTIES",
+    "images": [
+      { "image": "LaceCheekyBlackPearl.jpeg", "name": "Black Pearl" },
+      { "image": "LaceCheekyMidnightSea.jpeg", "name": "Midnight Sea" },
+      { "image": "LaceCheekyVelvetMaroon.jpeg", "name": "Velvet Maroon" }
+    ]
+  },
+  {
+    "_key": "LogoWaistKir.jpeg",
+    "description": "Classically comfortable in breathable cotton, this shortie panty is your perfect everyday pick.",
+    "heading": "Logo Waist Boyshort Panty",
+    "rating": 4.5,
+    "price": 12.5,
+    "category": "PANTIES",
+    "images": [
+      { "image": "LogoWaistKir.jpeg", "name": "Kir" },
+      { "image": "LogoWaistLipstick.jpeg", "name": "Lipstick" },
+      { "image": "LogoWaistCameo.jpeg", "name": "Cameo" }
+    ]
+  },
+  {
+    "_key": "SeamlessGreen.jpeg",
+    "description": "Smooth, seamless comfort and an ultra high waist make this super stretchy panty endlessly flattering.",
+    "heading": "Seamless High-waist Bikini Panty",
+    "rating": 2.3,
+    "price": 18.5,
+    "category": "PANTIES",
+    "images": [
+      { "image": "SeamlessGreen.jpeg", "name": "Green" },
+      { "image": "SeamlessBrown.jpeg", "name": "Brown" },
+      { "image": "SeamlessBeige.jpeg", "name": "Beige" }
+    ]
+  },
+  {
+    "_key": "StretchCottonCrownBlue.jpeg",
+    "description": "Cotton. Sexy. Cool. Supersoft stretch cotton meets ultra-cool comfort in a high-leg brief panty perfect for wearing everywhere.",
+    "heading": "Stretch Cotton High-leg Brief Panty",
+    "rating": 4.2,
+    "price": 10.5,
+    "category": "PANTIES",
+    "images": [
+      { "image": "StretchCottonCrownBlue.jpeg", "name": "Crown Blue" },
+      { "image": "StretchCottonFadedDenim.jpeg", "name": "Faded Denim" },
+      { "image": "StretchCottonRed.jpeg", "name": "Red" }
+    ]
+  },
+  {
+    "_key": "StretchHiphuggerSoftCrimson.jpeg",
+    "description": "Cotton. Sexy. Cool. Supersoft stretch cotton meets ultra-cool comfort in a hiphugger panty perfect for wearing everywhere.",
+    "heading": "Stretch Cotton Hiphugger Panty",
+    "rating": 4.2,
+    "price": 10.5,
+    "category": "PANTIES",
+    "images": [
+      { "image": "StretchHiphuggerSoftCrimson.jpeg", "name": "Soft Crimson" },
+      { "image": "StretchHiphuggerLilac.jpeg", "name": "Lilac" },
+      { "image": "StretchHiphuggerCameo.jpeg", "name": "Cameo" }
+    ]
+  },
+  {
+    "_key": "CottonFleeceFrostedBlueberry.jpeg",
+    "description": "A cool, crisp cotton blend and a classic cut never go out of style, featuring a bold, lace-up detail.",
+    "heading": "Cotton Fleece Lace Up Crewneck",
+    "rating": 4.3,
+    "price": 49.5,
+    "category": "SPORT & LOUNGE",
+    "images": [
       {
-        "image": "TahitiScoopNero.jpeg",
-        "name": "Nero"
+        "image": "CottonFleeceFrostedBlueberry.jpeg",
+        "name": "Frosted Blueberry"
       },
-      {
-        "image": "TahitiScoopOlive.jpeg",
-        "name": "Olive"
-      }
+      { "image": "CottonFleeceHeatherSnow.jpeg", "name": "Heather Snow" },
+      { "image": "CottonFleeceBlackLeopard.jpeg", "name": "Black Leopard" }
+    ]
+  },
+  {
+    "_key": "FlowOnPointBerryHeather.jpeg",
+    "description": "The nylon performance legging you love is now supersoft, here with 4-way stretch and a waistband that stays in place for total comfort.",
+    "heading": "Flow On Point High Rise Pocket Legging",
+    "rating": 4.4,
+    "price": 30,
+    "category": "SPORT & LOUNGE",
+    "images": [
+      { "image": "FlowOnPointBerryHeather.jpeg", "name": "Berry Heather" },
+      { "image": "FlowOnPointBeigeLeopard.jpeg", "name": "Beige Leopard" },
+      { "image": "FlowOnPointRoseBegonia.jpeg", "name": "Rose Begonia" }
+    ]
+  },
+  {
+    "_key": "ScoopNeckPeony.jpeg",
+    "description": "A classic closet staple made modern to embody a more contemporary silhouette, this bodysuit has a flattering thong brief that will remain undetectable beneath your clothes.",
+    "heading": "Scoop Neck Bodysuit",
+    "rating": 4.4,
+    "price": 89,
+    "category": "SPORT & LOUNGE",
+    "images": [
+      { "image": "ScoopNeckPeony.jpeg", "name": "Peony" },
+      { "image": "ScoopNeckLatte.jpeg", "name": "Latte" },
+      { "image": "ScoopNeckBlack.jpeg", "name": "Black" }
+    ]
+  },
+  {
+    "_key": "StretchFleeceBlue.jpeg",
+    "description": "An extra-cozy track short in stretch fleece: you’ll want to wear it every day and always.",
+    "heading": "Stretch Fleece Track Short",
+    "rating": 4.5,
+    "price": 34.5,
+    "category": "SPORT & LOUNGE",
+    "images": [
+      { "image": "StretchFleeceBlue.jpeg", "name": "Blue" },
+      { "image": "StretchFleeceDarkBrown.jpeg", "name": "Dark Brown" },
+      { "image": "StretchFleeceDarkSeafoam.jpeg", "name": "Dark Seafoam" }
+    ]
+  },
+  {
+    "_key": "SweatOnEnvious.jpeg",
+    "description": "Smooth, sleek and comfortable, this classic sport bra gives you support with stay-put cups and classic racerback straps, perfect for runs, hikes, workouts, anything meant to break a sweat.",
+    "heading": "Sweat On Point Racerback Sport Bra",
+    "rating": 3.7,
+    "price": 44.5,
+    "category": "SPORT & LOUNGE",
+    "images": [
+      { "image": "SweatOnEnvious.jpeg", "name": "Envious" },
+      { "image": "SweatOnBerryBlush.jpeg", "name": "Berry Blush" },
+      { "image": "SweatOnFrostedBlueberry.jpeg", "name": "Frosted Blueberry" }
+    ]
+  },
+  {
+    "_key": "VelourAfricanViolet.jpeg",
+    "description": "Make your lounge style extra comfy cozy with this hoodie's ultra soft velour finish.",
+    "heading": "Velour Front-zip Hoodie",
+    "rating": 4.3,
+    "price": 49.5,
+    "category": "SPORT & LOUNGE",
+    "images": [
+      { "image": "VelourAfricanViolet.jpeg", "name": "African Violet" },
+      { "image": "VelourNimbusCloud.jpeg", "name": "Nimbus Cloud" },
+      { "image": "VelourNeonPeony.jpeg", "name": "Neon Peony" }
     ]
   }
 ]

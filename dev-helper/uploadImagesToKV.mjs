@@ -9,6 +9,7 @@ const NA = "n/a";
 const pathPrefix = "images/";
 
 const BULK_KV_FILE = "kv_bulk.json";
+const INSERT_KV_FILE = "kvpairs.json";
 
 const operationType = (argv?._[1] || NA).toLowerCase();
 console.log(chalk.cyan(`Received operation as "${operationType}"`));
@@ -21,20 +22,28 @@ if (operationType === CREATE) {
 
   let promises = [];
 
-  data.forEach((itemObj) => {
+  for (const itemObj of data) {
     const { images } = itemObj;
-    images.forEach((imageObj) => {
+    for (const imageObj of images) {
       const { image } = imageObj;
-      //   TODO: change "value" to reflect the file name
-      promises.push(
-        $`wrangler kv:key put --namespace-id=${NAMESPACE_ID} "${image}" "${pathPrefix}${image}" --path`
-      );
-    });
-  });
+      await $`wrangler kv:key put --namespace-id=${NAMESPACE_ID} "${image}" "${pathPrefix}${image}" --path`;
+    }
+  }
 
-  await Promise.all(promises).catch((err) => {
-    console.log(chalk.red(err));
-  });
+  // data.forEach((itemObj) => {
+  //   const { images } = itemObj;
+  //   images.forEach((imageObj) => {
+  //     const { image } = imageObj;
+  //     //   TODO: change "value" to reflect the file name
+  //     promises.push(
+  //       $`wrangler kv:key put --namespace-id=${NAMESPACE_ID} "${image}" "${pathPrefix}${image}" --path`
+  //     );
+  //   });
+  // });
+
+  // await Promise.all(promises).catch((err) => {
+  //   console.log(chalk.red(err));
+  // });
   console.log(chalk.green("Upload completed!"));
 } else if (operationType === DELETE) {
   console.log(chalk.blue("Starting to delete KV..."));

@@ -18,7 +18,7 @@ export class BestSellersBar extends React.Component {
       <div className="center ad-gallery nav">
         <div className="col-md-2 hidden-sm hidden-xs">
           <LinkContainer to="/best">
-            <NavItem><h3>Bookstore<br/>Hot Deals</h3></NavItem>
+            <NavItem><h3>Fashionstore<br/>Hot Deals</h3></NavItem>
           </LinkContainer>
         </div>
         <div className="row">
