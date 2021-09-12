@@ -420,6 +420,144 @@ const COLLECTIONS = [
                     },
                 ],
             },
+            {
+                _key: 'FlowOnTealStar.jpeg',
+                description:
+                    'The perfect laid-back pick, this lounge bra supports your shape in a smooth seamless finish.',
+                heading: 'Flow On Point Seamless Triangle Bra',
+                rating: 3.5,
+                price: 44.5,
+                category: 'BRAS',
+                images: [
+                    {
+                        image: 'FlowOnTealStar.jpeg',
+                        name: 'Teal Star',
+                    },
+                    {
+                        image: 'FlowOnMauvelous.jpeg',
+                        name: 'Mauvelous',
+                    },
+                    {
+                        image: 'FlowOnBlack.jpeg',
+                        name: 'Black',
+                    },
+                ],
+            },
+            {
+                _key: 'LightlyLinedAppleblossomPink.jpeg',
+                description:
+                    'This dreamy demi is even more heavenly, with softer Memory Fit lining that conforms to your curves, a smoothing U-shaped back and stretchier lace sides for a flawless, ultra-comfy fit.',
+                heading: 'Lightly-Lined Demi Bra',
+                rating: 4.2,
+                price: 49.5,
+                category: 'BRAS',
+                images: [
+                    {
+                        image: 'LightlyLinedAppleblossomPink.jpeg',
+                        name: 'Appleblossom Pink',
+                    },
+                    {
+                        image: 'LightlyLinedBlackFloral.jpeg',
+                        name: 'Black Floral',
+                    },
+                    {
+                        image: 'LightlyLinedClaretRed.jpeg',
+                        name: 'Claret Red',
+                    },
+                ],
+            },
+            {
+                _key: 'PushUpEnvious.jpeg',
+                description:
+                    'Our #1 push-up is sexier than ever with plush, even softer padding for the lift and cleavage you love and a more natural feel, plus edges that disappear under clothes.',
+                heading: 'Push-Up Bra',
+                rating: 4,
+                price: 49.5,
+                category: 'BRAS',
+                images: [
+                    {
+                        image: 'PushUpEnvious.jpeg',
+                        name: 'Envious',
+                    },
+                    {
+                        image: 'PushUpLipstick.jpeg',
+                        name: 'Lipstick',
+                    },
+                    {
+                        image: 'PushUpSweetPraline.jpeg',
+                        name: 'Sweet Praline',
+                    },
+                ],
+            },
+            {
+                _key: 'PushupPerfectKir.jpeg',
+                description:
+                    'Get the lift you crave in a supersoft bra you’ll love to wear, here with picot trim. Featuring Memory Fit padding for extra support as it conforms to your curves and a smoothing U-shaped back.',
+                heading: 'Push-Up Perfect Shape Lace Trim Bra',
+                rating: 4.3,
+                price: 49.5,
+                category: 'BRAS',
+                images: [
+                    {
+                        image: 'PushupPerfectKir.jpeg',
+                        name: 'Kir',
+                    },
+                    {
+                        image: 'PushupPerfectBlack.jpeg',
+                        name: 'Black',
+                    },
+                    {
+                        image: 'PushupPerfectPink.jpeg',
+                        name: 'Pink',
+                    },
+                ],
+            },
+            {
+                _key: 'UnlinedSoftFloralMedley.jpeg',
+                description:
+                    'The easiest decision you’ll make all day: wearing this ultra-soft and comfortable wireless bra, featuring a dramatic plunge neckline and a sporty logo band.',
+                heading: 'Unlined Soft Wireless Lounge Bra',
+                rating: 4.2,
+                price: 29.5,
+                category: 'BRAS',
+                images: [
+                    {
+                        image: 'UnlinedSoftFloralMedley.jpeg',
+                        name: 'Floral Medley',
+                    },
+                    {
+                        image: 'UnlinedSoftSoftPink.jpeg',
+                        name: 'Soft Pink',
+                    },
+                    {
+                        image: 'UnlinedSoftLeopard.jpeg',
+                        name: 'Leopard',
+                    },
+                ],
+            },
+            {
+                _key: 'WirelessLaceBackSageDust.jpeg',
+                description:
+                    'Feel good, look good, do good: meet our first fully-constructed T-shirt bra made from partially recycled textiles, a smooth and streamlined style that helps support the environment while giving you the boost you crave. In an allover smooth silhouette with a delicate pleated tulle detail at the front and a lace-embellished band.',
+                heading: 'Wireless Lace-back Bra',
+                rating: 3.5,
+                price: 44.5,
+                category: 'BRAS',
+                images: [
+                    {
+                        image: 'WirelessLaceBackSageDust.jpeg',
+                        name: 'Sage Dust',
+                    },
+                    {
+                        image: 'WirelessLaceBackWitheredRose.jpeg',
+                        name: 'Withered Rose',
+                    },
+                    {
+                        image: 'WirelessLaceBackWinterSky.jpeg',
+                        name: 'Winter Sky',
+                    },
+                ],
+            },
         ],
     },
     {
