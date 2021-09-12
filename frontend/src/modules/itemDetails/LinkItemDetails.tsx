@@ -1,9 +1,9 @@
 import React from "react";
 import CachedIcon from "@material-ui/icons/Cached";
 import { Button } from "@material-ui/core";
+import { withSnackbar } from "notistack";
 
 import { API, makeBackendUrl } from "../../apiCalls";
-import { FashionItem } from "../bestSellers/BestSellerProductRow";
 
 import "./details.css";
 
@@ -22,10 +22,7 @@ interface ImageDetails {
   name: string;
 }
 
-export class LinkItemDetails extends React.Component<
-  any,
-  LinkItemDetailsState
-> {
+class LinkItemDetails extends React.Component<any, LinkItemDetailsState> {
   [debouncedSuggestions: string]: any;
   constructor(props: any) {
     super(props);
@@ -198,7 +195,11 @@ export class LinkItemDetails extends React.Component<
                   },
                 });
 
-                Promise.all([baseItemPromise, giftPromise]);
+                Promise.all([baseItemPromise, giftPromise]).then(() =>
+                  this.props.enqueueSnackbar("Added to Cart!", {
+                    variant: "success",
+                  })
+                );
               }}
             >
               ADD TO BAG
@@ -217,3 +218,5 @@ export class LinkItemDetails extends React.Component<
     );
   }
 }
+
+export default withSnackbar(LinkItemDetails);

@@ -1,6 +1,7 @@
 import React from "react";
 import Modal from "react-modal";
 import { Link } from "react-router-dom";
+import { withSnackbar } from "notistack";
 
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import CloseIcon from "@material-ui/icons/Close";
@@ -45,7 +46,7 @@ interface ImageDetails {
   name: string;
 }
 
-export class ItemDetails extends React.Component<any, ItemDetailsState> {
+class ItemDetails extends React.Component<any, ItemDetailsState> {
   [debouncedSuggestions: string]: any;
   constructor(props: any) {
     super(props);
@@ -282,7 +283,11 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
                       ),
                       size: this.state.currentSize,
                     },
-                  });
+                  }).then(() =>
+                    this.props.enqueueSnackbar("Added to Cart!", {
+                      variant: "success",
+                    })
+                  );
                 }}
               >
                 ADD TO BAG
@@ -468,3 +473,5 @@ export class ItemDetails extends React.Component<any, ItemDetailsState> {
     );
   }
 }
+
+export default withSnackbar(ItemDetails);

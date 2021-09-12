@@ -12,8 +12,8 @@ import PastPurchases from "./modules/pastPurchases/PastPurchases";
 import BestSellers from "./modules/bestSellers/BestSellers";
 import SearchView from "./modules/search/SearchView";
 import PropsRoute from "./common/PropsRoute";
-import { ItemDetails } from "./modules/itemDetails/ItemDetails";
-import { LinkItemDetails } from "./modules/itemDetails/LinkItemDetails";
+import ItemDetails from "./modules/itemDetails/ItemDetails";
+import LinkItemDetails from "./modules/itemDetails/LinkItemDetails";
 
 interface RouteProps {
   isAuthenticated: boolean;
