@@ -4200,6 +4200,11 @@ const COLLECTIONS = [
                 password: '�y|�\u0018�-�d�\u0007�]?�v#\u0004�\u0006=S,�\\^ר�O',
                 _key: 'harry.d@macrometa.io',
             },
+            {
+                customerId: '6758b39c-9b34-4dde-a401-a0c49de53624',
+                password: '?!�I\f�+�`�p.�-�z�\\�ѢcU}�Q���ߩ>',
+                _key: 'guest@macrometa.io',
+            },
         ],
     },
     {
