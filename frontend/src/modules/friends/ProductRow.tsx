@@ -5,6 +5,7 @@ import { API, makeBackendUrl } from "../../apiCalls";
 import AddToCart from "../../common/AddToCart";
 import FriendRecommendations from "../../common/friendRecommendations/FriendRecommendations";
 import { FashionItem } from "../bestSellers/BestSellerProductRow";
+import { LinkContainer } from "react-router-bootstrap";
 
 interface ProductRowProps {
   fashionItem: FashionItem;
@@ -58,12 +59,27 @@ export class ProductRow extends React.Component<
             <FriendRecommendations fashionItemId={this.props.fashionItemId} />
             <div>
               <span style={{ display: "block" }}> Rating</span>
-              <span>
-                <AddToCart
+              <LinkContainer
+                to={{
+                  pathname: `/details/${this.props.fashionItem.heading}`,
+                  state: { item: this.props.fashionItem },
+                }}
+              >
+                <span>
+                  <button
+                    className="btn btn-black pull-right"
+                    type="button"
+                  >
+                    View
+                  </button>
+                  {/* <AddToCart
                   fashionItemId={this.state.fashionItem["_key"]}
                   price={this.state.fashionItem.price}
-                />
-              </span>
+                  color={this.state.fashionItem.color}
+                  size={this.state.fashionItem.size}
+                /> */}
+                </span>
+              </LinkContainer>
             </div>
             <StarRating stars={this.state.fashionItem.rating} />
           </div>

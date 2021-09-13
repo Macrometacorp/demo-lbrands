@@ -26,8 +26,11 @@ export const apiRtt = (method: string) => {
         Name: performances[i].name,
         Status: "200",
         Path: performances[i].name.split(
-          "https://bookstore.macrometadev.workers.dev"
+          "https://demo-lbrands-frontend.macrometadev.workers.dev"
         )[1],
+        // Path: performances[i].name.split(
+        //   "http://127.0.0.1:8787"
+        // )[1],
         Time:
           Math.round(performances[i].responseEnd - performances[i].fetchStart) +
           " ms",

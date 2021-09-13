@@ -68,7 +68,7 @@ export class PurchasedProductRow extends React.Component<PurchasedProductRowProp
             {/* <FriendRecommendations fashionItemId={this.props.order.fashionItemId} /> */}
             <div>
               Rating
-              <AddToCart fashionItemId={this.state.fashionItem.fashionItemId} price={this.state.fashionItem.price} variant="buyAgain" />
+              <AddToCart fashionItemId={this.state.fashionItem.fashionItemId} price={this.state.fashionItem.price} color={this.state.fashionItem.color} size={this.state.fashionItem.size} variant="buyAgain" />
             </div>
             <StarRating stars={this.state.fashionItem.rating} />
           </div>

@@ -43,6 +43,12 @@ const executeQuery = async (c8qlKey, bindValue) => {
 
 const getCustomerId = request => request.headers.get(CUSTOMER_ID_HEADER)
 
+
+const getLastPathParam = (request) => {
+    const splitUrl = request.url.split("/");
+    return splitUrl[splitUrl.length - 1];
+  };
+
 /*
 This snippet ties our worker to the router we deifned above, all incoming requests
 are passed to the router where your routes are called and the response is sent.
@@ -120,10 +126,10 @@ router.post('/signup', async request => {
         customerId,
     })
 
-    // TODO: if needed
-    // if (!result.error) {
-    //     const res = await executeQuery("AddFriends", { username });
-    //   }
+
+    if (!result.error) {
+        const res = await executeQuery("AddFriends", { username });
+      }
 
     const body = JSON.stringify(result)
     return new Response(body, { headers: getCorsCompliantHeaders() })
@@ -228,8 +234,90 @@ router.post('/cart', async request => {
         headers: getCorsCompliantHeaders(),
     })
 })
-router.put('/cart', async request => {})
-router.delete('/cart', async request => {})
+router.put('/cart', async request => {
+    const customerId = getCustomerId(request)
+    const { fashionItemId, quantity, color, size } = await request.json()
+    const res = await executeQuery('UpdateCart', {
+        customerId,
+        fashionItemId,
+        quantity,
+        color:color.replace(/\s/g, "_"),
+        size,
+    })
+
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
+router.delete('/cart', async request => {
+    const customerId = getCustomerId(request)
+    const { fashionItemId, color, size } = await request.json()
+    const res = await executeQuery('RemoveFromCart', {
+        customerId,
+        fashionItemId,
+        color:color.replace(/\s/g, "_"),
+        size,
+    })
+
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
+router.get('/orders', async request => {
+    const customerId = getCustomerId(request)
+    // let body = { error: true, code: 400, message: 'Customer Id not provided' }
+    const res = await executeQuery('ListOrders', {
+        customerId,
+    })
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
+router.get("/recommendations", async request =>{
+    const customerId = getCustomerId(request)
+    // let body = { error: true, code: 400, message: 'Customer Id not provided' }
+
+    const res = await executeQuery("GetRecommendations", {customerId});
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
+router.get("/recommendations/*", async request =>{
+    const customerId = getCustomerId(request)
+    // let body = { error: true, code: 400, message: 'Customer Id not provided' }
+    const fashionItemId = getLastPathParam(request);
+    const res = await executeQuery("GetRecommendationsByFashionItems", {customerId,fashionItemId});
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
+router.post('/orders', async request => {
+    const customerId = getCustomerId(request)
+    const { fashionItemId, quantity, price, color, size } = await request.json()
+    let orderDate = Date.now();
+    const orderId = `${orderDate.toString()}:${customerId}`;
+    const res = await executeQuery('Checkout', {
+        customerId,
+        fashionItemId,
+        quantity,
+        price,
+        color,
+        size,
+        orderId,
+        orderDate,
+    })
+    if (!res.error) {
+        await executeQuery("AddPurchased", { orderId });
+      }
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
 
 router.get('/suggestion/:zipcode', async request => {
     const { params } = request

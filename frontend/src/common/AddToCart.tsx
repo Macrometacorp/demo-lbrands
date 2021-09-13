@@ -6,6 +6,8 @@ import { Glyphicon } from "react-bootstrap";
 interface AddToCartProps {
   fashionItemId: string;
   price: number;
+  color:string;
+  size:string;
   variant?: string;
 }
 
@@ -52,6 +54,8 @@ class AddToCart extends React.Component<AddToCartProps, AddToCartState> {
         fashionItemId: this.props.fashionItemId,
         price: this.props.price,
         quantity: 1,
+        color:this.props.color,
+        size:this.props.size
       },
     }).then(() => {
       this.setState({ loading: false, buttonText: "Added" });

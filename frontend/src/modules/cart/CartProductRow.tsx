@@ -60,6 +60,8 @@ export class CartProductRow extends React.Component<
     await API.del("cart", "/cart", {
       body: {
         fashionItemId: this.props.order.fashionItemId,
+        color:this.props.order.color,
+        size:this.props.order.size
       },
     });
 
@@ -71,6 +73,8 @@ export class CartProductRow extends React.Component<
       body: {
         fashionItemId: this.props.order.fashionItemId,
         quantity: parseInt(event.target.value, 10),
+        color:this.props.order.color,
+        size:this.props.order.size
       },
     });
   };
@@ -78,7 +82,7 @@ export class CartProductRow extends React.Component<
   getImageDetails() {
     const { color } = this.props.order;
     const image = this.state.fashionItem?.images.find(
-      (imageObj) => imageObj.name === color
+      (imageObj) => imageObj.name === color.replace(/_/g," ")
     );
     return image;
   }

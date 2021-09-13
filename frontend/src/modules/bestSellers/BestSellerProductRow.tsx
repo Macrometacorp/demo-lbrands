@@ -26,6 +26,8 @@ export interface FashionItem {
   rating: number;
   images: Array<{ image: string; name: string; availableIn?: Array<string> }>;
   description: string;
+  color:string;
+  size:string;
 }
 
 interface ProductRowState {
