@@ -1,5 +1,6 @@
 import React from "react";
 import { API } from "../apiCalls";
+import { withSnackbar } from "notistack";
 import { Redirect } from "react-router";
 import { Glyphicon } from "react-bootstrap";
 
@@ -17,8 +18,9 @@ interface AddToCartState {
   buttonText: string;
 }
 
-class AddToCart extends React.Component<AddToCartProps, AddToCartState> {
-  constructor(props: AddToCartProps) {
+class AddToCart extends React.Component<any, AddToCartState> {
+  [debouncedSuggestions: string]: any;
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -58,6 +60,9 @@ class AddToCart extends React.Component<AddToCartProps, AddToCartState> {
         size:this.props.size
       },
     }).then(() => {
+      this.props.enqueueSnackbar("Added to Cart!", {
+        variant: "success",
+      })
       this.setState({ loading: false, buttonText: "Added" });
       // alert("Item added successfully to the cart");
       // this.setState({
@@ -95,4 +100,4 @@ class AddToCart extends React.Component<AddToCartProps, AddToCartState> {
   }
 }
 
-export default AddToCart;
+export default withSnackbar (AddToCart);

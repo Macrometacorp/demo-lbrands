@@ -40,6 +40,12 @@ export class ProductRow extends React.Component<
 
     return (
       <div className="white-box">
+        <LinkContainer
+          to={{
+            pathname: `/details/${this.props.fashionItem.heading}`,
+            state: { item: this.props.fashionItem },
+          }}
+        >
         <div className="media">
           <div className="media-left media-middle no-padding">
             <img
@@ -59,31 +65,26 @@ export class ProductRow extends React.Component<
             <FriendRecommendations fashionItemId={this.props.fashionItemId} />
             <div>
               <span style={{ display: "block" }}> Rating</span>
-              <LinkContainer
-                to={{
-                  pathname: `/details/${this.props.fashionItem.heading}`,
-                  state: { item: this.props.fashionItem },
-                }}
-              >
-                <span>
+
+                  {/* <span>
                   <button
                     className="btn btn-black pull-right"
                     type="button"
                   >
                     View
-                  </button>
+                  </button> */}
                   {/* <AddToCart
                   fashionItemId={this.state.fashionItem["_key"]}
                   price={this.state.fashionItem.price}
                   color={this.state.fashionItem.color}
                   size={this.state.fashionItem.size}
                 /> */}
-                </span>
-              </LinkContainer>
+                  {/* </span> */}
             </div>
             <StarRating stars={this.state.fashionItem.rating} />
           </div>
         </div>
+        </LinkContainer>
       </div>
     );
   }

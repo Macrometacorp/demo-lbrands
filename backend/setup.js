@@ -4571,6 +4571,52 @@ const VIEWS = [
     },
 ]
 
+const EDGE_COLLECTIONS = [
+    {
+      name: "friend",
+      data: [
+        {
+          _from: "UsersTable/harry.d@macrometa.io",
+          _to: "UsersTable/john.d@macrometa.io",
+        },
+      ],
+    },
+    {
+      name: "purchased",
+      data: [
+        {
+          _from: "UsersTable/john.d@macrometa.io",
+          _to: "FashionItemsTable/DrapedBackVintageRose.jpeg",
+        },
+        {
+          _from: "UsersTable/john.d@macrometa.io",
+          _to: "FashionItemsTable/LacePlungeHotPink.jpeg",
+        },
+      ],
+    },
+  ];
+
+  const GRAPHS = [
+    {
+      name: "UserSocialGraph",
+      properties: {
+        edgeDefinitions: [
+          {
+            collection: "friend",
+            from: ["UsersTable"],
+            to: ["UsersTable"],
+          },
+          {
+            collection: "purchased",
+            from: ["UsersTable"],
+            to: ["FashionItemsTable"],
+          },
+        ],
+        orphanCollections: [],
+      },
+    },
+  ];
+
 const collectionHandler = async (client, collection, isEdge) => {
     const { name, data } = collection
     const coll = isEdge ? client.edgeCollection(name) : client.collection(name)
@@ -4583,7 +4629,7 @@ const collectionHandler = async (client, collection, isEdge) => {
         console.log(`${prefix} created`)
         if (Array.isArray(data) && data.length)
             if (isEdge) {
-                for (edge of data) {
+                for (const edge of data) {
                     await coll.save(data)
                 }
             } else {
@@ -4601,6 +4647,21 @@ const setup = async client => {
     for (const collection of COLLECTIONS) {
         await collectionHandler(client, collection, false)
     }
+
+    for (const edgeCollection of EDGE_COLLECTIONS) {
+        await collectionHandler(client, edgeCollection, true);
+      }
+    
+      for (const graph of GRAPHS) {
+        const { name, properties } = graph;
+        const exists = await client.hasGraph(name);
+        if (!exists) {
+          await client.createGraph(name, properties);
+          console.log(`Graph ${name} created`);
+        } else {
+          console.log(`Graph ${name} already exists. Skipping creation`);
+        }
+      }
 
     const response = await client.getListOfViews()
     const existingViews = response.result
