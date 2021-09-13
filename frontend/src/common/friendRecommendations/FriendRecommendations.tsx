@@ -44,7 +44,7 @@ class FriendRecommendations extends React.Component<FriendRecommendationsProps, 
       <div>
         <div>Friends who bought this fashion item</div>
         <p>
-          {friends.slice(0, 3).map((friend: any) => <FriendThumb key={friend} />)}
+          {friends.slice(0, 3).map((friend: any) => <FriendThumb key={friend._key} />)}
           {numFriendsPurchased > 3 && <span className="orange">{` +${numFriendsPurchased - 3} ${(numFriendsPurchased - 3) > 1 ? "others" : "other"}`}</span>}
         </p>
       </div>
