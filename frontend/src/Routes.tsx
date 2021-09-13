@@ -44,7 +44,7 @@ export const Routes: React.SFC<RouteProps> = (childProps) => (
       component={ItemDetails}
       props={childProps}
     />
-    <Route path="/link/:id" exact component={LinkItemDetails} />
+    <Route path="/gift" exact component={LinkItemDetails} />
     <Route component={NotFound} />
   </Switch>
 );

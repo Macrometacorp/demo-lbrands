@@ -4538,13 +4538,25 @@ const COLLECTIONS = [
         name: 'PromotionsTable',
         data: [
             {
-                _key: 'DrapedBackVintageRose.jpeg',
+                _key: 'CottonFleeceHeatherSnow.jpeg',
                 type: 'price',
                 message: 'Clearance $21.99',
-                price: 21.99,
+                price: 25.99,
             },
             {
-                _key: 'TahitiScoopOlive.jpeg',
+                _key: 'FlowOnTealStar.jpeg',
+                type: 'link',
+                message: 'Get a free Lightweight Pima Cotton V-neck Sleepshirt',
+                link: 'LightweightPimaBrightPinkGraphic.jpeg',
+            },
+            {
+                _key: 'LaceBrazilianDahlia.jpeg',
+                type: 'price',
+                message: 'Clearance $9.99',
+                price: 9.99,
+            },
+            {
+                _key: 'WirelessLaceBackSageDust.jpeg',
                 type: 'link',
                 message: 'Get a free Cotton Jogger Tee-jama',
                 link: 'CottonJoggerLinenDahlia.jpeg',
@@ -4573,49 +4585,49 @@ const VIEWS = [
 
 const EDGE_COLLECTIONS = [
     {
-      name: "friend",
-      data: [
-        {
-          _from: "UsersTable/harry.d@macrometa.io",
-          _to: "UsersTable/john.d@macrometa.io",
-        },
-      ],
-    },
-    {
-      name: "purchased",
-      data: [
-        {
-          _from: "UsersTable/john.d@macrometa.io",
-          _to: "FashionItemsTable/DrapedBackVintageRose.jpeg",
-        },
-        {
-          _from: "UsersTable/john.d@macrometa.io",
-          _to: "FashionItemsTable/LacePlungeHotPink.jpeg",
-        },
-      ],
-    },
-  ];
-
-  const GRAPHS = [
-    {
-      name: "UserSocialGraph",
-      properties: {
-        edgeDefinitions: [
-          {
-            collection: "friend",
-            from: ["UsersTable"],
-            to: ["UsersTable"],
-          },
-          {
-            collection: "purchased",
-            from: ["UsersTable"],
-            to: ["FashionItemsTable"],
-          },
+        name: 'friend',
+        data: [
+            {
+                _from: 'UsersTable/harry.d@macrometa.io',
+                _to: 'UsersTable/john.d@macrometa.io',
+            },
         ],
-        orphanCollections: [],
-      },
     },
-  ];
+    {
+        name: 'purchased',
+        data: [
+            {
+                _from: 'UsersTable/john.d@macrometa.io',
+                _to: 'FashionItemsTable/DrapedBackVintageRose.jpeg',
+            },
+            {
+                _from: 'UsersTable/john.d@macrometa.io',
+                _to: 'FashionItemsTable/LacePlungeHotPink.jpeg',
+            },
+        ],
+    },
+]
+
+const GRAPHS = [
+    {
+        name: 'UserSocialGraph',
+        properties: {
+            edgeDefinitions: [
+                {
+                    collection: 'friend',
+                    from: ['UsersTable'],
+                    to: ['UsersTable'],
+                },
+                {
+                    collection: 'purchased',
+                    from: ['UsersTable'],
+                    to: ['FashionItemsTable'],
+                },
+            ],
+            orphanCollections: [],
+        },
+    },
+]
 
 const collectionHandler = async (client, collection, isEdge) => {
     const { name, data } = collection
@@ -4649,19 +4661,19 @@ const setup = async client => {
     }
 
     for (const edgeCollection of EDGE_COLLECTIONS) {
-        await collectionHandler(client, edgeCollection, true);
-      }
-    
-      for (const graph of GRAPHS) {
-        const { name, properties } = graph;
-        const exists = await client.hasGraph(name);
+        await collectionHandler(client, edgeCollection, true)
+    }
+
+    for (const graph of GRAPHS) {
+        const { name, properties } = graph
+        const exists = await client.hasGraph(name)
         if (!exists) {
-          await client.createGraph(name, properties);
-          console.log(`Graph ${name} created`);
+            await client.createGraph(name, properties)
+            console.log(`Graph ${name} created`)
         } else {
-          console.log(`Graph ${name} already exists. Skipping creation`);
+            console.log(`Graph ${name} already exists. Skipping creation`)
         }
-      }
+    }
 
     const response = await client.getListOfViews()
     const existingViews = response.result

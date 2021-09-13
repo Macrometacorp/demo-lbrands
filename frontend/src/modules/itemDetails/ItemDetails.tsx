@@ -254,9 +254,9 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
                 }}
                 variant="contained"
                 to={{
-                  pathname: `/link/${this.promotion.heading}`,
+                  pathname: `/gift`,
                   state: {
-                    isPromotionSelectionScreenKey: this.promotion.link,
+                    promotionSelectionScreenKey: this.promotion.link,
                     baseFashionItemId: this.state.fashionItem._key,
                     baseFashionItemQuantity: this.state.quantity,
                     baseFashionItemPrice: this.state.fashionItem.price,

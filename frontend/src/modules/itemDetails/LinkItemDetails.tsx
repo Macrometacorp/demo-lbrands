@@ -32,7 +32,7 @@ class LinkItemDetails extends React.Component<any, LinkItemDetailsState> {
 
     const {
       promotion,
-      isPromotionSelectionScreenKey,
+      promotionSelectionScreenKey,
       baseFashionItemId,
       baseFashionItemCurrentSize,
       baseFashionItemQuantity,
@@ -41,7 +41,7 @@ class LinkItemDetails extends React.Component<any, LinkItemDetailsState> {
     } = this.props.location.state;
 
     this.promotion = promotion;
-    this.isPromotionSelectionScreenKey = isPromotionSelectionScreenKey;
+    this.promotionSelectionScreenKey = promotionSelectionScreenKey;
     this.baseFashionItemId = baseFashionItemId;
     this.baseFashionItemQuantity = baseFashionItemQuantity;
     this.baseFashionItemPrice = baseFashionItemPrice;
@@ -59,7 +59,7 @@ class LinkItemDetails extends React.Component<any, LinkItemDetailsState> {
     if (!this.state.fashionItem) {
       const res = await API.get(
         "fashionItem",
-        `/fashionItems/${this.isPromotionSelectionScreenKey}`,
+        `/fashionItems/${this.promotionSelectionScreenKey}`,
         null
       );
       const item = res[0];
