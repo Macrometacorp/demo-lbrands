@@ -346,6 +346,7 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
               )}
             </button>
             <Modal
+              ariaHideApp={false}
               isOpen={this.state.isModalOpen}
               style={{
                 content: {
