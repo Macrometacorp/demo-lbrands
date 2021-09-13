@@ -431,9 +431,9 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
                           }
                           secondary={
                             <React.Fragment>
-                              <div>{zipcodeObj.contact}</div>
-                              <div>Closes {zipcodeObj.closeTime}</div>
-                              <div
+                              <span>{zipcodeObj.contact}</span>
+                              <span>Closes {zipcodeObj.closeTime}</span>
+                              <span
                                 style={{
                                   display: "flex",
                                   flexDirection: "row",
@@ -441,9 +441,9 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
                                   alignItems: "center",
                                 }}
                               >
-                                <div style={{ color: "black" }}>
+                                <span style={{ color: "black" }}>
                                   {zipcodeObj.additionalDetails}
-                                </div>
+                                </span>
                                 <Button
                                   onClick={() => {
                                     this.setState(
@@ -468,7 +468,7 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
                                     ? "Selected"
                                     : "Select Store"}
                                 </Button>
-                              </div>
+                              </span>
                             </React.Fragment>
                           }
                         />
