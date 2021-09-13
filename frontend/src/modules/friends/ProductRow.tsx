@@ -8,7 +8,6 @@ import { FashionItem } from "../bestSellers/BestSellerProductRow";
 import { LinkContainer } from "react-router-bootstrap";
 
 interface ProductRowProps {
-  fashionItem: FashionItem;
   fashionItemId: string;
 }
 
@@ -16,10 +15,7 @@ interface ProductRowState {
   fashionItem: FashionItem | undefined;
 }
 
-export class ProductRow extends React.Component<
-  ProductRowProps,
-  ProductRowState
-> {
+export class ProductRow extends React.Component<ProductRowProps, ProductRowState> {
   constructor(props: ProductRowProps) {
     super(props);
 
@@ -29,10 +25,9 @@ export class ProductRow extends React.Component<
   }
 
   componentDidMount() {
-    this.setState({ fashionItem: this.props.fashionItem });
-    // API.get("fashionItems", `/fashionItems/${this.props.fashionItemId}`, null)
-    //   .then((response) => this.setState({ fashionItem: response }))
-    //   .catch((error) => console.error(error));
+    API.get("fashionItems", `/fashionItems/${this.props.fashionItemId}`, null)
+      .then((response) => this.setState({ fashionItem: response[0] }))
+      .catch((error) => console.error(error));
   }
 
   render() {
@@ -42,8 +37,8 @@ export class ProductRow extends React.Component<
       <div className="white-box" style={{ cursor: "pointer" }}>
         <LinkContainer
           to={{
-            pathname: `/details/${this.props.fashionItem.heading}`,
-            state: { item: this.props.fashionItem },
+            pathname: `/details/${this.state.fashionItem.heading}`,
+            state: { item: this.state.fashionItem },
           }}
         >
           <div className="media">

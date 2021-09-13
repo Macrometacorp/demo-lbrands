@@ -117,8 +117,8 @@ const queries = (queryName, bindValue) => {
             queryObj = {
                 query: `LET userId = first(FOR user in UsersTable FILTER user.customerId == @customerId return user._id)
                     FOR user IN ANY userId friend
-                    FOR fashionItems IN OUTBOUND user purchased
-                    RETURN DISTINCT fashionItems`,
+                    FOR fashionItem IN OUTBOUND user purchased
+                    RETURN DISTINCT fashionItem._key`,
                 bindVars: bindValue,
             }
             break
