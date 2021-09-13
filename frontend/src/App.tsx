@@ -14,7 +14,7 @@ import {
 import "./App.css";
 import { Routes } from "./Routes";
 
-import bookstore from "./images/bookstore.png";
+import fashionStore from "./images/fashionstore.png";
 import SearchBar from "./modules/search/searchBar/SearchBar";
 
 interface AppProps {
@@ -200,7 +200,7 @@ class App extends Component<AppProps, AppState> {
               <Navbar.Brand>
                 <Link to="/">
                   <span className="orange" style={{ fontSize: "19px" }}>
-                    <img src={bookstore} alt="bookstore" /> EDGE COMMERCE DEMO
+                    <img src={fashionStore} alt="fashionStore" /> EDGE COMMERCE DEMO
                   </span>
                 </Link>
               </Navbar.Brand>
