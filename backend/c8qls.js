@@ -61,6 +61,78 @@ const queries = (queryName, bindValue) => {
                 query: `FOR item IN PromotionsTable RETURN item`,
             }
             break
+        case 'UpdateCart':
+            queryObj = {
+                query:
+                    'FOR item IN CartTable UPDATE {_key: CONCAT_SEPARATOR(":", @customerId, @fashionItemId, @color, @size),quantity: @quantity} IN CartTable',
+                bindVars: bindValue,
+            }
+            break
+        case 'RemoveFromCart':
+            queryObj = {
+                query:
+                    'REMOVE {_key: CONCAT_SEPARATOR(":", @customerId, @fashionItemId, @color, @size)} IN CartTable',
+                bindVars: bindValue,
+            }
+            break
+        case 'ListOrders':
+            queryObj = {
+                query:
+                    'FOR item IN OrdersTable FILTER item.customerId == @customerId RETURN item',
+                bindVars: bindValue,
+            }
+            break
+        case 'Checkout':
+            queryObj = {
+                query: `LET items = (FOR item IN CartTable FILTER item.customerId == @customerId RETURN item)
+                  LET fashionItems = (FOR item in items
+                   FOR fashionItem in FashionItemsTable FILTER fashionItem._key == item.fashionItemId return {fashionItemId:fashionItem._key ,category:fashionItem.category,name:fashionItem.heading,price:fashionItem.price,rating:fashionItem.rating,quantity:item.quantity,color:item.color,size:item.size})
+                    INSERT {_key: @orderId, customerId: @customerId, fashionItems: fashionItems, orderDate: @orderDate} INTO OrdersTable
+                    FOR item IN items REMOVE item IN CartTable`,
+                bindVars: bindValue,
+            }
+            break
+        case 'AddPurchased':
+            queryObj = {
+                query: `LET order = first(FOR order in OrdersTable FILTER order._key == @orderId RETURN {customerId: order.customerId, fashionItems: order.fashionItems})
+                  LET customerId = order.customerId
+                   LET userId = first(FOR user IN UsersTable FILTER user.customerId == customerId RETURN user._id)
+                    LET fashionItems = order.fashionItems
+                     FOR fashionItem IN fashionItems
+                    INSERT {_from: userId, _to: CONCAT("FashionItemsTable/",fashionItem.fashionItemId)} INTO purchased`,
+                bindVars: bindValue,
+            }
+            break
+
+        case 'AddFriends':
+            queryObj = {
+                query: `LET otherUsers = (FOR users in UsersTable FILTER users._key != @username RETURN users)
+                      FOR user in otherUsers
+                          INSERT { _from: CONCAT("UsersTable/",@username), _to: CONCAT("UsersTable/",user._key)  } INTO friend`,
+                bindVars: bindValue,
+            }
+            break
+
+        case 'GetRecommendations':
+            queryObj = {
+                query: `LET userId = first(FOR user in UsersTable FILTER user.customerId == @customerId return user._id)
+                    FOR user IN ANY userId friend
+                    FOR fashionItems IN OUTBOUND user purchased
+                    RETURN DISTINCT fashionItems`,
+                bindVars: bindValue,
+            }
+            break
+        case 'GetRecommendationsByFashionItems':
+            queryObj = {
+                query: `LET userId = first(FOR user in UsersTable FILTER user.customerId == @customerId return user._id)
+                    LET fashionItemId = CONCAT("FashionItemsTable/",@fashionItemId)
+                    FOR friendsPurchased IN INBOUND fashionItemId purchased
+                        FOR user IN ANY userId friend
+                            FILTER user._key == friendsPurchased._key
+                                RETURN user`,
+                bindVars: bindValue,
+            }
+            break
     }
     return queryObj
 }

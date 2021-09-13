@@ -1,4 +1,5 @@
 export const apiRtt = (method: string) => {
+  const BACKEND = process.env.REACT_APP_BACKEND;
   let performances: any = performance
     .getEntriesByType("resource")
     .filter((item: any) => item.initiatorType === "fetch");
@@ -25,9 +26,10 @@ export const apiRtt = (method: string) => {
       responseTimeValue = {
         Name: performances[i].name,
         Status: "200",
-        Path: performances[i].name.split(
-          "https://bookstore.macrometadev.workers.dev"
-        )[1],
+        Path: performances[i].name.split(BACKEND)[1],
+        // Path: performances[i].name.split(
+        //   "http://127.0.0.1:8787"
+        // )[1],
         Time:
           Math.round(performances[i].responseEnd - performances[i].fetchStart) +
           " ms",
