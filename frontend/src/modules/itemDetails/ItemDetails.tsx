@@ -30,6 +30,8 @@ const COLORS = ["1ee8b7", "d270b7", "bf7c4c"];
 
 const SIZES = ["XS", "S", "M", "L", "XL", "XXL"];
 
+const SELECTED_STORE_KEY = "selectedStore";
+
 interface ItemDetailsState {
   currentImage: string;
   currentSize: string;
@@ -59,6 +61,10 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
 
     this.promotion = promotion;
 
+    const savedStore = sessionStorage.getItem(SELECTED_STORE_KEY);
+
+    const selectedStore = savedStore ? JSON.parse(savedStore) : null;
+
     this.state = {
       currentImage: currentImageId,
       currentSize: "M",
@@ -67,7 +73,7 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
       isModalOpen: false,
       zipcode: "",
       zipcodeSuggestion: null,
-      selectedStore: null,
+      selectedStore,
     };
 
     this.debouncedSuggestions = debounce(async () => {
@@ -439,10 +445,18 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
                                 </div>
                                 <Button
                                   onClick={() => {
-                                    this.setState({
-                                      selectedStore: zipcodeObj,
-                                      isModalOpen: false,
-                                    });
+                                    this.setState(
+                                      {
+                                        selectedStore: zipcodeObj,
+                                        isModalOpen: false,
+                                      },
+                                      () => {
+                                        sessionStorage.setItem(
+                                          SELECTED_STORE_KEY,
+                                          JSON.stringify(zipcodeObj)
+                                        );
+                                      }
+                                    );
                                   }}
                                   variant={
                                     isStoreSelected ? "contained" : "outlined"
