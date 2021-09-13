@@ -1,4 +1,4 @@
-const queries = (queryName, bindValue) => {
+const queries = (queryName, bindValue, body) => {
     let queryObj
     switch (queryName) {
         case 'signup':
@@ -84,11 +84,9 @@ const queries = (queryName, bindValue) => {
             break
         case 'Checkout':
             queryObj = {
-                query: `LET items = (FOR item IN CartTable FILTER item.customerId == @customerId RETURN item)
-                  LET fashionItems = (FOR item in items
-                   FOR fashionItem in FashionItemsTable FILTER fashionItem._key == item.fashionItemId return {fashionItemId:fashionItem._key ,category:fashionItem.category,name:fashionItem.heading,price:fashionItem.price,rating:fashionItem.rating,quantity:item.quantity,color:item.color,size:item.size})
-                    INSERT {_key: @orderId, customerId: @customerId, fashionItems: fashionItems, orderDate: @orderDate} INTO OrdersTable
-                    FOR item IN items REMOVE item IN CartTable`,
+                query: `INSERT ${JSON.stringify(body)} INTO OrdersTable
+                LET items = (FOR item IN CartTable FILTER item.customerId == @customerId RETURN item)
+                FOR item IN items REMOVE item IN CartTable`,
                 bindVars: bindValue,
             }
             break

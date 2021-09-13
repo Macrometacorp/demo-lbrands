@@ -30,8 +30,8 @@ const client = new jsc8({
     agent: fetch,
 })
 
-const executeQuery = async (c8qlKey, bindValue) => {
-    const { query, bindVars } = queries(c8qlKey, bindValue)
+const executeQuery = async (c8qlKey, bindValue, body) => {
+    const { query, bindVars } = queries(c8qlKey, bindValue, body)
     let result
     try {
         result = await client.executeQuery(query, bindVars)
@@ -43,11 +43,10 @@ const executeQuery = async (c8qlKey, bindValue) => {
 
 const getCustomerId = request => request.headers.get(CUSTOMER_ID_HEADER)
 
-
-const getLastPathParam = (request) => {
-    const splitUrl = request.url.split("/");
-    return splitUrl[splitUrl.length - 1];
-  };
+const getLastPathParam = request => {
+    const splitUrl = request.url.split('/')
+    return splitUrl[splitUrl.length - 1]
+}
 
 /*
 This snippet ties our worker to the router we deifned above, all incoming requests
@@ -126,10 +125,9 @@ router.post('/signup', async request => {
         customerId,
     })
 
-
     if (!result.error) {
-        const res = await executeQuery("AddFriends", { username });
-      }
+        const res = await executeQuery('AddFriends', { username })
+    }
 
     const body = JSON.stringify(result)
     return new Response(body, { headers: getCorsCompliantHeaders() })
@@ -241,7 +239,7 @@ router.put('/cart', async request => {
         customerId,
         fashionItemId,
         quantity,
-        color:color.replace(/\s/g, "_"),
+        color: color.replace(/\s/g, '_'),
         size,
     })
 
@@ -256,7 +254,7 @@ router.delete('/cart', async request => {
     const res = await executeQuery('RemoveFromCart', {
         customerId,
         fashionItemId,
-        color:color.replace(/\s/g, "_"),
+        color: color.replace(/\s/g, '_'),
         size,
     })
 
@@ -276,21 +274,24 @@ router.get('/orders', async request => {
     })
 })
 
-router.get("/recommendations", async request =>{
+router.get('/recommendations', async request => {
     const customerId = getCustomerId(request)
     // let body = { error: true, code: 400, message: 'Customer Id not provided' }
 
-    const res = await executeQuery("GetRecommendations", {customerId});
+    const res = await executeQuery('GetRecommendations', { customerId })
     return new Response(JSON.stringify(res), {
         headers: getCorsCompliantHeaders(),
     })
 })
 
-router.get("/recommendations/*", async request =>{
+router.get('/recommendations/*', async request => {
     const customerId = getCustomerId(request)
     // let body = { error: true, code: 400, message: 'Customer Id not provided' }
-    const fashionItemId = getLastPathParam(request);
-    const res = await executeQuery("GetRecommendationsByFashionItems", {customerId,fashionItemId});
+    const fashionItemId = getLastPathParam(request)
+    const res = await executeQuery('GetRecommendationsByFashionItems', {
+        customerId,
+        fashionItemId,
+    })
     return new Response(JSON.stringify(res), {
         headers: getCorsCompliantHeaders(),
     })
@@ -298,22 +299,31 @@ router.get("/recommendations/*", async request =>{
 
 router.post('/orders', async request => {
     const customerId = getCustomerId(request)
-    const { fashionItemId, quantity, price, color, size } = await request.json()
-    let orderDate = Date.now();
-    const orderId = `${orderDate.toString()}:${customerId}`;
-    const res = await executeQuery('Checkout', {
-        customerId,
-        fashionItemId,
-        quantity,
-        price,
-        color,
-        size,
-        orderId,
+    const { fashionItems } = await request.json()
+    const orderDate = Date.now()
+    const orderId = `${orderDate.toString()}:${customerId}`
+    const body = {
+        _key: orderId,
         orderDate,
-    })
+        fashionItems: fashionItems.map(item => {
+            const { price, color, size, fashionItemId, quantity } = item
+            return { price, color, size, fashionItemId, quantity }
+        }),
+        customerId,
+    }
+
+    const res = await executeQuery(
+        'Checkout',
+        {
+            customerId,
+        },
+        body
+    )
     if (!res.error) {
-        await executeQuery("AddPurchased", { orderId });
-      }
+        executeQuery('AddPurchased', { orderId }).then(() => {
+            console.log('Added purchase!')
+        })
+    }
     return new Response(JSON.stringify(res), {
         headers: getCorsCompliantHeaders(),
     })
