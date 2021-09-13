@@ -129,7 +129,7 @@ const queries = (queryName, bindValue) => {
                     FOR friendsPurchased IN INBOUND fashionItemId purchased
                         FOR user IN ANY userId friend
                             FILTER user._key == friendsPurchased._key
-                                RETURN user`,
+                                RETURN DISTINCT user`,
                 bindVars: bindValue,
             }
             break
