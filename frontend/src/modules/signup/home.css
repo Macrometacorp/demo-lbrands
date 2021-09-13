@@ -85,12 +85,12 @@
 }
 
 .Home h3 a {
-  color: #005b86;
+  color: #c31616;
   font-size: 1.2em;
 }
 
 .Home h3 {
-  color: #005b86;
+  color: #c31616;
   font-weight: 300;
   padding: 0px 0px;
 }
@@ -107,7 +107,7 @@
 
 .Home .button-container a {
   padding: 10px 20px;
-  background-color: #2eadde;
+  background-color: #FF0000;
   border: 0;
   color: #fff;
   font-weight: 400;

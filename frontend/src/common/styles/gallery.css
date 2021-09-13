@@ -43,7 +43,7 @@
 }
 
 .well-bs a {
-  color: #009dff !important;
+  color: #bd1212 !important;
   margin: 0 0 0px 0;
   font-weight: 400;
   font-size: 14px !important;
@@ -135,7 +135,7 @@ a:hover {
 
 .loader {
   border: 2px solid #f3f3f3; /* Light grey */
-  border-top: 2px solid #2eadde; /* blue */
+  border-top: 2px solid #FF0000; /* blue */
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -148,7 +148,7 @@ a:hover {
 
 .loader-no-margin {
   border: 2px solid #f3f3f3; /* Light grey */
-  border-top: 2px solid #2eadde; /* blue */
+  border-top: 2px solid #FF0000; /* blue */
   border-radius: 50%;
   width: 20px;
   height: 20px;

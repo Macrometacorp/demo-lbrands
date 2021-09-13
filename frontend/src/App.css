@@ -9,7 +9,7 @@
 }
 
 .App .orange {
-  color: #2eadde;
+  color: #FF0000;
 }
 
 .App .white {
@@ -17,7 +17,7 @@
 }
 
 .shopping-icon-container {
-  background-color: #2eadde;
+  background-color: #FF0000;
   padding: 2px 12px 0 12px;
   border-radius: 14px;
   margin-right: -24px;
@@ -68,10 +68,10 @@
 .checkbox-styling {
   padding-top: 7px;
   margin-left: -20px;
-  /* background-color: #2eadde; */
+  /* background-color: #FF0000; */
 }
 .navbar-items-font-style {
-  color: #2eadde;
+  color: #FF0000;
   padding-top: 2px !important;
   line-height: 24px;
   font-size: 16px;

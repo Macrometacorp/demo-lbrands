@@ -98,7 +98,7 @@ export default class Home extends Component<HomeProps, HomeState> {
               }}
               className="link-click"
               style={{
-                color: "#2eadde",
+                color: "#FF0000",
                 fontSize: "14px",
                 fontWeight: "bold",
               }}
