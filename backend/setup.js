@@ -4148,28 +4148,38 @@ const COLLECTIONS = [
         name: 'OrdersTable',
         data: [
             {
-                books: [
+                "fashionItems": [
                     {
-                        _id: 'BooksTable/b2',
-                        _key: 'b2',
-                        _rev: '_bR90GHu--C',
-                        author: 'Steve Doocy',
-                        category: 'Cookbooks',
-                        name: 'The Happy in a Hurry Cookbook',
-                        price: 17.99,
-                        rating: 4.6,
+                      "fashionItemId": "DrapedBackVintageRose.jpeg",
+                      "category": "LINGERIE",
+                      "name": "Draped Back Jacquard Cami Set",
+                      "price": 49.5,
+                      "rating": 4.6,
+                      "quantity": 1,
+                      "color": "Vintage_Rose",
+                      "size": "M"
                     },
                     {
-                        _id: 'BooksTable/b3',
-                        _key: 'b3',
-                        _rev: '_bR90GHy--_',
-                        author: 'Kristin Cavallari',
-                        category: 'Cookbooks',
-                        name: 'True Comfort',
-                        price: 17.52,
-                        rating: 4.8,
-                    },
-                ],
+                        "fashionItemId": "LacePlungeHotPink.jpeg",
+                        "category": "LINGERIE",
+                        "name": "Lace Plunge Slip",
+                        "price": 69.5,
+                        "rating": 4.6,
+                        "quantity": 1,
+                        "color": "Hot_Pink",
+                        "size": "XXL"
+                      },
+                      {
+                        "fashionItemId": "WickedOpenLipstick.jpeg",
+                        "category": "LINGERIE",
+                        "name": "Wicked Open Back Babydoll",
+                        "price": 89.5,
+                        "rating": 4.4,
+                        "quantity": 3,
+                        "color": "Lipstick",
+                        "size": "M"
+                      }
+                  ],
                 customerId: '56b83d81-940a-4dd4-c2f4-420c41deeca7',
                 orderDate: 1603105787506,
                 _key: '1603105787506:56b83d81-940a-4dd4-c2f4-420c41deeca7',
