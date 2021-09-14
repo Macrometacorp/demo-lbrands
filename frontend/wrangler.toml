@@ -1,6 +1,12 @@
 account_id = "b3dad22670b88424da9afddc967218a2"
 name = "demo-lbrands-frontend"
 type = "webpack"
-workers_dev = true
+workers_dev = false
 site = { bucket = "./build" }
 entry-point = "workers-site"
+
+# The ID of the domain to deploying to
+zone_id = "44ccec372ad2478131dc3fd7bf51a6c2"
+
+# The route pattern your Workers application will be served at
+route = "cf.macrometa.io/*"

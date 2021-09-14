@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "REACT_APP_BACKEND=\"http://127.0.0.1:8787\" react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false REACT_APP_BACKEND=\"https://demo-lbrands-backend.macrometadev.workers.dev\" react-scripts build",
+    "build": "GENERATE_SOURCEMAP=false REACT_APP_BACKEND=\"https://cf.macrometa.io/api\" react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

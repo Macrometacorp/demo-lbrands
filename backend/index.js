@@ -99,14 +99,14 @@ function handleOptions(request) {
 // Create a new router
 const router = Router()
 
-router.post('/setup', async () => {
+router.post('/api/setup', async () => {
     await setup(client)
     return new Response('Setup successful!!', {
         headers: getCorsCompliantHeaders(),
     })
 })
 
-router.post('/signup', async request => {
+router.post('/api/signup', async request => {
     const { username, password } = await request.json()
 
     const encodedPassword = new TextEncoder().encode(password)
@@ -133,8 +133,9 @@ router.post('/signup', async request => {
     return new Response(body, { headers: getCorsCompliantHeaders() })
 })
 
-router.post('/signin', async request => {
+router.post('/api/signin', async request => {
     const { username, password } = await request.json()
+
     const encodedPassword = new TextEncoder().encode(password)
     const digestedPassword = await crypto.subtle.digest(
         {
@@ -157,7 +158,7 @@ router.post('/signin', async request => {
     return new Response(body, { status, headers: getCorsCompliantHeaders() })
 })
 
-router.get('/whoami', request => {
+router.get('/api/whoami', request => {
     const customerId = getCustomerId(request)
     let message = 'No current user'
     let status = 404
@@ -171,7 +172,7 @@ router.get('/whoami', request => {
     })
 })
 
-router.get('/fashionItems/:id', async request => {
+router.get('/api/fashionItems/:id', async request => {
     const { params } = request
     const fashionItemId = params.id
     const item = await executeQuery('GetFashionItem', { fashionItemId })
@@ -180,7 +181,7 @@ router.get('/fashionItems/:id', async request => {
     })
 })
 
-router.get('/fashionItems', async request => {
+router.get('/api/fashionItems', async request => {
     const parsed = queryString.parseUrl(request.url)
     const {
         query: { category },
@@ -195,7 +196,7 @@ router.get('/fashionItems', async request => {
     })
 })
 
-router.get('/image/:id', async request => {
+router.get('/api/image/:id', async request => {
     const { params } = request
     const imageId = params.id
     const res = await LBRANDS_IMAGES.get(imageId, 'arrayBuffer')
@@ -205,8 +206,8 @@ router.get('/image/:id', async request => {
     return response
 })
 
-router.get('/cart/:id', async request => {})
-router.get('/cart', async request => {
+router.get('/api/cart/:id', async request => {})
+router.get('/api/cart', async request => {
     const customerId = getCustomerId(request)
     // let body = { error: true, code: 400, message: 'Customer Id not provided' }
     const res = await executeQuery('ListItemsInCart', {
@@ -216,7 +217,7 @@ router.get('/cart', async request => {
         headers: getCorsCompliantHeaders(),
     })
 })
-router.post('/cart', async request => {
+router.post('/api/cart', async request => {
     const customerId = getCustomerId(request)
     const { fashionItemId, quantity, price, color, size } = await request.json()
     const res = await executeQuery('AddToCart', {
@@ -232,7 +233,7 @@ router.post('/cart', async request => {
         headers: getCorsCompliantHeaders(),
     })
 })
-router.put('/cart', async request => {
+router.put('/api/cart', async request => {
     const customerId = getCustomerId(request)
     const { fashionItemId, quantity, color, size } = await request.json()
     const res = await executeQuery('UpdateCart', {
@@ -248,7 +249,7 @@ router.put('/cart', async request => {
     })
 })
 
-router.delete('/cart', async request => {
+router.delete('/api/cart', async request => {
     const customerId = getCustomerId(request)
     const { fashionItemId, color, size } = await request.json()
     const res = await executeQuery('RemoveFromCart', {
@@ -263,7 +264,7 @@ router.delete('/cart', async request => {
     })
 })
 
-router.get('/orders', async request => {
+router.get('/api/orders', async request => {
     const customerId = getCustomerId(request)
     // let body = { error: true, code: 400, message: 'Customer Id not provided' }
     const res = await executeQuery('ListOrders', {
@@ -274,7 +275,7 @@ router.get('/orders', async request => {
     })
 })
 
-router.get('/recommendations', async request => {
+router.get('/api/recommendations', async request => {
     const customerId = getCustomerId(request)
     // let body = { error: true, code: 400, message: 'Customer Id not provided' }
 
@@ -284,7 +285,7 @@ router.get('/recommendations', async request => {
     })
 })
 
-router.get('/recommendations/*', async request => {
+router.get('/api/recommendations/*', async request => {
     const customerId = getCustomerId(request)
     // let body = { error: true, code: 400, message: 'Customer Id not provided' }
     const fashionItemId = getLastPathParam(request)
@@ -297,7 +298,7 @@ router.get('/recommendations/*', async request => {
     })
 })
 
-router.post('/orders', async request => {
+router.post('/api/orders', async request => {
     const customerId = getCustomerId(request)
     const { fashionItems } = await request.json()
     const orderDate = Date.now()
@@ -329,7 +330,7 @@ router.post('/orders', async request => {
     })
 })
 
-router.get('/suggestion/:zipcode', async request => {
+router.get('/api/suggestion/:zipcode', async request => {
     const { params } = request
     const zipcode = params.zipcode
     const res = await executeQuery('GetLocationSuggestion', { key: zipcode })
@@ -338,7 +339,7 @@ router.get('/suggestion/:zipcode', async request => {
     })
 })
 
-router.get('/search', async request => {
+router.get('/api/search', async request => {
     const search = request.query.q
     const items = await executeQuery('Search', { search: search.toUpperCase() })
 
@@ -347,7 +348,7 @@ router.get('/search', async request => {
     })
 })
 
-router.get('/hot', async request => {
+router.get('/api/hot', async request => {
     const res = await executeQuery('GetHotDeals')
     return new Response(JSON.stringify(res), {
         headers: getCorsCompliantHeaders(),
