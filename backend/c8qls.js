@@ -114,8 +114,9 @@ const queries = (queryName, bindValue, body) => {
         case 'GetRecommendations':
             queryObj = {
                 query: `LET userId = first(FOR user in UsersTable FILTER user.customerId == @customerId return user._id)
-                    FOR user IN ANY userId friend
-                    FOR fashionItem IN OUTBOUND user purchased
+                    FOR user IN 0..1 ANY userId friend
+                    FOR fashionItem IN 0..1 OUTBOUND user purchased
+                    LIMIT 3
                     RETURN DISTINCT fashionItem._key`,
                 bindVars: bindValue,
             }
@@ -124,10 +125,11 @@ const queries = (queryName, bindValue, body) => {
             queryObj = {
                 query: `LET userId = first(FOR user in UsersTable FILTER user.customerId == @customerId return user._id)
                     LET fashionItemId = CONCAT("FashionItemsTable/",@fashionItemId)
-                    FOR friendsPurchased IN INBOUND fashionItemId purchased
-                        FOR user IN ANY userId friend
+                    FOR friendsPurchased IN 0..1 INBOUND fashionItemId purchased
+                        FOR user IN 0..1 ANY userId friend
                             FILTER user._key == friendsPurchased._key
-                                RETURN DISTINCT user`,
+                            LIMIT 3
+                            RETURN DISTINCT user`,
                 bindVars: bindValue,
             }
             break
