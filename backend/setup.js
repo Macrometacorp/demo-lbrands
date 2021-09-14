@@ -4698,3 +4698,12 @@ const setup = async client => {
 }
 
 export default setup
+
+
+/**
+ * INDEXES:
+ * CartTable - customerId
+ * FashionItemsTable - category
+ * OrdersTable - customerId
+ * UsersTable - password & customerId
+ */
