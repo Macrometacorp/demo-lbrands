@@ -4208,16 +4208,6 @@ const COLLECTIONS = [
         ],
     },
     {
-        name: 'BestsellersTable',
-        data: [
-            { _key: 'b1', quantity: 1 },
-            { _key: 'b5', quantity: 1 },
-            { _key: 'b9', quantity: 1 },
-            { _key: 'b13', quantity: 1 },
-            { _key: 'b17', quantity: 1 },
-        ],
-    },
-    {
         name: 'ZipcodesTable',
         data: [
             {
