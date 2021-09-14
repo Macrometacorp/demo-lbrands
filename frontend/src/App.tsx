@@ -41,7 +41,7 @@ class App extends Component<AppProps, AppState> {
       showLatestNetworkLatencyValue: "50 ms",
     };
     this.performanceButton = React.createRef();
-    document.title = "Edge Commerce Demo";
+    document.title = "Forever 42";
   }
 
   async componentDidMount() {
@@ -200,7 +200,7 @@ class App extends Component<AppProps, AppState> {
               <Navbar.Brand>
                 <Link to="/">
                   <span className="orange" style={{ fontSize: "19px" }}>
-                    <img src={fashionStore} alt="fashionStore" /> EDGE COMMERCE DEMO
+                    <img src={fashionStore} alt="fashionStore" /> Forever 42
                   </span>
                 </Link>
               </Navbar.Brand>

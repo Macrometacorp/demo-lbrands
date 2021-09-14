@@ -62,7 +62,7 @@ export default class Home extends Component<HomeProps, HomeState> {
       <div className="lander">
         <hr />
         <p>
-          Welcome to the Edge Commerce Fashionstore example app built entirely with
+          Welcome to the Forever 42 Fashionstore example app built entirely with
           Cloudflare Workers & Marcometa Global Data Network. It's entirely
           serverless and geo-distributed, which provides a lovely developer
           experience when building it and unparalleled performance.
@@ -88,7 +88,7 @@ export default class Home extends Component<HomeProps, HomeState> {
         <div className="button-container col-md-12">
           <div style={{ paddingTop: "20px", paddingBottom: "20px" }}>
             <LinkContainer to="/signup">
-              <a href="/signup">Create an Edge Commerce Demo Account</a>
+              <a href="/signup">Create a Forever 42 Demo Account</a>
             </LinkContainer>
           </div>
           <div style={{ marginLeft: "30%", marginRight: "30%" }}>
