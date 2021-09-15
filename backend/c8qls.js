@@ -74,6 +74,12 @@ const queries = (queryName, bindValue, body) => {
                 bindVars: bindValue,
             }
             break
+        case 'UpdateInventory':
+            queryObj = {
+                query: `FOR obj IN ${JSON.stringify(body)}
+                    FOR item IN InventoryTable UPDATE {_key: obj._key, quantity: item.quantity - obj.quantity} IN InventoryTable`
+            }
+            break
         case 'RemoveFromCart':
             queryObj = {
                 query:

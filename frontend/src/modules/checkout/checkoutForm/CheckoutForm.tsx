@@ -74,10 +74,22 @@ export class CheckoutForm extends React.Component<CheckoutFormProps, CheckoutFor
   }
 
   onCheckout = () => {
+
+    const selectedStore = sessionStorage.getItem("selectedStore");
+
+    const parsedStore = selectedStore ? JSON.parse(selectedStore) : null;
+
+    if(!parsedStore){
+      console.warn("No store selected. Quantities will not update")
+    }
+
+    const zipcode = parsedStore?.zipcode
+
     const orders = this.state.orders;
     API.post("orders", "/orders", {
       body: {
-        fashionItems: orders
+        fashionItems: orders,
+        zipcode,
       }
     }).then(() => this.setState({
       toConfirm: true

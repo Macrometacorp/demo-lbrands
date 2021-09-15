@@ -300,16 +300,29 @@ router.get('/api/recommendations/*', async request => {
 
 router.post('/api/orders', async request => {
     const customerId = getCustomerId(request)
-    const { fashionItems } = await request.json()
+    const { fashionItems, zipcode } = await request.json()
     const orderDate = Date.now()
     const orderId = `${orderDate.toString()}:${customerId}`
+
+    const cleanedFashionItems = []
+    const boughtQuantities = []
+
+    fashionItems.forEach(item => {
+        const { price, color, size, fashionItemId, quantity } = item
+        cleanedFashionItems.push({
+            price,
+            color,
+            size,
+            fashionItemId,
+            quantity,
+        })
+        boughtQuantities.push({ _key: `${zipcode}:${fashionItemId}`, quantity })
+    })
+
     const body = {
         _key: orderId,
         orderDate,
-        fashionItems: fashionItems.map(item => {
-            const { price, color, size, fashionItemId, quantity } = item
-            return { price, color, size, fashionItemId, quantity }
-        }),
+        fashionItems: cleanedFashionItems,
         customerId,
     }
 
@@ -323,6 +336,10 @@ router.post('/api/orders', async request => {
     if (!res.error) {
         executeQuery('AddPurchased', { orderId }).then(() => {
             console.log('Added purchase!')
+        })
+
+        executeQuery('UpdateInventory', null, boughtQuantities).then(data => {
+            console.log('Updated inventory!')
         })
     }
     return new Response(JSON.stringify(res), {
