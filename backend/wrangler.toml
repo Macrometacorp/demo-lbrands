@@ -3,9 +3,6 @@ type = "webpack"
 
 account_id = "b3dad22670b88424da9afddc967218a2"
 workers_dev = false
-workers_dev = true
-route = ""
-zone_id = ""
 vars = { DC_LIST="gdn-us-west", C8_URL="https://gdn.paas.macrometa.io", C8_API_KEY="xxxx" }
 kv-namespaces = [
     { binding = "LBRANDS_IMAGES", id = "723596d64b1b43dc876a0c0abbf82e38", preview_id = "723596d64b1b43dc876a0c0abbf82e38" }
