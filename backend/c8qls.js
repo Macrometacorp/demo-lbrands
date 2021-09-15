@@ -46,7 +46,13 @@ const queries = (queryName, bindValue, body) => {
             break
         case 'GetLocationSuggestion':
             queryObj = {
-                query: `FOR doc IN ZipcodesTable FILTER doc._key == @key RETURN doc`,
+                query: `FOR doc IN ZipcodesTable FILTER doc._key == @key`,
+                bindVars: bindValue,
+            }
+            break
+        case 'GetInventoryDetails':
+            queryObj = {
+                query: `FOR inventory IN InventoryTable FILTER inventory._key == CONCAT_SEPARATOR(":", @zipcode, @fashionItemId) RETURN inventory`,
                 bindVars: bindValue,
             }
             break

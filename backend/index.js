@@ -339,6 +339,20 @@ router.get('/api/suggestion/:zipcode', async request => {
     })
 })
 
+router.get('/api/inventory', async request => {
+    const parsed = queryString.parseUrl(request.url)
+    const {
+        query: { zipcode, fashionItemId },
+    } = parsed
+    const res = await executeQuery('GetInventoryDetails', {
+        zipcode,
+        fashionItemId,
+    })
+    return new Response(JSON.stringify(res), {
+        headers: getCorsCompliantHeaders(),
+    })
+})
+
 router.get('/api/search', async request => {
     const search = request.query.q
     const items = await executeQuery('Search', { search: search.toUpperCase() })
