@@ -9,18 +9,15 @@
     "images": [
       {
         "image": "DrapedBackVintageRose.jpeg",
-        "name": "Vintage Rose",
-        "availableIn": ["06102", "19903", "20002"]
+        "name": "Vintage Rose"
       },
       {
         "image": "DrapedBackPersianTeal.jpeg",
-        "name": "Persian Teal",
-        "availableIn": ["06102", "19903", "20002"]
+        "name": "Persian Teal"
       },
       {
         "image": "DrapedBackDarkViolet.jpeg",
-        "name": "Dark Violet",
-        "availableIn": ["06102", "19903", "20002"]
+        "name": "Dark Violet"
       }
     ]
   },

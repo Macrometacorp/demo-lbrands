@@ -24,7 +24,7 @@ export interface FashionItem {
   category: string;
   heading: string;
   rating: number;
-  images: Array<{ image: string; name: string; availableIn?: Array<string> }>;
+  images: Array<{ image: string; name: string; }>;
   description: string;
   color:string;
   size:string;

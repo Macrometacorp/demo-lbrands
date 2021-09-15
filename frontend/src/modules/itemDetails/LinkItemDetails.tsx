@@ -75,12 +75,6 @@ class LinkItemDetails extends React.Component<any, LinkItemDetailsState> {
     return imageObj;
   }
 
-  isOutOfStock(zipcodeObj: any) {
-    return !this.getCurrentImageObj()?.availableIn?.find(
-      (zipcode: string) => zipcode === zipcodeObj.zipcode
-    );
-  }
-
   render() {
     if (!this.state.fashionItem) return null;
 
