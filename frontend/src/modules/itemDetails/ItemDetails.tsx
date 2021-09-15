@@ -41,6 +41,7 @@ interface ItemDetailsState {
   zipcode: string;
   zipcodeSuggestion: any;
   selectedStore: any;
+  inventoryDetails: Array<any>;
 }
 
 interface ImageDetails {
@@ -74,6 +75,7 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
       zipcode: "",
       zipcodeSuggestion: null,
       selectedStore,
+      inventoryDetails: [],
     };
 
     this.debouncedSuggestions = debounce(async () => {
@@ -81,7 +83,27 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
         const key = parseInt(this.state.zipcode[0], 10);
         if (key === key) {
           const res = await API.get("suggestion", `/suggestion/${key}`, null);
-          this.setState({ zipcodeSuggestion: res[0] });
+          const zipcodeDetails = res[0];
+          const inventoryDetailsPromises = zipcodeDetails.zipcodes.map(
+            (details: any) => {
+              const { zipcode } = details;
+              return API.get(
+                "inventory",
+                `/inventory?zipcode=${zipcode}&fashionItemId=${this.state.currentImage}`,
+                null
+              );
+            }
+          );
+          const inventoryDetails = await Promise.all(inventoryDetailsPromises);
+          const flattenedInventoryDetails: Array<any> = [];
+          inventoryDetails.forEach((inventoryDetail: any) => {
+            const detail = inventoryDetail?.[0];
+            flattenedInventoryDetails.push(detail);
+          });
+          this.setState({
+            zipcodeSuggestion: zipcodeDetails,
+            inventoryDetails: flattenedInventoryDetails,
+          });
         }
       }
     }, 100);
@@ -97,9 +119,14 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
   }
 
   isOutOfStock(zipcodeObj: any) {
-    return !this.getCurrentImageObj()?.availableIn?.find(
-      (zipcode: string) => zipcode === zipcodeObj.zipcode
+    const { zipcode } = zipcodeObj;
+    const key = `${zipcode}:${this.state.currentImage}`;
+
+    const inventoryObj = this.state.inventoryDetails.find(
+      (inventoryObj) => key === inventoryObj._key
     );
+
+    return inventoryObj.quantity < 1;
   }
 
   render() {
