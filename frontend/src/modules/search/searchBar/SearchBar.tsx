@@ -1,4 +1,4 @@
-import React from "react";
+import React, { SyntheticEvent } from "react";
 import "./searchBar.css";
 import { Redirect } from "react-router";
 
@@ -24,7 +24,8 @@ export class SearchBar extends React.Component<SearchBarProps, SearchBarState> {
     this.setState({ value: target.value });
   };
 
-  onSearch = () => {
+  onSearch = (event: SyntheticEvent) => {
+    event.preventDefault()
     if (this.state.value.trim()) {
       this.setState({
         redirect: `/search/${this.state.value}`,
