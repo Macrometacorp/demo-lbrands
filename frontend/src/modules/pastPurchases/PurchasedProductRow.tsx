@@ -26,16 +26,24 @@ export class PurchasedProductRow extends React.Component<PurchasedProductRowProp
 
   async componentDidMount() {
     try {
-      // const fashionItem = await this.getBook(this.props.order);
-      this.setState({ fashionItem: this.props.order });
+      const items = await this.fashionItem(this.props.order);
+      const fashionItem = { 
+        ...items[0],
+        ...this.props.order
+      }
+      this.setState({ fashionItem });
     } catch (e) {
       console.error(e);
     }
   }
 
-  // getBook(order: Order) {
-  //   return API.get("fashionItems", `/fashionItems/${order.fashionItemId}`, null);
-  // }
+  fashionItem(order: any) {
+    return API.get(
+      "fashionItems",
+      `/fashionItems/${order.fashionItemId}`,
+      null
+    );
+  }
 
   render() {
     if (!this.state.fashionItem) {
@@ -56,16 +64,15 @@ export class PurchasedProductRow extends React.Component<PurchasedProductRowProp
           <div className="media-left media-middle">
             <img className="media-object product-thumb" 
             src={makeBackendUrl(`/image/${this.state.fashionItem.fashionItemId}`)}
-            alt={`${this.state.fashionItem.name} covers`} />
+            alt={`${this.state.fashionItem.heading} covers`} />
           </div>
           <div className="media-body">
-            <h3 className="media-heading">{this.state.fashionItem.name}
+            <h3 className="media-heading">{this.state.fashionItem.heading}
               <div className="pull-right margin-1">
                 <small>{`${this.props.order.quantity} @ ${this.state.fashionItem.price}`}</small>
               </div>
             </h3>
             <small>{this.state.fashionItem.category}</small>
-            {/* <FriendRecommendations fashionItemId={this.props.order.fashionItemId} /> */}
             <div>
               Rating
               <AddToCart fashionItemId={this.state.fashionItem.fashionItemId} price={this.state.fashionItem.price} color={this.state.fashionItem.color} size={this.state.fashionItem.size} variant="buyAgain" />

@@ -32,25 +32,7 @@ class AddToCart extends React.Component<any, AddToCartState> {
 
   onAddToCart = async () => {
     this.setState({ loading: true });
-    // let bookInCart = await API.get("cart", `/cart/${this.props.fashionItemId}`, null);
-    // bookInCart = bookInCart[0];
-    // if the fashionItem already exists in the cart, increase the quantity
-    // if (bookInCart) {
-    //   API.put("cart", "/cart", {
-    //     body: {
-    //       fashionItemId: this.props.fashionItemId,
-    //       quantity: bookInCart.quantity + 1,
-    //     },
-    //   }).then(() => {
-    //     alert("Item added successfully to the cart");
-    //     // this.setState({
-    //     //   toCart: true,
-    //     // });
-    //   });
-    // }
 
-    // if the fashionItem does not exist in the cart, add it
-    // else {
     API.post("cart", "/cart", {
       body: {
         fashionItemId: this.props.fashionItemId,
@@ -64,13 +46,8 @@ class AddToCart extends React.Component<any, AddToCartState> {
         variant: "success",
       })
       this.setState({ loading: false, buttonText: "Added" });
-      // alert("Item added successfully to the cart");
-      // this.setState({
-      //   toCart: true,
-      // });
     });
   };
-  // };
 
   getVariant = () => {
     let style = "btn btn-black";
