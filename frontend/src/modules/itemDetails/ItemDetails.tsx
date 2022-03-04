@@ -126,7 +126,7 @@ class ItemDetails extends React.Component<any, ItemDetailsState> {
       (inventoryObj) => key === inventoryObj._key
     );
 
-    return inventoryObj.quantity < 1;
+    return inventoryObj?.quantity < 1;
   }
 
   render() {
