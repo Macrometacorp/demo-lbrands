@@ -22,7 +22,7 @@ As a user of the demo, you can browse and search for fashion items, look at reco
 
 | **Federation**                                        | **Email**                 | **Passsword** |
 | ----------------------------------------------------- | ------------------------- | ------------- |
-| [Global Data Network](https://gdn.paas.macrometa.io/) | demo-lbrands@macrometa.io | `xxxxxxxx`    |
+| [Global Data Network](https://play.macrometa.io/) | demo-lbrands@macrometa.io | `xxxxxxxx`    |
 
 ## Architecture
 
