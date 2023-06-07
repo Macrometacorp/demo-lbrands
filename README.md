@@ -20,9 +20,9 @@ As a user of the demo, you can browse and search for fashion items, look at reco
 
 ## GDN Tenant Account
 
-| **Federation**                                        | **Email**                 | **Passsword** |
+| **Federation**                                        | **Fabric** | **Email**                 |
 | ----------------------------------------------------- | ------------------------- | ------------- |
-| [Global Data Network](https://play.macrometa.io/) | demo-lbrands@macrometa.io | `xxxxxxxx`    |
+| [Play](https://play.macrometa.io/) | forever42 | demo@macrometa.io |
 
 ## Architecture
 
