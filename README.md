@@ -20,9 +20,9 @@ As a user of the demo, you can browse and search for fashion items, look at reco
 
 ## GDN Tenant Account
 
-| **Federation**                                        | **Email**                 | **Passsword** |
+| **Federation**                                        | **Fabric** | **Email**                 |
 | ----------------------------------------------------- | ------------------------- | ------------- |
-| [Global Data Network](https://play.macrometa.io/) | demo-lbrands@macrometa.io | `xxxxxxxx`    |
+| [Play](https://play.macrometa.io/) | forever42 | demo@macrometa.io |
 
 ## Architecture
 
@@ -326,6 +326,7 @@ Run `wrangler config` and enter the above API token when asked for. More details
 `vars` provides the environment variable we use in the workers itself. They include:
 
 1. `C8_URL`: GDN federation URL
+2. `C8_FABRIC`: GDN fabric name
 2. `C8_API_KEY`: API key of the tenant being used
 
 ## Publishing your project
